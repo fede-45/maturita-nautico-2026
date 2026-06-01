@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esercizi svolti — Quaderno di Federico | Navigazione</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.e-hero { padding:60px 0 30px; text-align:center; }
+.e-hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:0.5rem; }
+.e-hero p { color:var(--text-secondary); max-width:680px; margin:0 auto; }
+
+.e-toolbar { padding:20px 0; background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); }
+.e-toolbar-inner { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.e-filter { display:flex; gap:6px; flex-wrap:wrap; }
+.e-chip { padding:6px 12px; border-radius:var(--radius-full); background:var(--bg-card); border:1px solid var(--border); color:var(--text-secondary); font-size:0.8rem; font-weight:600; cursor:pointer; transition:all var(--transition); display:flex; align-items:center; gap:6px; }
+.e-chip:hover { border-color:var(--accent); color:var(--text-primary); }
+.e-chip.active { background:var(--accent); color:var(--navy-900); border-color:var(--accent); }
+.e-counter { margin-left:auto; font-family:var(--font-mono); font-size:0.85rem; color:var(--text-secondary); }
+.e-counter strong { color:var(--accent); }
+
+.macro-badge { display:inline-block; padding:2px 8px; border-radius:var(--radius-full); font-size:0.65rem; font-weight:700; }
+.macro-G { background:#10b981; color:#000; }
+.macro-A { background:#a855f7; color:#fff; }
+.macro-B { background:#f97316; color:#fff; }
+.macro-C { background:#0ea5e9; color:#fff; }
+.macro-D { background:#eab308; color:#000; }
+.macro-E { background:#06b6d4; color:#000; }
+.macro-F { background:#ef4444; color:#fff; }
+
+.e-main { padding:30px 0 80px; }
+.e-group { margin-bottom:3rem; }
+.e-group-header { display:flex; align-items:baseline; gap:12px; padding-bottom:1rem; border-bottom:1px solid var(--border); margin-bottom:1.5rem; }
+.e-group-header h2 { font-size:1.5rem; margin:0; }
+.e-group-count { font-family:var(--font-mono); color:var(--text-muted); font-size:0.85rem; }
+
+.e-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(180px,1fr)); gap:1rem; }
+.e-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; cursor:pointer; transition:all var(--transition); }
+.e-card:hover { transform:translateY(-3px); border-color:var(--accent); box-shadow:var(--shadow-md); }
+.e-card-img { aspect-ratio:0.71; background:#fff; overflow:hidden; }
+.e-card-img img { width:100%; height:100%; object-fit:cover; }
+.e-card-info { padding:0.85rem; }
+.e-card-title { font-size:0.85rem; font-weight:700; color:var(--text-primary); margin-bottom:0.4rem; line-height:1.3; }
+.e-card-meta { display:flex; align-items:center; gap:6px; font-size:0.7rem; color:var(--text-secondary); }
+
+.e-card.hidden { display:none; }
+
+/* Modal */
+.e-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.96); z-index:1000; padding:40px; cursor:zoom-out; align-items:center; justify-content:center; }
+.e-modal.open { display:flex; }
+.e-modal-content { max-width:95vw; max-height:95vh; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.e-modal img { max-width:100%; max-height:80vh; box-shadow:0 0 40px rgba(0,0,0,0.5); cursor:default; }
+.e-modal-info { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:0.75rem 1.25rem; color:var(--text-primary); font-size:0.9rem; cursor:default; }
+.e-modal-info strong { color:var(--accent); }
+.e-modal-close { position:absolute; top:20px; right:30px; color:#fff; font-size:1.5rem; cursor:pointer; background:rgba(0,0,0,0.5); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border:none; }
+.e-modal-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.6); color:#fff; border:none; width:50px; height:50px; border-radius:50%; cursor:pointer; font-size:1.5rem; display:flex; align-items:center; justify-content:center; }
+.e-modal-nav.prev { left:30px; }
+.e-modal-nav.next { right:30px; }
+.e-modal-nav:hover { background:var(--accent); color:var(--navy-900); }
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">🏠 Home</a></li>
+      <li><a href="../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="e-hero">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Quaderno di Federico</div>
+    <h1>📓 Esercizi Svolti</h1>
+    <p>Le 26 pagine del quaderno raggruppate per macro-argomento. Clicca per zoom, naviga con ← →. Sono la <strong>tua metodologia</strong> — quella che funziona per te.</p>
+    <div style="margin-top:1.25rem;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="btn btn-secondary">← Torna al hub</a>
+    </div>
+  </div>
+</section>
+
+<section class="e-toolbar">
+  <div class="container">
+    <div class="e-toolbar-inner">
+      <span style="font-size:0.85rem;color:var(--text-secondary);font-weight:600">Filtra:</span>
+      <div class="e-filter" id="e-filter">
+        <button class="e-chip active" data-filter="all">Tutti 26</button>
+        <button class="e-chip" data-filter="A"><span class="macro-badge macro-A">A</span> Astronomia 10</button>
+        <button class="e-chip" data-filter="B"><span class="macro-badge macro-B">B</span> Radar 3</button>
+        <button class="e-chip" data-filter="C"><span class="macro-badge macro-C">C</span> Maree 4</button>
+        <button class="e-chip" data-filter="D"><span class="macro-badge macro-D">D</span> UKC 2</button>
+        <button class="e-chip" data-filter="E"><span class="macro-badge macro-E">E</span> Air Draft 2</button>
+        <button class="e-chip" data-filter="F"><span class="macro-badge macro-F">F</span> Stabilità 5</button>
+      </div>
+      <div class="e-counter">Visibili <strong id="visible-count">26</strong> di <strong>26</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="e-main">
+  <div class="container" id="e-main-container"><!-- popolato da JS --></div>
+</section>
+
+<!-- Modal -->
+<div class="e-modal" id="e-modal">
+  <button class="e-modal-close" id="modal-close">✕</button>
+  <button class="e-modal-nav prev" id="modal-prev">←</button>
+  <button class="e-modal-nav next" id="modal-next">→</button>
+  <div class="e-modal-content">
+    <img id="modal-img" src="" alt="Esercizio zoom">
+    <div class="e-modal-info" id="modal-info">—</div>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Quaderno digitalizzato di Federico</p></div></footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+const MACRO_NAMES = {
+  A: "Astronomia Nautica",
+  B: "Carteggio Radar / Moto Relativo",
+  C: "Maree",
+  D: "UKC + Squat",
+  E: "Air Draft (Passaggio sotto ponte)",
+  F: "Stabilità & Gestione Pesi"
+};
+
+const EXERCISES = [
+  {id:"550", title:"Effemeridi Nautiche — teoria base", macro:"A", note:"Schema di come si usano le effemeridi. Layout (sx Pianeti/Luna, dx Sole/Stelle), T e δ, schema calcolo Pw."},
+  {id:"551", title:"Sole al tramonto (ortiva/occidua)", macro:"A", note:"Sistema di orientamento + intervallo di tempo. tg(â), Tv/PP/+ε/TV. Bunda magnetica."},
+  {id:"552", title:"Schema calcolo altezze (sight reduction)", macro:"A", note:"Catena hi → ho → hv. Esempio Spica 13 giugno. Regola del −1° per Sole/Luna/Stelle."},
+  {id:"553", title:"Crepuscolo serale 15/04 — 3 astri", macro:"A", note:"φ=50°59.8'N, λ=132°6.8'W. Calcolo FIX + Polare (formula a0+a1+a2)."},
+  {id:"554", title:"Punto astronomico 23/10/2020", macro:"A", note:"3 astri: Astrue X, Hamel, Sirio. Calcolo Δh, tg(â) per intersezione."},
+  {id:"555", title:"Sole 18/06/2024", macro:"A", note:"Pn=20°36.1'N, 132°15.6'W. Sole + intercetta Δh. Formula tg(P) di Federico."},
+  {id:"556", title:"Crepuscolo mattutino 18/04", macro:"A", note:"3 stelle: Al Mast, Shaula, Sirius. Multi-star fix con Δh individuali."},
+  {id:"557", title:"Crepuscolo serale 18/04 — 4 astri", macro:"A", note:"Achemar, Regulus, Atria, Caelum. φ=17°20.3'S, λ=073°45.2'E."},
+  {id:"558", title:"Punto astronomico 18/04 mattutino", macro:"A", note:"Vernal, Antares, Sirio. Stessa procedura multi-stelle."},
+  {id:"559", title:"Costruzione grafica retta di altezza", macro:"A", note:"Triangolo di posizione (cocked hat) con 3 rette. Tabella riepilogo astri."},
+  {id:"560", title:"Moto relativo — teoria (RM, NU)", macro:"B", note:"Definizioni Mp, Mr, V_R. CPA, TCPA, BCR, BCT. Procedura indicatrice moto relativo."},
+  {id:"561", title:"Maneuvering board usato (2 target)", macro:"B", note:"Foglio polare scala 4:1. Target A + B con vettori, CPA, manovre evasive."},
+  {id:"562", title:"Maneuvering board vuoto (template)", macro:"B", note:"Foglio polare bianco per esercitazione. Tabella CPA/TCPA/COG/SOG."},
+  {id:"563", title:"Problema delle maree — teoria", macro:"C", note:"Concetti: Chart Datum, HW/LW, ampiezza A, periodo T, formule hx = HW − α·(1−cos α')."},
+  {id:"564", title:"Maree — problemi inversi e diretti", macro:"C", note:"Calcolo HW/LW data ampiezza. Problema inverso: cos α' = (hx−LW)/α → Δt."},
+  {id:"565", title:"Esercizio maree multi-quesito", macro:"C", note:"tAM=12h45 hAM=0.8m. Calcoli incrociati hx a tx vari. Anche problema inverso."},
+  {id:"566", title:"Altri esercizi maree (5 sotto-esercizi)", macro:"C", note:"Format dati tAM/hAM/tBM/hBM → calcola hx oppure tx. Strategia formula manipolata."},
+  {id:"567", title:"UKC + Squat — passaggio basso fondo", macro:"D", note:"Schema profilo nave+fondale. Formula Tm+UKC = hx+B. Squat B = Cb·V²/50."},
+  {id:"568", title:"UKC esempio 08/12", macro:"D", note:"tBM=09h30 hBM=1.31, tAM=10h25 hAM=5.0. Calcolo hx + confronto Tm+UKC+B."},
+  {id:"569", title:"Passaggio sotto ponte — air draft", macro:"E", note:"HP+Z0 = AC+AD+hx. AC = clearance. MEAN HIGH WATER Spring."},
+  {id:"570", title:"Air Draft — esempio multi-dati", macro:"E", note:"6 quesiti incrociati tBM/hBM/tAM/hAM con calcoli iterativi air clearance."},
+  {id:"571", title:"Spostamento merci — verticale", macro:"F", note:"GG' = (P·z)/Δ. G'M = GM − GG'. Nave più dura/cedevole."},
+  {id:"572", title:"Spostamento merci — trasversale e longitudinale", macro:"F", note:"tg(θ) = GG'/GM. δTF, δTA con LPP e XCF. CT = T'F−T'A."},
+  {id:"573", title:"Imbarco/sbarco pesi — procedura completa", macro:"F", note:"Step 1: imbarca sul CF. Step 2: spostamento verticale. Step 3: spostamento longitudinale."},
+  {id:"574", title:"Coordinate baricentro G dopo imbarco", macro:"F", note:"X'G, Y'G, K'G con somma pesi multipli. Momento approvante e apprupante."},
+  {id:"575", title:"Esercizio logistico completo (tipo esame)", macro:"F", note:"TA=8.21, TF=8.91 + 6 pesi P0..P5. Δ'=18.565, calcolo nuovo X'G, MCTC=0.209, immersioni finali."}
+];
+
+let currentFilter = "all";
+let currentModalIdx = 0;
+let filteredList = EXERCISES.slice();
+
+function getFileId(id){ return `5814658138899156${id}`; }
+
+function renderGroups(){
+  const container = document.getElementById('e-main-container');
+  const macros = ["A","B","C","D","E","F"];
+  let html = "";
+  for (const m of macros) {
+    const items = EXERCISES.filter(e => e.macro === m);
+    if (items.length === 0) continue;
+    html += `
+      <div class="e-group" data-macro="${m}">
+        <div class="e-group-header">
+          <span class="macro-badge macro-${m}">${m}</span>
+          <h2>${MACRO_NAMES[m]}</h2>
+          <span class="e-group-count">${items.length} pagine</span>
+        </div>
+        <div class="e-grid">
+          ${items.map(e => `
+            <div class="e-card" data-id="${e.id}" data-macro="${e.macro}" data-idx="${EXERCISES.indexOf(e)}">
+              <div class="e-card-img"><img src="images/esercizi/${getFileId(e.id)}.jpg" alt="${e.title}" loading="lazy"></div>
+              <div class="e-card-info">
+                <div class="e-card-title">${e.title}</div>
+                <div class="e-card-meta"><span class="macro-badge macro-${e.macro}">${e.macro}</span> · pag. ${e.id}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+  container.innerHTML = html;
+  container.querySelectorAll('.e-card').forEach(card => {
+    card.addEventListener('click', () => openModal(parseInt(card.dataset.idx)));
+  });
+}
+
+function applyFilter(){
+  let visible = 0;
+  document.querySelectorAll('.e-group').forEach(group => {
+    const macro = group.dataset.macro;
+    if (currentFilter === 'all' || macro === currentFilter) {
+      group.style.display = '';
+      visible += parseInt(group.querySelector('.e-group-count').textContent);
+    } else {
+      group.style.display = 'none';
+    }
+  });
+  document.getElementById('visible-count').textContent = visible;
+}
+
+document.querySelectorAll('.e-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.e-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    applyFilter();
+  });
+});
+
+function openModal(idx){
+  currentModalIdx = idx;
+  const e = EXERCISES[idx];
+  document.getElementById('modal-img').src = `images/esercizi/${getFileId(e.id)}.jpg`;
+  document.getElementById('modal-info').innerHTML = `<strong>${e.title}</strong> · <span class="macro-badge macro-${e.macro}">${e.macro}</span> ${MACRO_NAMES[e.macro]}<br><span style="color:var(--text-secondary);font-size:0.8rem">${e.note}</span>`;
+  document.getElementById('e-modal').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('e-modal').classList.remove('open'); }
+
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('e-modal').addEventListener('click', e => { if (e.target.id === 'e-modal') closeModal(); });
+document.getElementById('modal-prev').addEventListener('click', e => {
+  e.stopPropagation();
+  if (currentModalIdx > 0) openModal(currentModalIdx - 1);
+});
+document.getElementById('modal-next').addEventListener('click', e => {
+  e.stopPropagation();
+  if (currentModalIdx < EXERCISES.length - 1) openModal(currentModalIdx + 1);
+});
+
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('e-modal').classList.contains('open')) return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft' && currentModalIdx > 0) openModal(currentModalIdx - 1);
+  if (e.key === 'ArrowRight' && currentModalIdx < EXERCISES.length - 1) openModal(currentModalIdx + 1);
+});
+
+renderGroups();
+applyFilter();
+</script>
+
+</body>
+</html>

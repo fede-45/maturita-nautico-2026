@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stabilità e Gestione Pesi — Argomento F | Navigazione</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+.t-hero-bg { background:radial-gradient(circle at 20% 50%, rgba(239,68,68,0.18), transparent 50%); }
+.t-eyebrow { color:#ef4444; background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); }
+.t-hero h1 span { background:linear-gradient(135deg, #ef4444, #fb7185); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-section h2 .section-num { color:#ef4444; }
+.formula-box { border-left:4px solid #ef4444; }
+.step::before { background:linear-gradient(135deg, #ef4444, #fb7185); }
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li>
+      <li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">⚖️ Macro-argomento F · 80% delle prove</div>
+    <h1>Stabilità e<br><span>Gestione Pesi a Bordo</span></h1>
+    <p>Loading plan, spostamento pesi, imbarco/sbarco, sbandamento, falla, incaglio. Il quesito-tipo è "imbarca X tonnellate alla quota Y": serve calcolare il nuovo KG, il GM e le immersioni estreme. Pagine 11-16 del formulario.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="../formulario.html" class="btn btn-primary">📐 Formulario pp.11-16</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#formule">2. Formule chiave</a>
+        <a href="#imbarco">3. Imbarco/sbarco pesi</a>
+        <a href="#spostamento">4. Spostamento pesi</a>
+        <a href="#falla">5. Falla e incaglio</a>
+        <a href="#errori">6. Errori comuni</a>
+        <a href="#correlati">7. Materiali correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="c-maree.html">→ C · Maree</a>
+        <a href="d-ukc-squat.html">→ D · UKC + Squat</a>
+      </div>
+    </aside>
+
+    <main class="t-main">
+
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>Tre punti chiave da memorizzare:</p>
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>G</strong> = baricentro nave (centro di gravità)<br>
+          <strong>B</strong> = centro di carena (centro spinta archimedea)<br>
+          <strong>M</strong> = metacentro trasversale<br>
+          <strong>KG</strong> = altezza di G sopra la chiglia<br>
+          <strong>KM</strong> = altezza del metacentro<br>
+          <strong>GM = KM − KG</strong> = altezza metacentrica (la "stabilità" della nave)<br>
+          <strong>Δ</strong> = dislocamento (peso totale = peso spostato dall'acqua)<br>
+          <strong>TPC</strong> = Tons Per Centimeter (peso per 1cm di sinkage)<br>
+          <strong>MCTC</strong> = Moment to Change Trim by 1 Centimeter<br>
+          <strong>LCF</strong> = Longitudinal Center of Flotation<br>
+          <strong>Assetto (trim)</strong>: As = TA − TF (poppa − prora)
+        </div>
+
+        <h3>Regola d'oro</h3>
+        <p><strong>Se GM è grande</strong> → nave "dura", oscilla rapida (rollio corto), molto stabile.<br>
+        <strong>Se GM è piccolo</strong> → nave "cedevole", oscilla lenta (rollio lungo), poco stabile.<br>
+        <strong>Se GM = 0</strong> → instabilità neutra. <strong>Se GM < 0</strong> → la nave si rovescia.</p>
+      </section>
+
+      <section id="formule" class="t-section">
+        <h2><span class="section-num">02.</span>Formule chiave (dal Formulario pp. 11-13)</h2>
+
+        <div class="formula-box">
+          <div class="lbl">Elementi base (sempre da calcolare)</div>
+          Tm = (TA + TF) / 2 (immersione media)<br>
+          As = TA − TF (assetto)<br>
+          GM = KM − KG (altezza metacentrica)<br>
+          T = 2π · √(Ix / (Δ · GM)) (periodo di rollio)
+        </div>
+
+        <div class="formula-box">
+          <div class="lbl">Spostamento pesi</div>
+          GG' = (p · d) / Δ (spostamento baricentro)<br>
+          GM' = GM ± (p · z) / Δ (spostamento verticale)<br>
+          tan φ = (p · y) / (Δ · GM) (sbandamento trasversale)<br>
+          CT = (p · x) / (100 · MCTC) (variazione assetto)<br>
+          δTF = ((L − XCF)/L) · (p·x)/(100·MCTC)<br>
+          δTA = (XCF/L) · (p·x)/(100·MCTC)
+        </div>
+
+        <div class="formula-box">
+          <div class="lbl">Imbarco/sbarco pesi</div>
+          δTm = Σp / (100 · TPC) (variazione immersione media)<br>
+          K'G = (Δ·KG + Σp·z) / Δ' (nuovo KG)<br>
+          Δ' = Δ + Σp (nuovo dislocamento)<br>
+          tan φ = My / (Δ' · GM') (sbandamento da imbarco)
+        </div>
+      </section>
+
+      <section id="imbarco" class="t-section">
+        <h2><span class="section-num">03.</span>Imbarco/sbarco pesi — procedura</h2>
+        <p>La metodologia di Federico (Foto 573-575): si scompone l'imbarco in 3 step.</p>
+
+        <div class="step-list">
+          <div class="step">
+            <h4>Imbarco "fittizio" sul CF (centro di flottazione)</h4>
+            <p>Considera che il peso sia caricato esattamente sopra il centro di flottazione (LCF). Questo causa solo una sinkage parallela, senza trim.</p>
+            <p><code>δTm = Σp / (100 · TPC)</code> — la nave si abbassa di δTm uniformemente.</p>
+          </div>
+          <div class="step">
+            <h4>Spostamento verticale (per ottenere il KG reale)</h4>
+            <p>Il peso, una volta a bordo, contribuisce al nuovo KG.</p>
+            <p><code>K'G = (Δ·KG + Σp·z) / Δ'</code></p>
+            <p>Confronta con K'M (preso dalle curve idrostatiche al nuovo Tm): <code>GM' = K'M − K'G</code></p>
+          </div>
+          <div class="step">
+            <h4>Spostamento longitudinale (per il trim reale)</h4>
+            <p>Il peso non è sul CF ma a distanza d = x − XCF. Questo causa trim:</p>
+            <p><code>CT = (Σp·d) / (100·MCTC)</code><br>
+            <code>T'F = TF + δTm − δTF</code> (in salita di prora se peso a poppa)<br>
+            <code>T'A = TA + δTm + δTA</code> (poppa scende)</p>
+          </div>
+          <div class="step">
+            <h4>Verifica</h4>
+            <p>Controlla che T'F − T'A = nuovo assetto coerente con la direzione del peso. <strong>Se peso a poppa → poppa scende → As negativo (apruata)</strong>. Se peso a prua → prora scende.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="spostamento" class="t-section">
+        <h2><span class="section-num">04.</span>Spostamento pesi (senza imbarco)</h2>
+        <p>Stesso peso che si sposta tra due posizioni a bordo. Δ resta invariato. Cambia solo G.</p>
+        <div class="formula-box">
+          <div class="lbl">Spostamento puro</div>
+          GG' = (p · d) / Δ<br>
+          dove p = peso spostato, d = distanza tra le due posizioni
+        </div>
+        <p>Si scompone in 3 componenti:</p>
+        <p><strong>Verticale (z):</strong> modifica GM. Se peso sale → GG' verso l'alto → GM diminuisce → nave più cedevole.<br>
+        <strong>Trasversale (y):</strong> causa sbandamento. <code>tan φ = (p·y)/(Δ·GM)</code><br>
+        <strong>Longitudinale (x):</strong> causa trim. <code>CT = (p·x)/(100·MCTC)</code></p>
+      </section>
+
+      <section id="falla" class="t-section">
+        <h2><span class="section-num">05.</span>Falla e incaglio (Formulario p.14, 16)</h2>
+        <p>Quesito tipico 2024: "una falla allaga un locale, calcola GM' e immersioni estreme".</p>
+
+        <div class="formula-box">
+          <div class="lbl">Falla</div>
+          μ = permeabilità (es. 60% per locale con strutture)<br>
+          v = L · W · D · μ (volume allagato)<br>
+          a = L · W · μ (area sezione orizzontale allagata)<br>
+          δTm = v / (AW − a) (sovraimmersione)<br>
+          BM' = (Ix − ix) / V (correzione momento d'inerzia FSE)<br>
+          GM' = KM' − KG (KG invariato perché non c'è peso aggiunto)
+        </div>
+
+        <div class="pitfall">
+          <div class="pf-title">⚠️ Falla NON aumenta Δ</div>
+          <p>L'acqua che entra non è "peso a bordo": è un VUOTO che riempie una parte della carena. Δ resta invariato, ma cambia il volume di carena disponibile (V−v).</p>
+        </div>
+      </section>
+
+      <section id="errori" class="t-section">
+        <h2><span class="section-num">06.</span>Errori comuni</h2>
+        <div class="pitfall">
+          <div class="pf-title">❌ Confondere KG e KM</div>
+          <p>KM viene dalle CURVE IDROSTATICHE (cambia col pescaggio). KG viene dal carico (cambia col baricentro). GM = differenza.</p>
+        </div>
+        <div class="pitfall">
+          <div class="pf-title">❌ Sbagliare segno δTF/δTA</div>
+          <p>Quando un peso va a POPPA: poppa scende (+δTA), prora sale (−δTF). Quando va a PRUA: viceversa. Disegna lo schema!</p>
+        </div>
+        <div class="pitfall">
+          <div class="pf-title">❌ Imbarco con peso totale non = 1/100 Δ</div>
+          <p>Le formule di "lieve entità" valgono solo per p ≤ Δ/100. Per pesi più grandi serve ricalcolare KM dalla curva idrostatica al nuovo Tm.</p>
+        </div>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">07.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📐 Dal Formulario</h3>
+          <div class="related-grid">
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 11</div><div class="rc-title">Spostamento Pesi</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 12</div><div class="rc-title">Imbarco/Sbarco</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 13</div><div class="rc-title">GM' + sbandamento</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 14</div><div class="rc-title">Piano carico + FSE + Incaglio</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 16</div><div class="rc-title">Falla</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📓 Dal Quaderno</h3>
+          <div class="related-grid">
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 571</div><div class="rc-title">Spostamento verticale</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 572</div><div class="rc-title">Trasversale e longitudinale</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 573</div><div class="rc-title">Imbarco/sbarco completo</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 574</div><div class="rc-title">Coordinate G dopo imbarco</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 575</div><div class="rc-title">Esercizio logistico esame</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📜 Nelle prove d'esame</h3>
+          <div class="related-grid">
+            <a href="../prove.html" class="related-card"><div class="rc-label">2024 Q2</div><div class="rc-title">Falla — GM e immersioni</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2023 Q2</div><div class="rc-title">Movimentazione 3 operazioni</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2018 PP</div><div class="rc-title">Auckland-Panama loading</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2015 PP</div><div class="rc-title">Hamburg zavorra+bunker</div></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento F: Stabilità e Gestione Pesi</p></div></footer>
+
+<script src="../../assets/js/app.js"></script>
+<script>
+const tocLinks = document.querySelectorAll('.t-toc a');
+document.querySelectorAll('.t-section').forEach(s => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); }), {rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+
+</body>
+</html>

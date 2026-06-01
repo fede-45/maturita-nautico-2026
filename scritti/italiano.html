@@ -1,0 +1,517 @@
+﻿<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scritto di Italiano &mdash; Maturit&agrave; Nautico 2026</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.scritti-page { padding-top: 64px; }
+.scritti-hero { padding: 60px 0 40px; text-align: center; }
+.scritti-hero h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 0.5rem; }
+.scritti-hero h1 span { background: linear-gradient(135deg, var(--ocean-400), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.scritti-hero p { max-width: 600px; margin: 0 auto; color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+.tipologie-section { padding: 40px 0; }
+.tipologia-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 2rem; }
+.tipologia-card.type-a { border-left: 4px solid var(--ocean-400); }
+.tipologia-card.type-b { border-left: 4px solid var(--accent); }
+.tipologia-card.type-c { border-left: 4px solid var(--green-400); }
+.tipologia-type { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.type-a .tipologia-type { color: var(--primary); }
+.type-b .tipologia-type { color: var(--accent); }
+.type-c .tipologia-type { color: var(--green-400); }
+.tipologia-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+.tipologia-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem; }
+.tipologia-structure { list-style: none; padding: 0; }
+.tipologia-structure li { font-size: 0.8rem; color: var(--text-secondary); padding: 4px 0; display: flex; align-items: center; gap: 8px; }
+.tipologia-structure li::before { content: '\2713'; color: var(--green-400); font-weight: 700; }
+.tracce-section { padding: 40px 0; }
+.tracce-filters { display: flex; gap: 12px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.filter-group { display: flex; flex-direction: column; gap: 4px; }
+.filter-group label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.filter-select { background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 8px 12px; color: var(--text-primary); font-size: 0.875rem; cursor: pointer; }
+.filter-select:focus { outline: none; border-color: var(--accent); }
+.tracce-list { display: flex; flex-direction: column; gap: 8px; }
+.traccia-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; transition: all 0.2s ease; cursor: pointer; }
+.traccia-item:hover { border-color: var(--accent); background: var(--bg-card-hover); box-shadow: var(--glow-gold); }
+.traccia-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.traccia-year { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent); }
+.traccia-tipo { font-size: 0.75rem; font-weight: 600; padding: 2px 8px; border-radius: var(--radius-full); }
+.traccia-tipo.a { background: rgba(0,168,212,0.15); color: var(--ocean-200); }
+.traccia-tipo.b { background: rgba(245,166,35,0.15); color: var(--gold-300); }
+.traccia-tipo.c { background: rgba(34,197,94,0.15); color: var(--green-400); }
+.traccia-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.25rem; }
+.traccia-preview { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.traccia-hint { font-size: 0.7rem; color: var(--accent); margin-top: 6px; font-weight: 500; }
+.temi-section { padding: 40px 0; }
+.tema-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1rem; }
+.tema-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.tema-voto { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700; }
+.tema-voto.high { color: var(--green-400); }
+.tema-voto.mid { color: var(--accent); }
+.tema-meta { font-size: 0.75rem; color: var(--text-muted); }
+.tema-excerpt { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem; font-style: italic; }
+.tema-commento { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.tema-commento strong { color: var(--text-primary); }
+.simulatore-section { padding: 40px 0; }
+.simulatore-container { max-width: 1000px; margin: 0 auto; }
+.sim-state { display: none; }
+.sim-state.active { display: block; }
+.sim-start-box { text-align: center; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); }
+.sim-start-box h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.75rem; }
+.sim-start-box p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+.sim-timer { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 1rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: 1.5rem; position: sticky; top: 70px; z-index: 100; }
+.sim-timer-display { font-family: var(--font-mono); font-size: 2rem; font-weight: 700; color: var(--text-primary); }
+.sim-timer-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.sim-timer-btn { padding: 8px 16px; border-radius: var(--radius-md); border: 1px solid var(--border); background: transparent; color: var(--text-primary); cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.2s; }
+.sim-timer-btn:hover { background: var(--bg-card); border-color: var(--accent); }
+.sim-timer-btn.danger { border-color: var(--red-500); color: var(--red-500); }
+.sim-timer-btn.danger:hover { background: rgba(239,68,68,0.1); }
+.sim-tracce-pool { margin-bottom: 1.5rem; }
+.sim-tracce-type-group { margin-bottom: 1.5rem; }
+.sim-tracce-type-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+.sim-tracce-type-label.type-a { color: var(--primary); border-bottom-color: rgba(0,168,212,0.3); }
+.sim-tracce-type-label.type-b { color: var(--accent); border-bottom-color: rgba(245,166,35,0.3); }
+.sim-tracce-type-label.type-c { color: var(--green-400); border-bottom-color: rgba(34,197,94,0.3); }
+.sim-traccia-option { background: var(--bg-card); border: 2px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 0.75rem; cursor: pointer; transition: all 0.2s ease; }
+.sim-traccia-option:hover { border-color: var(--border-strong); background: var(--bg-card-hover); }
+.sim-traccia-option.selected { border-color: var(--accent); background: rgba(245,166,35,0.08); box-shadow: var(--glow-gold); }
+.sim-traccia-option .opt-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
+.sim-traccia-option .opt-anno { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; color: var(--accent); }
+.sim-traccia-option .opt-tipo { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: var(--radius-full); }
+.sim-traccia-option .opt-tipo.a { background: rgba(0,168,212,0.15); color: var(--ocean-200); }
+.sim-traccia-option .opt-tipo.b { background: rgba(245,166,35,0.15); color: var(--gold-300); }
+.sim-traccia-option .opt-tipo.c { background: rgba(34,197,94,0.15); color: var(--green-400); }
+.sim-traccia-option .opt-title { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
+.sim-traccia-option .opt-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.sim-traccia-box { background: var(--bg-card); border-left: 4px solid var(--accent); border-radius: var(--radius-lg); margin-bottom: 1.5rem; overflow: hidden; }
+.sim-traccia-box-header { background: linear-gradient(135deg, rgba(245,166,35,0.12), rgba(245,166,35,0.04)); padding: 1rem 1.5rem; border-bottom: 1px solid rgba(245,166,35,0.15); display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.sim-traccia-box-badge { font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: var(--radius-full); letter-spacing: 0.05em; }
+.sim-traccia-box-badge.a { background: rgba(0,168,212,0.15); color: var(--ocean-200); }
+.sim-traccia-box-badge.b { background: rgba(245,166,35,0.15); color: var(--gold-300); }
+.sim-traccia-box-badge.c { background: rgba(34,197,94,0.15); color: var(--green-400); }
+.sim-traccia-box-anno { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-secondary); }
+.sim-traccia-box-titolo { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); flex: 1; }
+.sim-traccia-box-body { padding: 1.25rem 1.5rem; }
+.sim-traccia-box-body h5 { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.5rem; }
+.sim-traccia-box-body .testo-brano { font-style: italic; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.25rem; padding: 0 0 1rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+.sim-traccia-box-body .testo-domanda { margin-bottom: 0.75rem; }
+.sim-traccia-box-body .testo-domanda .num { font-weight: 700; color: var(--accent); margin-right: 0.4rem; }
+.sim-traccia-box-body .testo-domanda p { display: inline; color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7; }
+.sim-traccia-box-body .testo-sezione { font-weight: 700; font-size: 0.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 0.05em; margin: 1rem 0 0.5rem 0; }
+.sim-editor { width: 100%; min-height: 400px; background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; color: var(--text-primary); font-size: 0.95rem; line-height: 1.8; font-family: var(--font-main); resize: vertical; }
+.sim-editor:focus { outline: none; border-color: var(--accent); }
+.sim-editor::placeholder { color: var(--text-muted); }
+.sim-word-count { display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.8rem; color: var(--text-muted); }
+.sim-word-count .count { font-family: var(--font-mono); font-weight: 600; }
+.sim-word-count .count.ok { color: var(--green-400); }
+.sim-word-count .count.warn { color: var(--amber-500); }
+.sim-word-count .count.low { color: var(--red-500); }
+.sim-actions { display: flex; gap: 12px; margin-top: 1.5rem; justify-content: flex-end; }
+.sim-results { animation: fadeIn 0.4s ease both; }
+.sim-score-big { text-align: center; padding: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); margin-bottom: 1.5rem; }
+.sim-score-number { font-size: 4rem; font-weight: 800; font-family: var(--font-mono); line-height: 1; }
+.sim-score-number.high { color: var(--green-400); }
+.sim-score-number.mid { color: var(--accent); }
+.sim-score-number.low { color: var(--red-500); }
+.sim-score-label { font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem; }
+.sim-score-bar { height: 8px; background: var(--border); border-radius: 4px; margin-top: 1rem; overflow: hidden; }
+.sim-score-bar-fill { height: 100%; border-radius: 4px; transition: width 1s ease; }
+.sim-feedback-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.sim-feedback-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
+.sim-feedback-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+.sim-feedback-card p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.sim-feedback-score { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-full); margin-left: auto; }
+.sim-feedback-score.high { background: rgba(34,197,94,0.15); color: var(--green-400); }
+.sim-feedback-score.mid { background: rgba(245,166,35,0.15); color: var(--accent); }
+.sim-feedback-score.low { background: rgba(239,68,68,0.15); color: var(--red-500); }
+.sim-loading { text-align: center; padding: 3rem; }
+.sim-loading-spinner { width: 48px; height: 48px; border: 4px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 1rem; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.sim-loading p { color: var(--text-secondary); font-size: 0.9rem; }
+.sim-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 1rem; }
+.sim-modal-overlay.open { display: flex; }
+.sim-modal { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 2rem; max-width: 500px; width: 100%; animation: fadeIn 0.3s ease; }
+.sim-modal.wide { max-width: 800px; max-height: 85vh; overflow-y: auto; }
+.sim-modal h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem; }
+.sim-modal p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem; }
+.sim-modal-actions { display: flex; gap: 12px; justify-content: flex-end; }
+.tema20-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--border); }
+.tema20-traccia { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem; }
+.tema20-traccia h5 { font-size: 0.8rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.tema20-traccia p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.7; }
+.tema20-body { font-size: 0.9rem; color: var(--text-primary); line-height: 1.85; }
+.tema20-body p { margin-bottom: 1rem; text-align: justify; }
+.tema20-commento { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2); border-radius: var(--radius-md); padding: 1rem; margin-top: 1rem; }
+.tema20-commento h5 { font-size: 0.8rem; font-weight: 700; color: var(--green-400); margin-bottom: 0.5rem; }
+.tema20-commento p { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.api-key-input { width: 100%; padding: 10px 14px; background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-md); color: var(--text-primary); font-size: 0.875rem; margin-bottom: 1rem; }
+.api-key-input:focus { outline: none; border-color: var(--accent); }
+.api-key-hint { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+.api-key-hint a { color: var(--primary); text-decoration: underline; }
+@media (max-width: 768px) {
+  .sim-timer { flex-wrap: wrap; gap: 8px; position: static; }
+  .sim-actions { flex-direction: column; }
+  .sim-actions .btn { width: 100%; justify-content: center; }
+  .sim-feedback-grid { grid-template-columns: 1fr; }
+  .tracce-filters { flex-direction: column; }
+  .filter-select { width: 100%; }
+}
+
+    .trace-pool-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .trace-pool-item:hover {
+      border-color: var(--accent);
+      background: var(--bg-surface);
+      transform: translateY(-1px);
+    }
+    .trace-pool-item.selected {
+      border-color: var(--accent);
+      background: rgba(245, 166, 35, 0.1);
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+    .trace-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    .trace-badge.type-a { background: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+    .trace-badge.type-b { background: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+    .trace-badge.type-c { background: rgba(16, 185, 129, 0.15); color: #34d399; }
+    .trace-anno {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .trace-title {
+      font-size: 0.85rem;
+      color: var(--text-primary);
+      flex: 1;
+    }
+    .sim-feedback-summary {
+      grid-column: 1 / -1;
+      padding: 1rem;
+      background: var(--bg-surface);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .sim-feedback-card.strength { border-left: 3px solid #10b981; }
+    .sim-feedback-card.improve { border-left: 3px solid #f59e0b; }
+    .tema20-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .tema20-traccia {
+      background: var(--bg-surface);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--accent);
+    }
+    .tema20-body {
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    .tema20-body p { margin-bottom: 1rem; }
+    .tema20-commento {
+      background: rgba(245, 166, 35, 0.08);
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(245, 166, 35, 0.2);
+    }
+    .sim-modal.wide { max-width: 900px; max-height: 90vh; }
+    .foglio-protocollo {
+      position: relative;
+      background: #F2EDE4;
+      background-image:
+        repeating-linear-gradient(
+          transparent,
+          transparent 25px,
+          #9DC3E6 25px,
+          #9DC3E6 26px
+        );
+      padding: 28px 32px 24px 56px;
+      border-radius: 3px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.06);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 0.95rem;
+      line-height: 26px;
+      color: #1a1a1a;
+      text-align: justify;
+      min-height: 400px;
+    }
+    .foglio-protocollo::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 46px;
+      height: 100%;
+      background: linear-gradient(to right,
+        rgba(0,0,0,0.02) 0px,
+        rgba(0,0,0,0.02) 43px,
+        #C0392B 43px,
+        #C0392B 46px,
+        transparent 46px
+      );
+      pointer-events: none;
+    }
+    .foglio-protocollo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 3px;
+      height: 100%;
+      background: #C0392B;
+      pointer-events: none;
+    }
+    .foglio-protocollo p {
+      margin: 0 0 26px 0;
+      padding: 0;
+      line-height: 26px;
+      text-indent: 2em;
+    }
+    .foglio-protocollo p:first-of-type {
+      text-indent: 0;
+    }
+    .foglio-protocollo.foglio-editor {
+      min-height: 500px;
+      outline: none;
+      cursor: text;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      overflow-y: auto;
+      max-width: 800px;
+      margin: 1.5rem auto;
+    }
+    .foglio-protocollo.foglio-editor:focus {
+      box-shadow: 0 0 0 2px var(--primary), 0 1px 6px rgba(0,0,0,0.15);
+    }
+    .sim-select-prompt {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      background: rgba(0,168,212,0.05);
+      border-radius: var(--radius-lg);
+      margin-bottom: 1.5rem;
+    }
+    .sim-select-prompt p { margin: 0; }
+    .foglio-protocollo.foglio-editor:empty:before {
+      content: attr(data-placeholder);
+      color: #999;
+      font-style: italic;
+      pointer-events: none;
+    }
+</style>
+</head>
+<body class="scritti-page">
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand"><div class="brand-icon">&#9875;</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">&#127968; Home</a></li>
+      <li><a href="../orale/index.html">&#127908; Orale</a></li>
+      <li><a href="italiano.html" class="active">&#9997;&#65039; Italiano</a></li>
+      <li><a href="../navigazione/index.html">&#9875; Navigazione</a></li>
+      <li><a href="#pcto" class="locked">&#127970; PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">&#127963; Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle" title="Cambia tema">&#127769;</button></div>
+  </div>
+</nav>
+<section class="scritti-hero">
+  <div class="container">
+    <div class="badge badge-ocean mb-sm">Prima Prova &mdash; 18 Giugno 2026</div>
+    <h1>Scritto di <span>Italiano</span></h1>
+    <p>Guide alle tipologie, tracce degli anni passati con temi svolti da 20/20, e simulatore completo con correzione AI o algoritmo offline.</p>
+  </div>
+</section>
+<div class="container">
+  <div class="tabs-wrapper">
+    <div class="tabs">
+      <button class="tab-btn active" data-group="scritti" data-tab="guide">&#128214; Guide</button>
+      <button class="tab-btn" data-group="scritti" data-tab="tracce">&#128196; Tracce</button>
+      <button class="tab-btn" data-group="scritti" data-tab="temi">&#128221; Temi svolti</button>
+      <button class="tab-btn" data-group="scritti" data-tab="simulatore">&#127897; Simulatore</button>
+    </div>
+    <!-- GUIDE -->
+    <div class="tab-content active" data-group="scritti" data-tab="guide">
+    <div class="tipologie-section">
+      <div class="section-label">Le tre tipologie della prima prova</div>
+      <h2 style="margin-bottom:1.5rem">Scegli la traccia che fa per te</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;font-size:0.9rem">La prima prova dell'esame di Stato presenta 7 tracce divise in 3 tipologie. Hai <strong>6 ore</strong> di tempo e puoi consultare il dizionario.</p>
+      <div class="grid-3" style="gap:1.25rem">
+        <div class="tipologia-card type-a">
+          <div class="tipologia-type">Tipologia A</div>
+          <h3>Analisi e interpretazione di un testo letterario</h3>
+          <p>Analisi di un brano d'autore con domande guidate: comprensione, analisi stilistica, interpretazione personale e collegamento con altri testi.</p>
+          <ul class="tipologia-structure"><li>Comprensione del testo</li><li>Analisi formale</li><li>Interpretazione personale</li><li>Confronto con altri autori</li></ul>
+          <div class="alert alert-info" style="margin-top:1rem"><span class="alert-icon">&#128161;</span><span><strong>Consiglio:</strong> Non limitarti a parafrasare. Mostra di capire il <em>perch&eacute;</em> delle scelte dell'autore.</span></div>
+        </div>
+        <div class="tipologia-card type-b">
+          <div class="tipologia-type">Tipologia B</div>
+          <h3>Analisi e produzione di un testo argomentativo</h3>
+          <p>Partendo da un testo non letterario, devi costruire un'argomentazione personale su un tema di attualit&agrave; o culturale.</p>
+          <ul class="tipologia-structure"><li>Introduzione con tesi chiara</li><li>Argomenti a favore</li><li>Antitesi e confutazione</li><li>Conclusione coerente</li></ul>
+          <div class="alert alert-tip" style="margin-top:1rem"><span class="alert-icon">&#9989;</span><span><strong>Minimo 500 parole.</strong> La struttura &egrave; fondamentale.</span></div>
+        </div>
+        <div class="tipologia-card type-c">
+          <div class="tipologia-type">Tipologia C</div>
+          <h3>Riflessione critica di carattere espositivo-argomentativo</h3>
+          <p>Tema di attualit&agrave; su tematiche storico-sociali, scientifiche, tecnologiche o artistiche.</p>
+          <ul class="tipologia-structure"><li>Inquadramento del tema</li><li>Sviluppo articolato</li><li>Riflessione personale</li><li>Conclusione che sintetizza</li></ul>
+          <div class="alert alert-tip" style="margin-top:1rem"><span class="alert-icon">&#9989;</span><span><strong>Minimo 500 parole.</strong> Mostra di conoscere il contesto.</span></div>
+        </div>
+      </div>
+      <div class="card card-glow mt-lg" style="padding:1.5rem">
+        <h3 style="margin-bottom:0.75rem">&#127919; Strategia per la scelta</h3>
+        <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7"><strong>1.</strong> Leggi tutte e 7 le tracce. <strong>2.</strong> Scarta quelle che non conosci. <strong>3.</strong> Scegli dove puoi fare collegamenti. <strong>4.</strong> Fai una scaletta. <strong>5.</strong> Riserva 15 min per la revisione.</p>
+      </div>
+    </div>
+    </div>
+    <!-- TRACCE -->
+    <div class="tab-content" data-group="scritti" data-tab="tracce">
+    <div class="tracce-section">
+      <div class="section-label">Archivio tracce</div>
+      <h2 style="margin-bottom:0.5rem">Tracce degli anni scorsi</h2>
+      <p style="color:var(--text-secondary);margin-bottom:1.5rem;font-size:0.9rem">Clicca su qualsiasi traccia per leggere il <strong>tema svolto da 20/20</strong> corrispondente.</p>
+      <div class="tracce-filters">
+        <div class="filter-group"><label>Anno</label><select class="filter-select" id="filter-year"><option value="all">Tutti</option><option value="2025">2025</option><option value="2024">2024</option><option value="2023">2023</option><option value="2022">2022</option><option value="2021">2021</option><option value="2020">2020</option><option value="2019">2019</option></select></div>
+        <div class="filter-group"><label>Tipologia</label><select class="filter-select" id="filter-type"><option value="all">Tutte</option><option value="A">Tipo A</option><option value="B">Tipo B</option><option value="C">Tipo C</option></select></div>
+      </div>
+      <div class="tracce-list" id="tracce-list"></div>
+    </div>
+    </div>
+    <!-- TEMI SVOLTI -->
+    <div class="tab-content" data-group="scritti" data-tab="temi">
+    <div class="temi-section">
+      <div class="section-label">Temi svolti</div>
+      <h2 style="margin-bottom:0.5rem">Temi da 20/20</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;font-size:0.9rem">Ogni traccia dell'archivio ha un tema svolto da 20/20 associato. Vai nella sezione <strong>Tracce</strong>, filtra per anno o tipologia, e clicca su una traccia per leggere il tema completo.</p>
+      <div class="card card-glow" style="padding:2rem;text-align:center">
+        <div style="font-size:3rem;margin-bottom:1rem">&#128221;</div>
+        <h3 style="margin-bottom:0.5rem">42 tracce, 42 temi svolti</h3>
+        <p style="color:var(--text-secondary);font-size:0.9rem;max-width:500px;margin:0 auto">Dal 2019 al 2025, ogni traccia ha un tema modello da 20/20 con commento del professore. Usali come riferimento per capire cosa si aspetta la commissione.</p>
+        <button class="btn btn-primary" style="margin-top:1.5rem" onclick="document.querySelector('[data-tab=tracce]').click()">&#128196; Vai alle Tracce</button>
+      </div>
+    </div>
+    </div>
+    <!-- SIMULATORE -->
+    <div class="tab-content" data-group="scritti" data-tab="simulatore">
+    <div class="simulatore-section">
+      <div class="section-label">Modalit&agrave; Esame</div>
+      <h2 style="margin-bottom:0.5rem">Simula la prima prova</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;font-size:0.9rem">Clicca "Inizia" e partir&agrave; subito il timer. Vedrai tutte le tracce: scegli quella che preferisci e scrivi.</p>
+      <div class="simulatore-container">
+        <div class="sim-state active" id="sim-select">
+          <div class="sim-start-box">
+            <div style="font-size:3rem;margin-bottom:1rem">&#128221;</div>
+            <h3>Sei pronto?</h3>
+            <p>Quando clicchi "Inizia", partir&agrave; il timer da <strong>6 ore</strong> e potrai vedere tutte le tracce delle 3 tipologie. Scegli e scrivi.</p>
+            <button class="btn btn-primary btn-lg" onclick="startSimulator()">&#128640; Inizia la simulazione</button>
+          </div>
+        </div>
+        <div class="sim-state" id="sim-resume" style="display:none">
+          <div class="sim-start-box">
+            <div style="font-size:2rem;margin-bottom:0.75rem">&#128196;</div>
+            <h3>Bozza trovata</h3>
+            <p id="draft-info"></p>
+            <div style="display:flex;gap:12px;justify-content:center;margin-top:1rem">
+              <button class="btn btn-primary" onclick="resumeDraft()">&#128221; Riprendi</button>
+              <button class="btn btn-secondary" onclick="clearAndStart()">&#10060; Cancella e ricomincia</button>
+            </div>
+          </div>
+        </div>
+        <div class="sim-state" id="sim-writing">
+          <div class="sim-timer">
+            <div><div class="sim-timer-label">Tempo rimanente</div><div class="sim-timer-display" id="sim-timer-display">06:00:00</div></div>
+            <button class="sim-timer-btn" id="btn-pause" onclick="togglePause()">&#9208;&#65039; Pausa</button>
+            <button class="sim-timer-btn danger" onclick="confirmSubmit()">&#128228; Consegna</button>
+          </div>
+          <div class="sim-tracce-pool" id="sim-tracce-pool">
+            <div class="sim-select-prompt"><p>&#128073; Clicca su una traccia per selezionarla e iniziare a scrivere</p></div>
+          </div>
+          <div class="sim-traccia-box" id="sim-traccia-display" style="display:none">
+            <div class="sim-traccia-box-header">
+              <span class="sim-traccia-box-badge" id="sim-badge-tipo">Tipo A</span>
+              <span class="sim-traccia-box-anno" id="sim-badge-anno">2025</span>
+              <span class="sim-traccia-box-titolo" id="sim-badge-titolo"></span>
+            </div>
+            <div class="sim-traccia-box-body" id="sim-traccia-text"></div>
+          </div>
+          <div id="sim-editor-area" style="display:none">
+            <div class="foglio-protocollo foglio-editor" contenteditable="true" id="sim-editor" data-placeholder="Inizia a scrivere il tuo tema qui..."></div>
+            <div class="sim-word-count"><span>Parole: <span class="count" id="sim-word-count">0</span> <span id="sim-word-target">(min. 500 per B e C)</span></span><span>Caratteri: <span id="sim-char-count">0</span></span></div>
+            <div class="sim-actions">
+              <button class="btn btn-secondary" onclick="saveDraft()">&#128190; Salva bozza</button>
+              <button class="btn btn-primary" onclick="confirmSubmit()">&#128228; Consegna tema</button>
+            </div>
+          </div>
+        </div>
+        <div class="sim-state" id="sim-loading"><div class="sim-loading"><div class="sim-loading-spinner"></div><p>Analisi del tema in corso...</p></div></div>
+        <div class="sim-state" id="sim-results">
+          <div class="sim-results">
+            <div class="sim-score-big"><div class="sim-score-number" id="sim-score-value">--</div><div class="sim-score-label">Voto su 20</div><div class="sim-score-bar"><div class="sim-score-bar-fill" id="sim-score-bar-fill" style="width:0%"></div></div></div>
+            <div class="sim-feedback-grid" id="sim-feedback-grid"></div>
+            <div class="sim-actions">
+              <button class="btn btn-secondary" onclick="resetSimulator()">&#128260; Nuova simulazione</button>
+              <button class="btn btn-ocean" onclick="saveResults()">&#128190; Salva risultati</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+<footer style="border-top:1px solid var(--border);padding:2rem 0;text-align:center;margin-top:3rem"><p style="font-size:0.8rem;color:var(--text-muted)">Nautico 2026 &middot; Federico &middot; Scritto di Italiano</p></footer>
+<div class="sim-modal-overlay" id="modal-confirm"><div class="sim-modal"><h3>&#128228; Conferma consegna</h3><p>Sei sicuro di voler consegnare il tema?</p><div class="sim-modal-actions"><button class="btn btn-secondary" onclick="closeModal('modal-confirm')">Annulla</button><button class="btn btn-primary" onclick="submitEssay()">Consegna</button></div></div></div>
+<div class="sim-modal-overlay" id="modal-apikey"><div class="sim-modal"><h3>&#128273; Chiave API Gemini</h3><p>Per la correzione con AI serve una chiave API gratuita.</p><input type="password" class="api-key-input" id="api-key-input" placeholder="Incolla qui la tua API key..."><div class="api-key-hint">Ottieni su <a href="https://aistudio.google.com/apikey" target="_blank">aistudio.google.com/apikey</a></div><div class="sim-modal-actions"><button class="btn btn-secondary" onclick="useOffline()">Correzione offline</button><button class="btn btn-primary" onclick="saveApiKey()">Salva e continua</button></div></div></div>
+<div class="sim-modal-overlay" id="modal-tema20"><div class="sim-modal wide"><div class="tema20-header"><h3 style="margin:0">&#128221; Tema svolto &mdash; 20/20</h3><button class="btn btn-sm btn-secondary" onclick="closeModal('modal-tema20')">&#10005; Chiudi</button></div><div class="tema20-traccia"><h5>Traccia</h5><p id="tema20-traccia-text"></p></div><div class="foglio-protocollo" id="tema20-body"></div><div class="tema20-commento"><h5>&#9733; Perch&eacute; 20/20?</h5><p id="tema20-commento"></p></div></div></div>
+<script src="../assets/js/app.js"></script>
+<script src="simulatore.js"></script>
+<script>
+function resumeDraft() {
+  const raw = localStorage.getItem('simulator_draft');
+  if (!raw) return;
+  const d = JSON.parse(raw);
+  Simulator.state = 'writing';
+  Simulator.selectedTrace = d.trace || null;
+  Simulator.elapsed = d.elapsed || 0;
+  Simulator.startTime = Date.now() - Simulator.elapsed;
+  document.getElementById('sim-select').classList.remove('active');
+  document.getElementById('sim-select').classList.add('hidden');
+  document.getElementById('sim-resume').style.display = 'none';
+  document.getElementById('sim-writing').classList.add('active');
+  document.getElementById('sim-writing').classList.remove('hidden');
+  const editor = document.getElementById('sim-editor');
+  if (editor) editor.innerText = d.text || '';
+  updateWordCount();
+  Simulator.startTimer();
+}
+function clearAndStart() {
+  localStorage.removeItem('simulator_draft');
+  document.getElementById('sim-resume').style.display = 'none';
+  startSimulator();
+}
+</script>
+</body>
+</html>

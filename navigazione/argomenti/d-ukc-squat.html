@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UKC + Squat — Argomento D | Navigazione</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+.t-hero-bg { background:radial-gradient(circle at 30% 50%, rgba(234,179,8,0.18), transparent 50%); }
+.t-eyebrow { color:#eab308; background:rgba(234,179,8,0.12); border:1px solid rgba(234,179,8,0.3); }
+.t-hero h1 span { background:linear-gradient(135deg, #eab308, #facc15); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-section h2 .section-num { color:#eab308; }
+.formula-box { border-left:4px solid #eab308; }
+.step::before { background:linear-gradient(135deg, #eab308, #facc15); color:#000; }
+</style>
+</head>
+<body>
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li><li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">🛳️ Macro-argomento D · Sempre nel passage planning</div>
+    <h1>UKC e Squat<br><span>Passaggio sicuro su basso fondale</span></h1>
+    <p>Combinazione delle Maree con il pescaggio della nave per verificare che ci sia abbastanza acqua sotto la chiglia. Si aggiunge lo squat (sovra-immersione dinamica). È <strong>il calcolo chiave</strong> per entrare/uscire dal porto in sicurezza.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="c-maree.html" class="btn btn-primary">🌊 Vai a Maree</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#formule">2. Formule chiave</a>
+        <a href="#procedura">3. Procedura step-by-step</a>
+        <a href="#rollio">4. Rollio + ginocchio</a>
+        <a href="#errori">5. Errori comuni</a>
+        <a href="#correlati">6. Correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="c-maree.html">→ C · Maree</a>
+        <a href="e-air-draft.html">→ E · Air Draft</a>
+      </div>
+    </aside>
+    <main class="t-main">
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>L'UKC (Under Keel Clearance) è la distanza tra il punto più immerso della nave e il fondale. Deve essere sempre <strong>positiva e maggiore del valore minimo</strong> richiesto dall'SMS (Safety Management System) — tipicamente 1.5m, 3.5m, o 4.5m a seconda del porto/SMS.</p>
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>Tm</strong> = pescaggio medio (vedi argomento F)<br>
+          <strong>B</strong> = <strong>squat</strong> (sovra-immersione dinamica per la velocità)<br>
+          <strong>hx</strong> = altezza marea istantanea sul CD (vedi argomento C)<br>
+          <strong>hf</strong> = profondità fondale sotto CD (charted depth)<br>
+          <strong>UKC</strong> = clearance reale (=hf + hx − Tm − B)<br>
+          <strong>UKCmin</strong> = clearance minima da SMS<br>
+          <strong>Cb</strong> = block coefficient (≈0.6-0.85 per cargo)<br>
+          <strong>V</strong> = velocità della nave in nodi (kt)
+        </div>
+      </section>
+
+      <section id="formule" class="t-section">
+        <h2><span class="section-num">02.</span>Formule chiave</h2>
+        <div class="formula-box">
+          <div class="lbl">Formula fondamentale (foto 567)</div>
+          Tm + UKC + B = hx + hf<br>
+          UKC = hx + hf − Tm − B<br>
+          UKC ≥ UKCmin (verifica sicurezza)
+        </div>
+        <div class="formula-box">
+          <div class="lbl">Squat (Barrass semplificato)</div>
+          B = Cb · V² / 50<br>
+          (Cb adimensionale, V in nodi, B in metri)
+        </div>
+        <div class="formula-box">
+          <div class="lbl">Correzione barometrica</div>
+          Ogni 1 hPa di depressione rispetto a 1013 hPa = +1 cm di altezza marea<br>
+          hx_corretta = hx + (1013 − P) × 0.01 m
+        </div>
+      </section>
+
+      <section id="procedura" class="t-section">
+        <h2><span class="section-num">03.</span>Procedura step-by-step</h2>
+        <div class="step-list">
+          <div class="step">
+            <h4>Calcola l'altezza marea hx all'ora ETA</h4>
+            <p>Vedi argomento C — usa formula cosinusoide con dati di marea del portolano locale.</p>
+          </div>
+          <div class="step">
+            <h4>Correggi hx per la pressione atmosferica</h4>
+            <p>Se la pressione è bassa (es. 993 hPa), aggiungi (1013−993)×0.01 = 20 cm.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola lo squat B</h4>
+            <p><code>B = Cb · V² / 50</code>. Se Cb non è dato, assumere 0.7-0.8 e giustificare.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola la profondità totale disponibile</h4>
+            <p>hf (charted depth) + hx (marea corretta) = quota di fondo sotto il livello istantaneo</p>
+          </div>
+          <div class="step">
+            <h4>Calcola l'UKC e confronta con UKCmin</h4>
+            <p><code>UKC = (hf + hx) − (Tm + B)</code>. Se UKC ≥ UKCmin → SICURO. Se no → aspettare alta marea o ridurre velocità (per ridurre squat).</p>
+          </div>
+          <div class="step">
+            <h4>Scrivi la breve relazione tecnica</h4>
+            <p>Da presentare al Comandante con tutte le ipotesi (Cb, condizioni meteo), conclusione SI/NO sicurezza.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="rollio" class="t-section">
+        <h2><span class="section-num">04.</span>Rollio + sovra-immersione del ginocchio (caso 2024)</h2>
+        <p>Nel caso La Paz 2024, oltre alla pressione bassa, c'è uno stato del mare che causa rollio fino a 12°. La nave inclinandosi immerge di più il ginocchio (lo spigolo basso del bordo).</p>
+        <div class="formula-box">
+          <div class="lbl">Sovra-immersione da rollio (box-shaped)</div>
+          δT_rollio = (B/2) · sin(θ_max)<br>
+          dove B è la larghezza della nave, θ_max è l'angolo massimo di rollio
+        </div>
+        <p>Esempio 2024: B=32m, θ=12° → δT = 16 · sin(12°) = 16 · 0.208 = 3.33 m extra di pescaggio in fase di rollio.</p>
+        <div class="pitfall">
+          <div class="pf-title">⚠️ Pescaggio dinamico totale</div>
+          <p>Tm_dinamico = Tm + B (squat) + δT_rollio. Se sommato esce maggiore di (hf + hx − UKCmin) → manovra NON sicura.</p>
+        </div>
+      </section>
+
+      <section id="errori" class="t-section">
+        <h2><span class="section-num">05.</span>Errori comuni</h2>
+        <div class="pitfall">
+          <div class="pf-title">❌ Dimenticare la correzione barometrica</div>
+          <p>Quasi sempre nelle prove la pressione è anomala (993 hPa o 1025 hPa). Il delta sui cm di marea è significativo.</p>
+        </div>
+        <div class="pitfall">
+          <div class="pf-title">❌ Confondere hf (charted depth) con hx (marea)</div>
+          <p>hf è dato dalla carta nautica, è la profondità sotto CD. hx la calcoli dalla formula maree e si SOMMA a hf.</p>
+        </div>
+        <div class="pitfall">
+          <div class="pf-title">❌ Non considerare lo squat</div>
+          <p>Nelle manovre a bassa velocità (entrata in porto a 4-6 kts) lo squat è piccolo. Ma in canale stretto a 12 kts può essere 1m+.</p>
+        </div>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">06.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📓 Dal Quaderno</h3>
+          <div class="related-grid">
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 567</div><div class="rc-title">UKC + Squat teoria</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 568</div><div class="rc-title">UKC esempio</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📜 Nelle prove</h3>
+          <div class="related-grid">
+            <a href="../prove.html" class="related-card"><div class="rc-label">2024 PP</div><div class="rc-title">La Paz UKC + rollio</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2018 PP</div><div class="rc-title">Auckland UKC=3.5m</div></a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento D: UKC + Squat</p></div></footer>
+<script src="../../assets/js/app.js"></script>
+<script>
+const tocLinks = document.querySelectorAll('.t-toc a');
+document.querySelectorAll('.t-section').forEach(s => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); }), {rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Air Draft — Passaggio sotto ponte | Argomento E</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+.t-hero-bg { background:radial-gradient(circle at 30% 50%, rgba(6,182,212,0.18), transparent 50%); }
+.t-eyebrow { color:#06b6d4; background:rgba(6,182,212,0.12); border:1px solid rgba(6,182,212,0.3); }
+.t-hero h1 span { background:linear-gradient(135deg, #06b6d4, #22d3ee); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-section h2 .section-num { color:#06b6d4; }
+.formula-box { border-left:4px solid #06b6d4; }
+.step::before { background:linear-gradient(135deg, #06b6d4, #22d3ee); color:#000; }
+</style>
+</head>
+<body>
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li><li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">🌉 Macro-argomento E · Variante avanzata</div>
+    <h1>Air Draft<br><span>Passaggio sotto un ponte</span></h1>
+    <p>Il "fratello" dell'UKC verso l'alto: calcoliamo l'Air Clearance per assicurarci che la nave passi sotto un ponte senza colpirlo. Marea ALTA = ponte più vicino (= meno clearance). Pagine 569-570 del quaderno.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="c-maree.html" class="btn btn-primary">🌊 Vai a Maree</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#formula">2. Formula chiave</a>
+        <a href="#procedura">3. Procedura</a>
+        <a href="#correlati">4. Correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="c-maree.html">→ C · Maree</a>
+        <a href="d-ukc-squat.html">→ D · UKC + Squat</a>
+      </div>
+    </aside>
+    <main class="t-main">
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>Il ponte ha un'altezza HP misurata sopra un certo livello di riferimento (di solito MHWS — Mean High Water Spring, riportato sui portolani britannici). Per attraversare in sicurezza serve assicurarsi che il punto più alto della nave (antenne, gru) abbia distanza positiva dalla campata.</p>
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>HP</strong> = altezza ponte sopra il livello di riferimento (charted height)<br>
+          <strong>Z0</strong> = quota del livello di riferimento (MHWS) rispetto al Chart Datum<br>
+          <strong>AD</strong> = Air Draft = altezza nave sopra l'acqua<br>
+          <strong>AC</strong> = Air Clearance = margine tra punto più alto nave e ponte<br>
+          <strong>hx</strong> = altezza marea istantanea sopra CD
+        </div>
+      </section>
+
+      <section id="formula" class="t-section">
+        <h2><span class="section-num">02.</span>Formula chiave (foto 569)</h2>
+        <div class="formula-box">
+          <div class="lbl">Bilancio verticale</div>
+          HP + Z0 = AC + AD + hx<br>
+          → AC = HP + Z0 − AD − hx<br>
+          Verifica: AC ≥ AC_min (richiesto da SMS, tipicamente 0.5-1 m)
+        </div>
+        <p>Quando la marea è alta (hx grande), AC diminuisce. Il momento più critico è alla MARÈA ALTA.</p>
+      </section>
+
+      <section id="procedura" class="t-section">
+        <h2><span class="section-num">03.</span>Procedura step-by-step</h2>
+        <div class="step-list">
+          <div class="step">
+            <h4>Leggi HP e Z0 dalla carta/portolano</h4>
+            <p>HP è "vertical clearance under bridge at MHWS". Z0 lo prendi dalle tabelle di marea (es. 2.1m sopra CD).</p>
+          </div>
+          <div class="step">
+            <h4>Calcola hx all'ora di passaggio</h4>
+            <p>Usa la formula maree (argomento C). Correggi per pressione barometrica.</p>
+          </div>
+          <div class="step">
+            <h4>AD dalla nave</h4>
+            <p>AD è dato dalle specifiche della nave (es. 44m da curve idrostatiche al pescaggio attuale).</p>
+          </div>
+          <div class="step">
+            <h4>Calcola AC</h4>
+            <p><code>AC = HP + Z0 − AD − hx</code>. Se AC ≥ AC_min → si può passare. Altrimenti aspettare bassa marea.</p>
+          </div>
+          <div class="step">
+            <h4>Eventualmente: trova la finestra di passaggio</h4>
+            <p>Problema inverso: AC=AC_min → hx_max = HP + Z0 − AD − AC_min. Dalla curva di marea trova gli istanti in cui hx ≤ hx_max.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">04.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📓 Dal Quaderno</h3>
+          <div class="related-grid">
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 569</div><div class="rc-title">Air Draft teoria + esempio</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 570</div><div class="rc-title">Esempio multi-dati</div></a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento E: Air Draft</p></div></footer>
+<script src="../../assets/js/app.js"></script>
+<script>
+const tocLinks = document.querySelectorAll('.t-toc a');
+document.querySelectorAll('.t-section').forEach(s => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); }), {rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+{
+  "macroCategories": {
+    "G": "Rotte (Lossodromia/Ortodromia)",
+    "A": "Astronomia Nautica",
+    "B": "Carteggio Radar & COLREG",
+    "C": "Maree e Correnti",
+    "D": "UKC + Squat",
+    "E": "Air Draft",
+    "F": "Stabilita & Pesi",
+    "M": "Meteorologia",
+    "N": "Normativa (MARPOL, BWM, ISM, ECDIS, etc.)",
+    "S": "Soccorso/SAR/GMDSS"
+  },
+  "prove": [
+    {
+      "anno": 2024,
+      "codice": "A063_ORD24",
+      "tratta": "Hawaii (USA) - La Paz (Mex)",
+      "indirizzo": "ITCN navale",
+      "rilevanza": "MASSIMA - prova piu recente e nostro indirizzo",
+      "pdf": "materiale navigazione scritto/A063_ORD24.pdf",
+      "primaParte": {
+        "topics": ["C", "D", "E", "F"],
+        "descrizione": "Pianificazione traversata + UKC ad arrivo La Paz con pressione 993 hPa + sovraimmersione ginocchio per rollio 12 gradi. Calcoli marea + UKC + box-shape rollio.",
+        "datiChiave": "ETA UTC 1330 23/06, T=8.20m, B=32m, UKC minimo SMS=4.5m, fondale 15m, pressione 993hPa"
+      },
+      "execution": {
+        "topics": ["B", "A"],
+        "descrizione": "Carteggio radar 2 bersagli (CPA, TCPA, manovra evasiva COLREG) + Punto astronomico crepuscolo serale (Astro X + Spica)"
+      },
+      "secondaParte": [
+        {"n": 1, "topic": "A", "subtopic": "Bussola/sole all'alba (ortiva)", "testo": "Sorgere del lembo superiore del Sole - verifica bussole magnetica e girobussola. ab=070, ag=065. dV2020=10°22'W(4'E), δ=4.3°E. Tolleranza 0.3°."},
+        {"n": 2, "topic": "F", "subtopic": "Falla - GM e immersioni a compartimento allagato", "testo": "Δ=17560t, TF=8.10, TA=8.30, KG=8.10, μ=60%, locale 12.5x13.0x7.5m. Trovare GM' e immersioni estreme a compartimento allagato."},
+        {"n": 3, "topic": "N", "subtopic": "Zavorra (BWM Convention)", "testo": "Inquadramento normativo trattamento zavorra a bordo - microclima batterico - certificazione necessaria"},
+        {"n": 4, "topic": "M", "subtopic": "Circolazione atmosferica", "testo": "Descrivere circolazione atmosferica + concetti chiave per riequilibrio gradienti termico-barici"}
+      ]
+    },
+    {
+      "anno": 2023,
+      "codice": "A029_ORD23_opzioneB",
+      "tratta": "Southampton (UK) - Bergen (Norway)",
+      "indirizzo": "ITCN navale (opzione B di una prova dual)",
+      "rilevanza": "ALTA - nostro indirizzo",
+      "pdf": "materiale navigazione scritto/A029_ORD23.pdf",
+      "primaParte": {
+        "topics": ["G", "C", "F"],
+        "descrizione": "Pianificazione Southampton-Bergen + gestione pesi + maree"
+      },
+      "secondaParte": [
+        {"n": 1, "topic": "G", "subtopic": "Ortodromia Cabo San Lucas-Honolulu", "testo": "Traiettoria ortodromica con spezzata WP ogni 24h. Trovare rotta iniziale/finale, cammino, vertice, ETA, coordinate primi 2 WP, rotta lossodromica di partenza"},
+        {"n": 2, "topic": "F", "subtopic": "Movimentazione carico - sbarco/spostamento/imbarco multipli", "testo": "Δ=8420t, KG=5.15, LCG=62.6, KM=6.21. 3 operazioni: P1=190 sbarco, P2=90 spostamento 3D, P3=300 imbarco. Trovare nuovo KG, coeff. resistenza inclinazioni, nuovo assetto. MCTC=310 t·m/cm"},
+        {"n": 3, "topic": "N", "subtopic": "MARPOL - idrocarburi e prodotti chimici", "testo": "Normativa trasporto idrocarburi/chimici - dotazioni - regimi di scarico - aree speciali - certificazione"},
+        {"n": 4, "topic": "M", "subtopic": "Rotte meteorologiche vs climatologiche", "testo": "Differenze, vantaggi, svantaggi tra rotte meteo e climatologiche + come tracciarle"}
+      ]
+    },
+    {
+      "anno": 2018,
+      "codice": "I243_2018",
+      "tratta": "Auckland (NZ) - Panama",
+      "indirizzo": "ITCN navale",
+      "rilevanza": "ALTA - nostro indirizzo",
+      "pdf": "materiale navigazione scritto/tracce-sci-navig-strutt-costr-mezzo-nav-itcn-trasp-logis-art-conduz-mezzo-opz-navale-2018-ord.pdf",
+      "primaParte": {
+        "topics": ["G", "C", "D", "F"],
+        "descrizione": "Pianificazione Auckland-Panama. WP5 Lossodromia, TSS Isla Jicarita. Marea, UKC=3.5m, pressione 993hPa. M/V Haleakala, LPP=183.05, B=32.21, TA=12.08, TF=11.36"
+      },
+      "secondaParte": [
+        {"n": 1, "topic": "A", "subtopic": "Punto nave con sole (lembo inferiore) + osservazione meridiana", "testo": "DR(26°09.4'S,157°41.6'W), RV=065.8°, V=11kts. Sole Tc=08:16:32 hio=30°29'. Meridiano hio=40°43'. K=+00m08s, γc=-3.0', e=22m. Calcolare FIX al meridiano + tf"},
+        {"n": 2, "topic": "M", "subtopic": "Cicloni tropicali (assenza nella zona/periodo)", "testo": "Descrivere cicloni tropicali - formazione, struttura, frequenza, moto, rischi. Motivare assenza zona Auckland-Panama in giugno"},
+        {"n": 3, "topic": "N", "subtopic": "VTMS Panama Canal", "testo": "Predisporre rapporto VTMS Panama Canal Authority (ETA 96h advance) - tabella Advance Reporting"},
+        {"n": 4, "topic": "N", "subtopic": "BWM Convention - zavorra e specie invasive", "testo": "Normativa trasporto specie invasive/patogeni via acqua di zavorra. Impatto su realta di bordo (tecnologico, operativo, documentale)"}
+      ]
+    },
+    {
+      "anno": 2016,
+      "codice": "M591_ORD16_navale",
+      "tratta": "Norfolk (USA) - Lisbona (Portugal)",
+      "indirizzo": "ITCN navale (Opzione di prova multi-indirizzo)",
+      "rilevanza": "ALTA - nostro indirizzo",
+      "pdf": "materiale navigazione scritto/M591_ORD16.pdf",
+      "primaParte": {
+        "topics": ["G", "C", "F", "S"],
+        "descrizione": "Pianificazione Norfolk-Lisbona, gestione pesi a bordo, risposta ad emergenza. M/V MASHA graniera"
+      },
+      "secondaParte": [
+        {"n": 1, "topic": "A", "subtopic": "FIX astronomico crepuscolo vespertino multi-stelle", "testo": "Crepuscolo vespertino 20/06, (42°14.9'N,028°22.7'W). UT 22:14:06 Stella centrale Corona Boreale hi=68°05.7', UT 22:17:00 Stella coda Cigno hi=25°43.7'. e=18m, no correzione indice"},
+        {"n": 2, "topic": "S", "subtopic": "SAR + intercettazione nave in difficolta", "testo": "DSC distress alert. Punto incendio (41°01.6'N,026°02.3'W). UTC 23:21 in (42°12.3'N,028°01.0'W). Nave in difficolta verso Azzorre RV=210°, V=4kts. Propria Vmax=16.5kts. Corrente 0.8kts per SE. Trovare ora e posizione intercettazione"},
+        {"n": 3, "topic": "S", "subtopic": "GMDSS/SMCP - distress call e acknowledgement", "testo": "Scambio comunicazioni DSC distress + acknowledgement, distress call/message secondo SMCP. Comunicazione intenzione di soccorso"},
+        {"n": 4, "topic": "N", "subtopic": "Trasporto grano - normativa stabilita", "testo": "Riferimenti normativi nave graniera + vincoli di stabilita"}
+      ]
+    },
+    {
+      "anno": 2015,
+      "codice": "M576_2015",
+      "tratta": "Hamburg (Germany) - Felixstowe (UK)",
+      "indirizzo": "ITCN navale",
+      "rilevanza": "ALTA - nostro indirizzo",
+      "pdf": "materiale navigazione scritto/Maturita-Nautica-2015.pdf",
+      "primaParte": {
+        "topics": ["G", "F", "C"],
+        "descrizione": "Loading plan Hamburg con zavorra + bunkeraggio, sbandamento iniziale 1.5° dritta. TA=12.84, TF=13.04, LPP=312m. Ballast prua dritta da scaricare, 2 casse fuel poppiere simmetriche"
+      },
+      "secondaParte": [
+        {"n": 1, "topic": "N", "subtopic": "ECDIS - full ECDIS / appraisal / aggiornamento ENC", "testo": "Pianificazione full ECDIS - normativa cartografia elettronica - procedura appraisal - aggiornamento database ENC"},
+        {"n": 2, "topic": "N", "subtopic": "Racon Buoy Felixstowe", "testo": "Funzione racon della N Shipwash Buoy - caratteristiche dalle pubblicazioni nautiche"},
+        {"n": 3, "topic": "B", "subtopic": "TSS - cinematica + COLREG", "testo": "Traffic Separation Scheme + indicazioni COLREG su navigazione in TSS"},
+        {"n": 4, "topic": "M", "subtopic": "Nebbia - formazione e previsione", "testo": "Tipi di nebbia + previsione possibilita di formazione"}
+      ]
+    }
+  ],
+  "patternEsame": {
+    "primaParte": "Sempre passage planning di una traversata oceanica + maree + UKC/squat in porto + gestione pesi (loading plan)",
+    "secondaParte": "Sempre 4 quesiti da cui sceglierne 2",
+    "macroDistribuzioneQuesiti": {
+      "A_Astronomia": "Quasi sempre presente (4/5 prove)",
+      "F_Stabilita": "Spesso presente (3/5 prove)",
+      "B_Radar_COLREG": "1-2 volte presente",
+      "G_Ortodromia": "1 volta esplicita (2023)",
+      "M_Meteorologia": "Sempre 1 quesito teorico (4/5)",
+      "N_Normativa": "Sempre 1-2 quesiti (5/5)",
+      "S_SAR_GMDSS": "1 volta esplicito (2016)"
+    }
+  },
+  "consigliStrategia": [
+    "Le prime parti coprono SEMPRE: passage planning + maree/UKC + stabilita. Federico DEVE saperle alla perfezione (foto quaderno 563-575)",
+    "Il quesito di astronomia compare in 4 prove su 5 - secondo Federico e da preparare bene (foto quaderno 550-559)",
+    "Il quesito di stabilita/falla e MOLTO comune - foto quaderno 571-575 e formulario pag 11-16",
+    "C'e SEMPRE un quesito teorico di meteorologia (M) e SEMPRE 1-2 di normativa (N). Non serve calcolo, serve memoria",
+    "Carteggio radar (B) e comparso esplicitamente nel 2024 - importante allenarsi con maneuvering board (foto 561-562)"
+  ]
+}

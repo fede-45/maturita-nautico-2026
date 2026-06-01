@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prove anni passati — 2015 → 2024 | Navigazione</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.p-hero { padding:60px 0 30px; text-align:center; }
+.p-hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:0.5rem; }
+.p-hero p { color:var(--text-secondary); max-width:680px; margin:0 auto; }
+
+.p-stats { padding:30px 0; background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.p-stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(160px,1fr)); gap:1rem; }
+.p-stat { text-align:center; padding:1rem; background:var(--bg-card); border-radius:var(--radius-md); border:1px solid var(--border); }
+.p-stat-num { font-family:var(--font-mono); font-size:2rem; font-weight:700; color:var(--accent); line-height:1; margin-bottom:0.3rem; }
+.p-stat-lbl { font-size:0.75rem; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.5px; }
+
+.macro-badge { display:inline-block; padding:2px 8px; border-radius:var(--radius-full); font-size:0.65rem; font-weight:700; }
+.macro-G { background:#10b981; color:#000; }
+.macro-A { background:#a855f7; color:#fff; }
+.macro-B { background:#f97316; color:#fff; }
+.macro-C { background:#0ea5e9; color:#fff; }
+.macro-D { background:#eab308; color:#000; }
+.macro-E { background:#06b6d4; color:#000; }
+.macro-F { background:#ef4444; color:#fff; }
+.macro-M { background:#84cc16; color:#000; }
+.macro-N { background:#6366f1; color:#fff; }
+.macro-S { background:#ec4899; color:#fff; }
+
+.p-toolbar { padding:20px 0; background:var(--bg-base); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); }
+.p-toolbar-inner { display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap; }
+.p-chip { padding:5px 11px; border-radius:var(--radius-full); background:var(--bg-card); border:1px solid var(--border); color:var(--text-secondary); font-size:0.75rem; font-weight:600; cursor:pointer; transition:all var(--transition); display:flex; align-items:center; gap:5px; }
+.p-chip:hover { border-color:var(--accent); color:var(--text-primary); }
+.p-chip.active { background:var(--accent); color:var(--navy-900); border-color:var(--accent); }
+
+.p-main { padding:30px 0 80px; }
+.prova-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); margin-bottom:2rem; overflow:hidden; }
+.prova-header { padding:1.5rem; background:linear-gradient(135deg, rgba(0,168,212,0.1), rgba(245,166,35,0.05)); border-bottom:1px solid var(--border); }
+.prova-header-row { display:flex; align-items:baseline; gap:1rem; flex-wrap:wrap; margin-bottom:0.5rem; }
+.prova-year { font-family:var(--font-mono); font-size:2rem; font-weight:700; color:var(--accent); line-height:1; }
+.prova-code { font-family:var(--font-mono); font-size:0.85rem; color:var(--text-muted); background:var(--bg-input); padding:2px 8px; border-radius:var(--radius-sm); }
+.prova-title { font-size:1.2rem; font-weight:700; color:var(--text-primary); margin:0; }
+.prova-tratta { color:var(--text-secondary); font-size:0.9rem; margin-top:0.25rem; }
+.prova-actions { display:flex; gap:8px; margin-top:0.75rem; }
+.prova-actions a { font-size:0.8rem; padding:6px 12px; border-radius:var(--radius-md); background:var(--bg-input); color:var(--text-primary); text-decoration:none; border:1px solid var(--border); transition:all var(--transition); }
+.prova-actions a:hover { border-color:var(--accent); color:var(--accent); }
+
+.prova-body { padding:1.5rem; }
+.prova-section { margin-bottom:1.5rem; }
+.prova-section:last-child { margin-bottom:0; }
+.prova-section h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:0.75rem; display:flex; align-items:center; gap:8px; }
+.prova-section h4::before { content:''; width:20px; height:2px; background:var(--accent); border-radius:2px; }
+.prova-desc { background:var(--bg-input); border-left:3px solid var(--primary); padding:0.75rem 1rem; border-radius:0 var(--radius-md) var(--radius-md) 0; font-size:0.88rem; line-height:1.6; color:var(--text-primary); }
+.prova-desc strong { color:var(--accent); }
+
+.quesito-list { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1rem; }
+.quesito { background:var(--bg-input); border:1px solid var(--border); border-radius:var(--radius-md); padding:1rem; transition:all var(--transition); }
+.quesito:hover { border-color:var(--accent); }
+.quesito-header { display:flex; align-items:center; gap:8px; margin-bottom:0.5rem; }
+.quesito-num { font-family:var(--font-mono); font-weight:700; color:var(--accent); font-size:0.95rem; }
+.quesito-subtopic { font-size:0.85rem; font-weight:700; color:var(--text-primary); margin-bottom:0.4rem; }
+.quesito-text { font-size:0.78rem; color:var(--text-secondary); line-height:1.5; }
+.quesito.hidden { display:none; }
+
+.topics-tags { display:flex; flex-wrap:wrap; gap:4px; }
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">🏠 Home</a></li>
+      <li><a href="../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="p-hero">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Archivio prove ministeriali</div>
+    <h1>📜 Prove anni passati — ITCN navale</h1>
+    <p>5 prove ufficiali del Ministero (2015, 2016, 2018, 2023, 2024) classificate quesito per quesito. Vedi il pattern, scarica i PDF, allena gli argomenti che escono più spesso.</p>
+    <div style="margin-top:1.25rem"><a href="index.html" class="btn btn-secondary">← Hub Navigazione</a></div>
+  </div>
+</section>
+
+<section class="p-stats">
+  <div class="container">
+    <div class="p-stats-grid">
+      <div class="p-stat"><div class="p-stat-num">5</div><div class="p-stat-lbl">Prove totali</div></div>
+      <div class="p-stat"><div class="p-stat-num">20</div><div class="p-stat-lbl">Quesiti classificati</div></div>
+      <div class="p-stat"><div class="p-stat-num">5/5</div><div class="p-stat-lbl">Hanno passage planning</div></div>
+      <div class="p-stat"><div class="p-stat-num">4/5</div><div class="p-stat-lbl">Hanno astronomia</div></div>
+      <div class="p-stat"><div class="p-stat-num">4/5</div><div class="p-stat-lbl">Hanno stabilità</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="p-toolbar">
+  <div class="container">
+    <div class="p-toolbar-inner">
+      <span style="font-size:0.8rem;color:var(--text-secondary);font-weight:600">Filtra quesiti:</span>
+      <button class="p-chip active" data-filter="all">Tutti</button>
+      <button class="p-chip" data-filter="A"><span class="macro-badge macro-A">A</span> Astronomia</button>
+      <button class="p-chip" data-filter="B"><span class="macro-badge macro-B">B</span> Radar/COLREG</button>
+      <button class="p-chip" data-filter="C"><span class="macro-badge macro-C">C</span> Maree</button>
+      <button class="p-chip" data-filter="F"><span class="macro-badge macro-F">F</span> Stabilità</button>
+      <button class="p-chip" data-filter="G"><span class="macro-badge macro-G">G</span> Rotte</button>
+      <button class="p-chip" data-filter="M"><span class="macro-badge macro-M">M</span> Meteo</button>
+      <button class="p-chip" data-filter="N"><span class="macro-badge macro-N">N</span> Normativa</button>
+      <button class="p-chip" data-filter="S"><span class="macro-badge macro-S">S</span> SAR/GMDSS</button>
+    </div>
+  </div>
+</section>
+
+<section class="p-main">
+  <div class="container" id="prove-container"><!-- popolato da JS --></div>
+</section>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Prove ministeriali ITCN navale, classificate per argomento</p></div></footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+const MACRO_NAMES = {
+  G:"Rotte (Lossodromia/Ortodromia)", A:"Astronomia Nautica",
+  B:"Carteggio Radar & COLREG", C:"Maree", D:"UKC + Squat",
+  E:"Air Draft", F:"Stabilità & Pesi",
+  M:"Meteorologia", N:"Normativa", S:"SAR/GMDSS"
+};
+
+const PROVE = [
+  {
+    anno:2024, codice:"A063_ORD24", tratta:"Hawaii (USA) → La Paz (Mex)",
+    relevance:"⭐ MASSIMA — ultima prova, nostro indirizzo",
+    pdf:"images/prove/A063_ORD24.pdf",
+    primaParte:{
+      topics:["C","D","E","F"],
+      desc:"Pianificazione traversata + UKC ad arrivo La Paz con pressione 993 hPa + sovra-immersione del ginocchio per rollio 12°. Calcoli marea + UKC + nave box-shaped. <strong>ETA UTC 1330 23/06</strong>, T=8.20m, B=32m, UKC minimo SMS=4.5m, fondale 15m."
+    },
+    execution:{
+      topics:["B","A"],
+      desc:"Carteggio radar con 2 bersagli (CPA, TCPA, manovra evasiva COLREG senza ARPA) + Punto astronomico crepuscolo serale con Astro X + Spica."
+    },
+    quesiti:[
+      {n:1, topic:"A", subtopic:"Bussola + sole all'alba (ortiva)", text:"Sorgere lembo superiore Sole — verifica bussola magnetica e girobussola. ab=070°, ag=065°. d(2020)=10°22'W(4'E), δ=4.3°E. Tolleranza 0.3°."},
+      {n:2, topic:"F", subtopic:"Falla — GM e immersioni a compartimento allagato", text:"Δ=17560t, TF=8.10, TA=8.30, KG=8.10, μ=60%, locale 12.5×13.0×7.5m. Trovare GM' e immersioni estreme."},
+      {n:3, topic:"N", subtopic:"BWM — zavorra", text:"Trattamento zavorra a bordo, inquinamento marino e microclima batterico. Normativa, dotazioni, certificazione."},
+      {n:4, topic:"M", subtopic:"Circolazione atmosferica", text:"Descrivere la circolazione atmosferica e concetti chiave per riequilibrio gradienti termico-barici."}
+    ]
+  },
+  {
+    anno:2023, codice:"A029_ORD23 (Opzione B)", tratta:"Southampton (UK) → Bergen (Norway)",
+    relevance:"⭐ ALTA — nostro indirizzo",
+    pdf:"images/prove/A029_ORD23.pdf",
+    primaParte:{
+      topics:["G","C","F"],
+      desc:"Pianificazione traversata Southampton-Bergen + gestione pesi a bordo + maree."
+    },
+    quesiti:[
+      {n:1, topic:"G", subtopic:"Ortodromia Cabo San Lucas-Honolulu", text:"Spezzata ortodromica con WP ogni 24h. Rotta iniziale/finale, cammino, vertice, ETA, primi 2 WP e rotta lossodromica di partenza. V=17.7 kts, ETD 0430 22/06/2023."},
+      {n:2, topic:"F", subtopic:"Movimentazione carico multi-operazioni", text:"Δ=8420t, KG=5.15, LCG=62.6, KM=6.21. Operazioni: P1=190 sbarco, P2=90 spostamento 3D, P3=300 imbarco. Trovare nuovo KG, coeff. resistenza, nuovo assetto. MCTC=310 t·m/cm."},
+      {n:3, topic:"N", subtopic:"MARPOL — idrocarburi/chimici", text:"Normativa trasporto idrocarburi e prodotti chimici, dotazioni, regimi di scarico, aree speciali."},
+      {n:4, topic:"M", subtopic:"Rotte meteo vs climatologiche", text:"Differenze, vantaggi, svantaggi, come tracciarle sulle carte."}
+    ]
+  },
+  {
+    anno:2018, codice:"I243_2018", tratta:"Auckland (NZ) → Panama",
+    relevance:"⭐ ALTA — nostro indirizzo",
+    pdf:"images/prove/tracce-sci-navig-strutt-costr-mezzo-nav-itcn-trasp-logis-art-conduz-mezzo-opz-navale-2018-ord.pdf",
+    primaParte:{
+      topics:["G","C","D","F"],
+      desc:"Pianificazione Auckland-Panama. WP5 lossodromia, TSS Isla Jicarita. Marea + UKC=3.5m, pressione 993hPa. M/V Haleakala: LPP=183.05m, B=32.21m, TA=12.08, TF=11.36."
+    },
+    quesiti:[
+      {n:1, topic:"A", subtopic:"Sole (lembo inferiore) + osservazione meridiana", text:"DR(26°09.4'S, 157°41.6'W), RV=065.8°, V=11kts. Sole Tc=08:16:32 hio=30°29'. Meridiano hio=40°43'. K=+00m08s, γc=-3.0', e=22m. Calcolare FIX al meridiano + tf."},
+      {n:2, topic:"M", subtopic:"Cicloni tropicali (assenza nella zona/periodo)", text:"Descrivere cicloni tropicali: formazione, struttura, frequenza, moto, rischi. Motivare assenza zona Auckland-Panama in giugno."},
+      {n:3, topic:"N", subtopic:"VTMS Panama Canal", text:"Predisporre rapporto VTMS Panama Canal Authority (ETA 96h advance) — tabella Advance Reporting."},
+      {n:4, topic:"N", subtopic:"BWM Convention — specie invasive", text:"Normativa specie invasive via acqua di zavorra. Impatto su realtà di bordo (tecnologico, operativo, documentale)."}
+    ]
+  },
+  {
+    anno:2016, codice:"M591_ORD16 (Opzione Navale)", tratta:"Norfolk (USA) → Lisbona (Portugal)",
+    relevance:"⭐ ALTA — nostro indirizzo",
+    pdf:"images/prove/M591_ORD16.pdf",
+    primaParte:{
+      topics:["G","C","F","S"],
+      desc:"Pianificazione Norfolk-Lisbona, gestione pesi a bordo, risposta ad emergenza. M/V MASHA graniera. LPP=192.4m, B=32.2m. Marea Lisbona: HW 04:54 h=3.4m, LW 10:23 h=0.7m."
+    },
+    quesiti:[
+      {n:1, topic:"A", subtopic:"FIX astronomico crepuscolo vespertino multi-stelle", text:"Crepuscolo 20/06, (42°14.9'N, 028°22.7'W). UT 22:14:06 Stella centrale Corona Boreale hi=68°05.7'; UT 22:17:00 Stella coda Cigno hi=25°43.7'. e=18m. Determinare coordinate Pn."},
+      {n:2, topic:"S", subtopic:"SAR — intercettazione nave in difficoltà", text:"DSC distress alert. UTC 23:21, propria nave a (42°12.3'N, 028°01.0'W). Vmax=16.5kts. Corrente 0.8 kts per SE. Trovare ora/posizione intercettazione."},
+      {n:3, topic:"S", subtopic:"GMDSS/SMCP — distress call", text:"Scambio comunicazioni DSC distress + acknowledgement, secondo SMCP. Comunicazione intenzione di soccorso."},
+      {n:4, topic:"N", subtopic:"Nave graniera — normativa stabilità", text:"Riferimenti normativi nave graniera + vincoli di stabilità."}
+    ]
+  },
+  {
+    anno:2015, codice:"M576_2015", tratta:"Hamburg (Germany) → Felixstowe (UK)",
+    relevance:"⭐ ALTA — nostro indirizzo",
+    pdf:"images/prove/Maturità-Nautica-2015.pdf",
+    primaParte:{
+      topics:["G","F","C"],
+      desc:"Loading plan Hamburg + bunkeraggio. Sbandata iniziale 1.5° dritta, TA=12.84, TF=13.04, LPP=312m. Scarico zavorra prodiera + bunkeraggio 2 casse poppiere simmetriche. HW Felixstowe 18:00 18/06 h=4.2m. ETA pilot 19:40 19/06."
+    },
+    quesiti:[
+      {n:1, topic:"N", subtopic:"ECDIS — appraisal / aggiornamento ENC", text:"Pianificazione full ECDIS — normativa cartografia elettronica — procedura appraisal — aggiornamento database ENC."},
+      {n:2, topic:"N", subtopic:"Racon Buoy Felixstowe", text:"Funzione racon della N Shipwash Buoy — caratteristiche dalle pubblicazioni nautiche."},
+      {n:3, topic:"B", subtopic:"TSS — cinematica + COLREG", text:"Traffic Separation Scheme + indicazioni COLREG su navigazione in TSS."},
+      {n:4, topic:"M", subtopic:"Nebbia — formazione e previsione", text:"Tipi di nebbia + previsione di formazione."}
+    ]
+  }
+];
+
+let currentFilter = "all";
+
+function renderProve(){
+  const container = document.getElementById('prove-container');
+  container.innerHTML = PROVE.map(p => `
+    <div class="prova-card" data-anno="${p.anno}">
+      <div class="prova-header">
+        <div class="prova-header-row">
+          <span class="prova-year">${p.anno}</span>
+          <div>
+            <h3 class="prova-title">${p.tratta}</h3>
+            <div class="prova-tratta"><span class="prova-code">${p.codice}</span> · ${p.relevance}</div>
+          </div>
+        </div>
+        <div class="prova-actions">
+          <a href="${p.pdf}" target="_blank">📄 Apri PDF</a>
+          <a href="${p.pdf}" download>⬇️ Scarica</a>
+        </div>
+      </div>
+      <div class="prova-body">
+        <div class="prova-section">
+          <h4>Prima parte (Passage planning)</h4>
+          <div class="prova-desc">
+            ${p.primaParte.desc}
+            <div class="topics-tags" style="margin-top:0.5rem">
+              ${p.primaParte.topics.map(t => `<span class="macro-badge macro-${t}" title="${MACRO_NAMES[t]||''}">${t}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+        ${p.execution ? `
+          <div class="prova-section">
+            <h4>Execution / Monitoring</h4>
+            <div class="prova-desc">
+              ${p.execution.desc}
+              <div class="topics-tags" style="margin-top:0.5rem">
+                ${p.execution.topics.map(t => `<span class="macro-badge macro-${t}" title="${MACRO_NAMES[t]||''}">${t}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        ` : ''}
+        <div class="prova-section">
+          <h4>Seconda parte — 4 quesiti (scegli 2)</h4>
+          <div class="quesito-list">
+            ${p.quesiti.map(q => `
+              <div class="quesito" data-topic="${q.topic}">
+                <div class="quesito-header">
+                  <span class="quesito-num">Quesito ${q.n}</span>
+                  <span class="macro-badge macro-${q.topic}">${q.topic}</span>
+                </div>
+                <div class="quesito-subtopic">${q.subtopic}</div>
+                <div class="quesito-text">${q.text}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function applyFilter(){
+  document.querySelectorAll('.quesito').forEach(q => {
+    const topic = q.dataset.topic;
+    q.classList.toggle('hidden', currentFilter !== 'all' && topic !== currentFilter);
+  });
+}
+
+document.querySelectorAll('.p-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.p-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    applyFilter();
+  });
+});
+
+renderProve();
+</script>
+
+</body>
+</html>

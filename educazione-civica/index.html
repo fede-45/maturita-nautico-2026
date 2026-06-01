@@ -1,0 +1,420 @@
+﻿<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Educazione Civica &mdash; Agenda 2030 | Maturit&agrave; Nautico 2026</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* Page setup */
+.edc-page {
+  --sdg-red: #E5243B; --sdg-orange: #FCA311; --sdg-yellow: #DDA63A;
+  --sdg-green1: #4C9F38; --sdg-green2: #3F7E44; --sdg-green3: #1F6D4A;
+  --sdg-blue1: #26BDE2; --sdg-blue2: #00AED9; --sdg-blue3: #0A97D9;
+  --sdg-purple: #A21942; --sdg-pink: #E11484;
+  --sdg-text: #0A1628;
+}
+/* Hero */
+.edc-hero { padding:120px 0 60px; text-align:center; position:relative; }
+.edc-hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; margin-bottom:1rem; }
+.edc-hero h1 span { background:linear-gradient(135deg,#26BDE2,#E5243B,#FCA311,#4C9F38); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.edc-hero p { max-width:650px; margin:0 auto 2rem; color:var(--text-secondary); font-size:1rem; line-height:1.7; }
+.edc-hero-imgs { display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; }
+.edc-hero-imgs img { border-radius:var(--radius-lg); max-width:100%; border:1px solid var(--border); }
+.edc-hero-imgs img:first-child { max-width:600px; }
+.edc-hero-imgs img:last-child { max-width:300px; align-self:center; }
+
+/* SDG grid interactive */
+.sdg-section { padding:60px 0; background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.sdg-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap:0.75rem; }
+.sdg-card { border-radius:var(--radius-lg); padding:1.25rem; cursor:pointer; transition:all 0.2s ease; position:relative; overflow:hidden; border:2px solid transparent; }
+.sdg-card:hover, .sdg-card.expanded { transform:translateY(-2px); box-shadow:var(--shadow-md); z-index:2; }
+.sdg-card.expanded { border-color:rgba(255,255,255,0.3); }
+.sdg-card-num { font-size:2rem; font-weight:800; opacity:0.7; margin-bottom:0.25rem; }
+.sdg-card-title { font-size:0.7rem; font-weight:700; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em; }
+.sdg-card-icon { font-size:1.8rem; margin-bottom:0.5rem; }
+.sdg-card-detail { display:none; margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid rgba(255,255,255,0.2); font-size:0.75rem; line-height:1.5; }
+.sdg-card.expanded .sdg-card-detail { display:block; }
+
+/* SDG colors */
+.sdg-1 { background:#E5243B; color:#fff; } .sdg-2 { background:#DDA63A; color:#fff; }
+.sdg-3 { background:#4C9F38; color:#fff; } .sdg-4 { background:#C5192D; color:#fff; }
+.sdg-5 { background:#FF3A21; color:#fff; } .sdg-6 { background:#26BDE2; color:#fff; }
+.sdg-7 { background:#FCA311; color:#000; } .sdg-8 { background:#A21942; color:#fff; }
+.sdg-9 { background:#FD6925; color:#fff; } .sdg-10 { background:#DD1367; color:#fff; }
+.sdg-11 { background:#FD9D24; color:#000; } .sdg-12 { background:#BF8B2E; color:#fff; }
+.sdg-13 { background:#3F7E44; color:#fff; } .sdg-14 { background:#0A97D9; color:#fff; }
+.sdg-15 { background:#56C02B; color:#fff; } .sdg-16 { background:#00689D; color:#fff; }
+.sdg-17 { background:#19486A; color:#fff; }
+
+/* Focus Goal 16 */
+.goal16-section { padding:70px 0; }
+.goal16-hero { display:grid; grid-template-columns:200px 1fr; gap:2rem; align-items:center; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-xl); padding:2rem; }
+.goal16-icon-big { width:180px; height:180px; border-radius:50%; background:#00689D; display:flex; align-items:center; justify-content:center; font-size:5rem; color:#fff; flex-shrink:0; }
+.goal16-targets { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:0.75rem; margin-top:1.5rem; }
+.goal16-target { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.25rem; border-left:3px solid #00689D; }
+.goal16-target h5 { font-size:0.85rem; font-weight:700; margin-bottom:4px; color:#26BDE2; }
+.goal16-target p { font-size:0.8rem; color:var(--text-secondary); line-height:1.5; }
+
+/* Medio Oriente reflection */
+.me-section { padding:60px 0; background:var(--bg-surface); border-top:1px solid var(--border); }
+.me-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1rem; }
+.me-card h4 { font-size:0.95rem; font-weight:700; margin-bottom:0.5rem; display:flex; align-items:center; gap:8px; }
+.me-card p { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; }
+.me-card .me-stat { display:flex; gap:1.5rem; margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--border); }
+.me-stat-item { text-align:center; }
+.me-stat-num { font-family:var(--font-mono); font-size:1.1rem; font-weight:700; color:var(--accent); }
+.me-stat-lbl { font-size:0.7rem; color:var(--text-muted); }
+
+/* Timeline */
+.timeline-mini { position:relative; padding:0; }
+.tl-dot { display:flex; gap:1rem; padding:0.75rem 0; border-bottom:1px solid var(--border); align-items:baseline; }
+.tl-dot:last-child { border:none; }
+.tl-year { font-family:var(--font-mono); font-size:0.8rem; font-weight:700; color:var(--accent); min-width:70px; }
+.tl-text { font-size:0.85rem; color:var(--text-secondary); }
+
+/* Suez callout */
+.suez-callout { background:linear-gradient(135deg, rgba(0,168,212,0.1) 0%, transparent); border:1px solid rgba(0,168,212,0.3); border-radius:var(--radius-lg); padding:1.25rem; }
+.suez-callout h5 { color:var(--primary); margin-bottom:0.5rem; }
+
+/* Print */
+@media print { .navbar,.reading-progress,.sidebar { display:none; } }
+
+/* Responsive */
+@media (max-width:768px) {
+  .goal16-hero { grid-template-columns:1fr; text-align:center; }
+  .goal16-icon-big { margin:0 auto; }
+  .edc-hero-imgs img:first-child { max-width:100%; }
+  .edc-hero-imgs img:last-child { max-width:240px; }
+}
+</style>
+</head>
+<body class="edc-page">
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand"><div class="brand-icon">&#9875;</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">&#127968; Home</a></li>
+      <li><a href="../orale/macchine.html">&#9881;&#65039; Orale</a></li>
+      <li><a href="../scritti/italiano.html">&#9997;&#65039; Italiano</a></li>
+      <li><a href="../navigazione/index.html">&#9875; Navigazione</a></li>
+      <li><a href="#pcto" class="locked">&#127970; PCTO</a></li>
+      <li><a href="index.html" class="active">&#127963; Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle" title="Cambia tema">&#127769;</button></div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="edc-hero">
+  <div class="container">
+    <h1>Agenda <span>2030</span></h1>
+    <p>17 Obiettivi di Sviluppo Sostenibile firmati da 193 paesi ONU nel 2015. Un piano d'azione globale per persone, pianeta e prosperit&agrave;, da raggiungere entro il 2030.</p>
+    <div class="edc-hero-imgs">
+      <img src="img/sdg-grid.png" alt="Griglia Obiettivi Sviluppo Sostenibile ONU" style="max-width:600px;border-radius:var(--radius-lg);border:1px solid var(--border);">
+      <img src="img/eu-agenda.png" alt="UE e Agenda 2030" style="max-width:300px;border-radius:var(--radius-lg);border:1px solid var(--border);">
+    </div>
+    <p style="font-size:0.8rem;color:var(--text-muted)">&#128161; Clicca su ogni obiettivo per scoprire i dettagli. I 17 SDG sono interconnessi: la pace (Goal 16) &egrave; la condizione per tutti gli altri.</p>
+  </div>
+</section>
+
+<!-- GRIGLIA 17 SDG -->
+<section class="sdg-section">
+  <div class="container">
+    <div class="edc-section-header" style="margin-bottom:1.5rem">
+      <span class="edc-section-num" style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--accent);opacity:0.3;line-height:1">17</span>
+      <h2 style="font-family:var(--font-main);font-size:1.6rem;font-weight:700">Obiettivi per lo Sviluppo Sostenibile</h2>
+    </div>
+    <div class="sdg-grid">
+
+      <div class="sdg-card sdg-1" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">1</div>
+        <div class="sdg-card-icon">&#128148;</div>
+        <div class="sdg-card-title">Sconfiggere la povert&agrave;</div>
+        <div class="sdg-card-detail">Ancora 700 milioni di persone vivono con meno di 1,90$ al giorno. Target: eliminare la povert&agrave; estrema ovunque.</div>
+      </div>
+
+      <div class="sdg-card sdg-2" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">2</div>
+        <div class="sdg-card-icon">&#127806;</div>
+        <div class="sdg-card-title">Fame zero</div>
+        <div class="sdg-card-detail">828 milioni di persone soffrono la fame. Target: sicurezza alimentare, agricoltura sostenibile, fine malnutrizione.</div>
+      </div>
+
+      <div class="sdg-card sdg-3" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">3</div>
+        <div class="sdg-card-icon">&#10084;&#65039;</div>
+        <div class="sdg-card-title">Salute e benessere</div>
+        <div class="sdg-card-detail">Copertura sanitaria universale. Ridurre mortalit&agrave; materna e infantile, epidemia di AIDS, tubercolosi, malaria.</div>
+      </div>
+
+      <div class="sdg-card sdg-4" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">4</div>
+        <div class="sdg-card-icon">&#128218;</div>
+        <div class="sdg-card-title">Istruzione di qualit&agrave;</div>
+        <div class="sdg-card-detail">260 milioni di bambini non vanno a scuola. Target: istruzione primaria e secondaria gratuita e di qualit&agrave; per tutti.</div>
+      </div>
+
+      <div class="sdg-card sdg-5" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">5</div>
+        <div class="sdg-card-icon">&#9792;&#65039;</div>
+        <div class="sdg-card-title">Parit&agrave; di genere</div>
+        <div class="sdg-card-detail">Le donne guadagnano in media il 23% in meno degli uomini. Eliminare discriminazioni, violenza, matrimoni forzati.</div>
+      </div>
+
+      <div class="sdg-card sdg-6" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">6</div>
+        <div class="sdg-card-icon">&#128167;</div>
+        <div class="sdg-card-title">Acqua pulita e servizi igienici</div>
+        <div class="sdg-card-detail">2,2 miliardi di persone senza acqua potabile. Target: accesso universale ad acqua e servizi igienico-sanitari.</div>
+      </div>
+
+      <div class="sdg-card sdg-7" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">7</div>
+        <div class="sdg-card-icon">&#9889;</div>
+        <div class="sdg-card-title">Energia pulita e accessibile</div>
+        <div class="sdg-card-detail">759 milioni senza elettricit&agrave;. Target: energia moderna, sostenibile e affidabile per tutti.</div>
+      </div>
+
+      <div class="sdg-card sdg-8" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">8</div>
+        <div class="sdg-card-icon">&#128188;</div>
+        <div class="sdg-card-title">Lavoro dignitoso e crescita economica</div>
+        <div class="sdg-card-detail">Disoccupazione giovanile al 13%. Target: crescita economica inclusiva, lavoro dignitoso per tutti.</div>
+      </div>
+
+      <div class="sdg-card sdg-9" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">9</div>
+        <div class="sdg-card-icon">&#127981;</div>
+        <div class="sdg-card-title">Imprese, innovazione e infrastrutture</div>
+        <div class="sdg-card-detail">Infrastrutture resilienti, industrializzazione sostenibile, innovazione e ricerca scientifica.</div>
+      </div>
+
+      <div class="sdg-card sdg-10" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">10</div>
+        <div class="sdg-card-icon">&#9878;&#65039;</div>
+        <div class="sdg-card-title">Ridurre le disuguaglianze</div>
+        <div class="sdg-card-detail">Il 10% pi&ugrave; ricco possiede il 76% della ricchezza globale. Target: ridurre disuguaglianze dentro e tra le nazioni.</div>
+      </div>
+
+      <div class="sdg-card sdg-11" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">11</div>
+        <div class="sdg-card-icon">&#127961;&#65039;</div>
+        <div class="sdg-card-title">Citt&agrave; e comunit&agrave; sostenibili</div>
+        <div class="sdg-card-detail">Il 56% della popolazione mondiale vive in citt&agrave;. Target: citt&agrave; inclusive, sicure, resilienti e sostenibili.</div>
+      </div>
+
+      <div class="sdg-card sdg-12" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">12</div>
+        <div class="sdg-card-icon">&#9851;&#65039;</div>
+        <div class="sdg-card-title">Consumo e produzione responsabili</div>
+        <div class="sdg-card-detail">Consumiamo 1,7 pianeti all'anno. Target: modelli di consumo e produzione sostenibili, ridurre spreco alimentare.</div>
+      </div>
+
+      <div class="sdg-card sdg-13" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">13</div>
+        <div class="sdg-card-icon">&#127757;</div>
+        <div class="sdg-card-title">Lotta contro il cambiamento climatico</div>
+        <div class="sdg-card-detail">+1,1&deg;C rispetto all'era preindustriale. Target: azione urgente su mitigazione, adattamento, resilienza.</div>
+      </div>
+
+      <div class="sdg-card sdg-14" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">14</div>
+        <div class="sdg-card-icon">&#128031;</div>
+        <div class="sdg-card-title">Vita sott'acqua</div>
+        <div class="sdg-card-detail">Il 90% degli stock ittici &egrave; sovrasfruttato o esaurito. Target: conservare e usare in modo sostenibile oceani e mari. <strong style="opacity:0.9">Collegamento: navigazione, inquinamento marino da carburante, aree marine protette.</strong></div>
+      </div>
+
+      <div class="sdg-card sdg-15" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">15</div>
+        <div class="sdg-card-icon">&#127795;</div>
+        <div class="sdg-card-title">Vita sulla terra</div>
+        <div class="sdg-card-detail">1 milione di specie a rischio estinzione. Target: proteggere ecosistemi terrestri, foreste, biodiversit&agrave;.</div>
+      </div>
+
+      <div class="sdg-card sdg-16" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">16</div>
+        <div class="sdg-card-icon">&#128330;&#65039;</div>
+        <div class="sdg-card-title">Pace, giustizia e istituzioni solide</div>
+        <div class="sdg-card-detail"><strong>Il goal pi&ugrave; importante per questo progetto.</strong> 2 miliardi di persone vivono in zone di conflitto. Senza pace, tutti gli altri obiettivi sono irraggiungibili. Target: ridurre violenza, proteggere bambini, stato di diritto.</div>
+      </div>
+
+      <div class="sdg-card sdg-17" onclick="this.classList.toggle('expanded')">
+        <div class="sdg-card-num">17</div>
+        <div class="sdg-card-icon">&#129309;</div>
+        <div class="sdg-card-title">Partnership per gli obiettivi</div>
+        <div class="sdg-card-detail">Nessun paese pu&ograve; farcela da solo. Target: cooperazione internazionale, finanza per lo sviluppo, tecnologia.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS GOAL 16 -->
+<section class="goal16-section">
+  <div class="container">
+    <div class="goal16-hero">
+      <div class="goal16-icon-big">&#128330;&#65039;</div>
+      <div>
+        <div class="badge badge-ocean mb-sm">Goal 16 &mdash; Approfondimento</div>
+        <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:0.5rem">Pace, Giustizia e Istituzioni Solide</h2>
+        <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
+          &Egrave; il <strong>pilastro</strong> dell'intera Agenda 2030. Senza pace non c'&egrave; scuola (Goal 4), 
+          non c'&egrave; salute (Goal 3), non c'&egrave; sviluppo economico (Goal 8). Come dice l'ONU: 
+          <em>"Non c'&egrave; sviluppo sostenibile senza pace, n&eacute; pace senza sviluppo sostenibile."</em>
+        </p>
+      </div>
+    </div>
+
+    <div class="goal16-targets mt-md">
+      <div class="goal16-target">
+        <h5>16.1 Ridurre la violenza</h5>
+        <p>Ogni 12 minuti una persona muore in un conflitto. +40% vittime civili rispetto all'anno precedente.</p>
+      </div>
+      <div class="goal16-target">
+        <h5>16.2 Proteggere i bambini</h5>
+        <p>1,6 miliardi di bambini (2 su 3) subiscono violenza in casa. 1 ragazza su 4 vittima di abusi.</p>
+      </div>
+      <div class="goal16-target">
+        <h5>16.3 Stato di diritto</h5>
+        <p>Accesso alla giustizia per tutti. In molte regioni del mondo i tribunali non funzionano o sono corrotti.</p>
+      </div>
+      <div class="goal16-target">
+        <h5>16.5 Ridurre la corruzione</h5>
+        <p>Tangenti e corruzione drenano ogni anno l'equivalente del 5% del PIL mondiale.</p>
+      </div>
+      <div class="goal16-target">
+        <h5>16.6 Istituzioni efficaci</h5>
+        <p>Governi trasparenti, servizi pubblici funzionanti. Anagrafe, catasto, documenti: diritti di base negati a 1 mld di persone.</p>
+      </div>
+      <div class="goal16-target">
+        <h5>16.10 Libert&agrave; d'informazione</h5>
+        <p>Ogni 14 ore un giornalista viene ucciso. 502 giornalisti assassinati nel 2024.</p>
+      </div>
+    </div>
+
+    <div class="alert alert-info mt-md">
+      <span class="alert-icon">&#128202;</span>
+      <span><strong>Rapporto ONU 2025:</strong> il Goal 16 &egrave; tra i pi&ugrave; in ritardo. Se non migliora, l'intera Agenda 2030 rischia di fallire. I conflitti armati sono la causa principale.</span>
+    </div>
+  </div>
+</section>
+
+<!-- SGUARDO AL MEDIO ORIENTE -->
+<section class="me-section">
+  <div class="container">
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:1.5rem">
+      <span style="font-size:3rem;font-weight:700;color:var(--accent);opacity:0.3;line-height:1">&#127757;</span>
+      <div>
+        <h2 style="font-size:1.6rem;font-weight:700">Sguardo al Medio Oriente</h2>
+        <p style="color:var(--text-secondary);font-size:0.85rem">Cosa significa l'Agenda 2030 nella regione pi&ugrave; instabile del mondo?</p>
+      </div>
+    </div>
+
+    <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.8;margin-bottom:2rem">
+      Il Medio Oriente &egrave; il <strong>banco di prova</strong> dell'Agenda 2030. Qui si concentrano conflitti decennali, 
+      disuguaglianze estreme, crisi idriche e migrazioni forzate. Il Goal 16 &mdash; pace e giustizia &mdash; &egrave; la chiave: 
+      <strong>senza pace, tutti gli altri obiettivi sono impossibili.</strong> Vediamo alcune chiavi di lettura.
+    </p>
+
+    <!-- 1. Conflitti -->
+    <div class="me-card">
+      <h4>&#128165; Conflitti attivi e diritto umanitario</h4>
+      <p>Siria (dal 2011, 500.000+ morti, 12 milioni di sfollati), Yemen (dal 2014, "peggiore crisi umanitaria del mondo", 24 milioni di persone hanno bisogno di aiuti), Gaza e Israele-Palestina (escalation 2023-2025, decine di migliaia di vittime civili, infrastrutture distrutte). In tutti questi conflitti il <strong>diritto internazionale umanitario</strong> (Convenzioni di Ginevra) &egrave; messo alla prova. L'ONU denuncia: senza proteggere i civili, il Goal 16 non potr&agrave; mai essere raggiunto.</p>
+      <div class="me-stat">
+        <div class="me-stat-item"><div class="me-stat-num">2 mld+</div><div class="me-stat-lbl">persone in zone di conflitto</div></div>
+        <div class="me-stat-item"><div class="me-stat-num">+40%</div><div class="me-stat-lbl">aumento vittime civili</div></div>
+        <div class="me-stat-item"><div class="me-stat-num">ogni 12 min</div><div class="me-stat-lbl">una morte in conflitto</div></div>
+      </div>
+    </div>
+
+    <!-- 2. Acqua -->
+    <div class="me-card">
+      <h4>&#128167; Acqua: la prossima guerra?</h4>
+      <p>Il Medio Oriente &egrave; la regione con il pi&ugrave; alto <strong>stress idrico</strong> del pianeta. I bacini del Tigri e dell'Eufrate sono contesi tra Turchia, Siria e Iraq. Le dighe turche (progetto GAP) riducono la portata d'acqua a valle, minacciando agricoltura e sopravvivenza. In Yemen l'acqua &egrave; scarsissima: Sana'a potrebbe essere la prima capitale al mondo a restare senz'acqua. Il Goal 6 (acqua pulita) qui &egrave; una questione di <strong>sopravvivenza e stabilit&agrave; geopolitica</strong>.</p>
+      <div class="alert alert-info" style="margin-top:0.75rem">
+        <span class="alert-icon">&#128279;</span>
+        <span><strong>Collegamento Navigazione:</strong> Anche in mare l'acqua &egrave; una risorsa contesa &mdash; pensa alla pirateria nel Golfo di Aden, legata alla mancanza di risorse a terra. E al Canale di Suez, via d'acqua strategica.</span>
+      </div>
+    </div>
+
+    <!-- 3. Disuguaglianze -->
+    <div class="me-card">
+      <h4>&#9878;&#65039; Disuguaglianze: il paradosso del Golfo</h4>
+      <p>Nella stessa regione convivono due realt&agrave; opposte. <strong>Emirati Arabi Uniti e Qatar</strong>: tra i PIL pro capite pi&ugrave; alti del mondo, investono in energie rinnovabili (Masdar City, la prima citt&agrave; a zero emissioni), organizzano Expo e Mondiali. <strong>Yemen e Siria</strong>: tra i paesi pi&ugrave; poveri, distrutti dalla guerra, con generazioni che crescono senza scuola n&eacute; cure. Questo divario rappresenta la <strong>sfida del Goal 10</strong>: ridurre le disuguaglianze <em>dentro</em> e <em>tra</em> le nazioni.</p>
+    </div>
+
+    <!-- 4. Timeline storica -->
+    <div class="me-card">
+      <h4>&#128197; Medio Oriente: cronologia essenziale</h4>
+      <div class="timeline-mini">
+        <div class="tl-dot"><span class="tl-year">1948</span><span class="tl-text">Nascita dello Stato di Israele. Prima guerra arabo-israeliana. Inizio della questione palestinese.</span></div>
+        <div class="tl-dot"><span class="tl-year">1967</span><span class="tl-text">Guerra dei Sei Giorni. Israele occupa Cisgiordania, Gaza, Sinai e Golan.</span></div>
+        <div class="tl-dot"><span class="tl-year">1993</span><span class="tl-text">Accordi di Oslo. Speranza di pace: Arafat e Rabin si stringono la mano. Ma il processo fallir&agrave;.</span></div>
+        <div class="tl-dot"><span class="tl-year">2011</span><span class="tl-text">Primavere arabe. Proteste in Tunisia, Egitto, Libia, Siria, Yemen. Il Medio Oriente cambia, ma la Siria precipita in una guerra civile che dura ancora oggi.</span></div>
+        <div class="tl-dot"><span class="tl-year">2015</span><span class="tl-text">L'ONU adotta l'Agenda 2030. Il Goal 16 promette pace. Nello stesso anno, la guerra in Yemen si intensifica.</span></div>
+        <div class="tl-dot"><span class="tl-year">2020</span><span class="tl-text">Accordi di Abramo: Emirati e Bahrein normalizzano i rapporti con Israele. Nuova geometria mediorientale.</span></div>
+        <div class="tl-dot"><span class="tl-year">2023-25</span><span class="tl-text">Escalation Gaza-Israele. Tensioni Iran-Israele. Il Goal 16 sembra pi&ugrave; lontano che mai.</span></div>
+      </div>
+    </div>
+
+    <!-- 5. Canale di Suez -->
+    <div class="me-card">
+      <h4>&#128674; Il Canale di Suez e la geopolitica del mare</h4>
+      <p>Il Canale di Suez &egrave; una delle <strong>vie d'acqua pi&ugrave; strategiche del mondo</strong>: collega il Mediterraneo al Mar Rosso, accorciando la rotta Europa-Asia di 7.000 km. Il 12% del commercio mondiale passa da qui. Nel 2021 la nave <em>Ever Given</em> lo blocc&ograve; per 6 giorni, causando danni per <strong>9,6 miliardi di dollari al giorno</strong>. Questo episodio dimostra quanto sia vulnerabile l'economia globale a crisi localizzate. <strong>Collegamento diretto con Navigazione e con il Goal 9</strong> (infrastrutture resilienti).</p>
+      <div class="suez-callout" style="margin-top:0.75rem">
+        <h5>&#9875; Perch&eacute; interessa un nautico?</h5>
+        <p style="font-size:0.85rem;color:var(--text-secondary)">Suez &egrave; il punto di passaggio obbligato per le navi tra Europa e Asia. Ogni ufficiale di coperta deve conoscerne le procedure di transito, i convoy, le regole di pilotaggio. &Egrave; un esempio perfetto di come <strong>navigazione, economia e geopolitica</strong> siano indissolubilmente legate.</p>
+      </div>
+    </div>
+
+    <!-- 6. Collegamenti interdisciplinari -->
+    <div style="margin-top:2rem">
+      <h3 style="font-family:var(--font-main);font-size:1.2rem;font-weight:700;margin-bottom:1rem">&#128279; Collegamenti interdisciplinari</h3>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-header"><div class="card-icon" style="background:rgba(229,36,59,0.12);color:#E5243B">&#128218;</div><h4>Italiano</h4></div>
+          <p style="font-size:0.85rem;color:var(--text-secondary)"><strong>Ungaretti:</strong> "Soldati" ("Si sta come d'autunno sugli alberi le foglie"), "Veglia", "San Martino del Carso" &mdash; la guerra come esperienza umana universale. Il <strong>Neorealismo</strong> e la ricostruzione post-bellica. <strong>Calvino</strong> e l'impegno civile.</p>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-icon" style="background:rgba(0,168,212,0.12);color:var(--primary)">&#127468;&#127463;</div><h4>Inglese</h4></div>
+          <p style="font-size:0.85rem;color:var(--text-secondary)">UN vocabulary: <em>"to call for a ceasefire"</em>, <em>"to condemn human rights violations"</em>, <em>"peacekeeping mission"</em>, <em>"humanitarian corridor"</em>. <em>"The Security Council unanimously adopted Resolution 2720"</em> &mdash; linguaggio formale delle risoluzioni ONU.</p>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-icon" style="background:rgba(74,159,56,0.12);color:#4C9F38">&#9875;</div><h4>Navigazione</h4></div>
+          <p style="font-size:0.85rem;color:var(--text-secondary)"><strong>Canale di Suez</strong> &mdash; crisi Ever Given 2021, 9,6 mld$/giorno di danni. Pirateria nel Golfo di Aden. Diritto marittimo internazionale (UNCLOS, SOLAS). La nave come soggetto giuridico in acque internazionali.</p>
+        </div>
+        <div class="card">
+          <div class="card-header"><div class="card-icon" style="background:rgba(245,166,35,0.12);color:var(--accent)">&#128220;</div><h4>Storia</h4></div>
+          <p style="font-size:0.85rem;color:var(--text-secondary)">Conflitto israelo-palestinese (1948&rightarrow;oggi). Accordi di Oslo 1993. Primavere arabe 2011. Accordi di Abramo 2020. Il Medio Oriente come laboratorio della <strong>politica internazionale contemporanea</strong>.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Riflessione finale -->
+    <div class="card card-glow mt-lg" style="text-align:center;padding:2rem">
+      <p style="font-family:var(--font-main);font-size:1.1rem;font-style:italic;color:var(--text-primary);max-width:700px;margin:0 auto;line-height:1.8">
+        "L'Agenda 2030 non e' un sogno utopico: e' una <strong>bussola</strong>. Il Medio Oriente ci mostra quanto sia difficile seguire quella rotta. Ma proprio perche' e' difficile, e' necessario. Come in navigazione: <strong>la stella polare serve quando il mare e' in tempesta, non quando e' calmo.</strong>"
+      </p>
+    </div>
+
+    <!-- Struttura orale -->
+    <div class="alert alert-info mt-lg">
+      <span class="alert-icon">&#127897;</span>
+      <span><strong>Struttura per l'orale (10 min):</strong> (1) Cos'e' l'Agenda 2030 e i 17 SDG &mdash; 1,5 min &middot; (2) Focus Goal 16: pace, dati ONU 2025 &mdash; 2 min &middot; (3) Medio Oriente: conflitti, acqua, disuguaglianze &mdash; 2,5 min &middot; (4) Suez e collegamento Nautico &mdash; 1,5 min &middot; (5) Collegamenti interdisciplinari &mdash; 1,5 min &middot; (6) Conclusione: la bussola &mdash; 1 min</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer style="border-top:1px solid var(--border);padding:2rem 0;text-align:center;margin-top:3rem">
+  <p style="font-size:0.8rem;color:var(--text-muted)">Nautico 2026 &middot; Federico &middot; Educazione Civica: Agenda 2030 e Medio Oriente</p>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

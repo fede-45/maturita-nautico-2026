@@ -1,0 +1,99 @@
+    Pag. 1/2                                                   Sessione ordinaria 2024
+                                                               Seconda prova scritta
+
+
+
+
+                         Ministero dell’istruzione e del merito
+A057 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+                            Indirizzo: ITCS – TRASPORTI E LOGISTICA
+                           ARTICOLAZIONE COSTRUZIONE DEL MEZZO
+
+           Disciplina: STRUTTURA, COSTRUZIONE, SISTEMI E IMPIANTI DEL MEZZO
+
+
+
+Il candidato svolga il tema indicato nella prima parte e risponda a due soli quesiti tra i
+quattro proposti nella seconda parte.
+
+
+
+PRIMA PARTE
+
+Una autovettura con motore anteriore a benzina e trazione posteriore ha le seguenti
+caratteristiche tecniche:
+•     massa in ordine di marcia=1400 kg (con liquidi, carburante e conducente)
+•     dimensioni lunghezza 4.60 m, larghezza 1.85 m, altezza 1.45 m, passo tra i due assali
+      2.8 m
+•     distribuzione dei pesi 55% all’anteriore 45% al posteriore
+•     pneumatici 225/50 R17.
+Eventuali dati non specificati vanno assunti dal candidato motivando adeguatamente la scelta.
+Dopo aver eseguito uno schizzo del veicolo da cui si possano evincere tutte le misure utili per i
+calcoli, supponendo che il veicolo si muova su strada pianeggiante e asciutta a 130 km/h, il
+candidato calcoli, specificando tutte le ipotesi semplificative eventualmente assunte, i seguenti
+parametri:
+a) la potenza erogata dal motore
+b) il consumo in l/100 km
+c) la massima velocità potenzialmente raggiungibile in piano con un motore dotato di una
+   potenza massima di 150 kW
+d) lo spazio minimo di frenata, consentito dall’aderenza su asfalto asciutto, del veicolo da 100
+   km/h, tenendo conto anche del tempo di reazione del conducente. Si valuti anche l’energia
+   totale dissipata dai freni, la durata della frenata e la potenza termica media che i dischi
+   devono disperdere.
+e) l’entità del trasferimento di carico longitudinale in frenata, riportando in un grafico i valori
+   dei carichi verticali agenti sugli assi anteriore e posteriore in funzione del valore
+   dell’accelerazione, nell’intervallo da 0 fino a 9 m/s2.
+   Pag. 2/2                                                             Sessione ordinaria 2024
+                                                                        Seconda prova scritta
+
+
+
+
+                            Ministero dell’istruzione e del merito
+A057 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+                                Indirizzo: ITCS – TRASPORTI E LOGISTICA
+                               ARTICOLAZIONE COSTRUZIONE DEL MEZZO
+
+            Disciplina: STRUTTURA, COSTRUZIONE, SISTEMI E IMPIANTI DEL MEZZO
+
+
+
+ SECONDA PARTE
+
+ 1. Con riferimento al veicolo definito nella prima parte, calcolare il costo chilometrico per i
+    primi tre anni di utilizzo del veicolo, nell’ipotesi che il consumo nell’utilizzo medio coincida
+    con quello calcolato al punto b) della prima parte (se non svolto, assumere un valore pari a
+    8 l/100 km).
+    Si assumano i seguenti costi di esercizio:
+    - Percorrenza chilometrica: 20000 km/anno
+    - Bollo e assicurazione 1200 € /anno
+    - Tagliando di manutenzione 400 € ogni 15000 km
+    - Pneumatici 600 € ogni 40000 km
+    - Costo benzina 1,7 €/l
+    - Costo iniziale 30000 €, con svalutazione del 25% il primo anno e del 15% nei
+       successivi. La svalutazione va calcolata sul valore dell’anno precedente e non su quello
+       del veicolo nuovo.
+      Confrontare la soluzione di acquisto completo con quella di un noleggio a lungo termine
+      per 36 mesi senza nessun importo iniziale da versare e rate mensili di 700 €/mese, con
+      tutte le spese incluse eccetto il carburante.
+ 2. Calcolare il massimo valore della forza di aderenza disponibile sulle ruote motrici. Sulla
+    base di questo valore, effettuare il dimensionamento di massima dell’albero di
+    trasmissione della potenza dal cambio al differenziale posteriore, considerando per
+    quest’ultimo un rapporto di riduzione pari a 3.5.
+ 3. Dopo aver descritto quali sono i componenti e il funzionamento dei moderni impianti
+    antibloccaggio ABS e ESP, illustrare anche quali altri dispositivi di assistenza alla guida
+    (ADAS) sono installati sui veicoli di nuova produzione.
+ 4. Il riscaldamento globale pone con urgenza la necessità di ridurre le emissioni di anidride
+    carbonica dei mezzi di trasporto terrestri. Il candidato illustri quali tecniche sono state
+    utilizzate fino ad ora e quali potranno essere adottate nel prossimo futuro per rendere la
+    propulsione dei veicoli sempre più “carbon-free”.
+
+
+____________________________
+Durata massima della prova: 6 ore.
+È consentito l’uso di manuali tecnici, formulari e di calcolatrici scientifiche o grafiche purché non siano dotate della
+capacità di elaborazione simbolica algebrica e non abbiano la disponibilità di connessione a Internet.
+È consentito l’uso del dizionario bilingue (italiano-lingua del paese di provenienza) per i candidati di madrelingua non
+italiana.
+Non è consentito lasciare l’Istituto prima che siano trascorse 3 ore dalla consegna della traccia.
+

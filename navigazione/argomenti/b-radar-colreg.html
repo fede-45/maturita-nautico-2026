@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carteggio Radar & COLREG — Argomento B | Navigazione</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+.t-hero-bg { background:radial-gradient(circle at 30% 50%, rgba(249,115,22,0.18), transparent 50%); }
+.t-eyebrow { color:#f97316; background:rgba(249,115,22,0.12); border:1px solid rgba(249,115,22,0.3); }
+.t-hero h1 span { background:linear-gradient(135deg, #f97316, #fb923c); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-section h2 .section-num { color:#f97316; }
+.formula-box { border-left:4px solid #f97316; }
+.step::before { background:linear-gradient(135deg, #f97316, #fb923c); }
+.rule-card { background:var(--bg-card); border:1px solid var(--border); border-left:3px solid #f97316; padding:0.85rem 1.15rem; border-radius:var(--radius-md); margin:0.5rem 0; }
+.rule-card .r-num { font-family:var(--font-mono); font-weight:700; color:#f97316; font-size:0.9rem; }
+.rule-card .r-title { font-weight:600; color:var(--text-primary); margin:0.2rem 0; }
+.rule-card .r-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; }
+</style>
+</head>
+<body>
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li><li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">📡 Macro-argomento B · Quesito 2024 + Execution</div>
+    <h1>Carteggio Radar<br><span>Moto Relativo, CPA/TCPA & COLREG</span></h1>
+    <p>L'execution della prova spesso include 2-3 bersagli al radar: calcolare CPA, TCPA, decidere la manovra evasiva secondo COLREG. Si usa il maneuvering board (foglio polare). Foto 560-562 del quaderno + COLREG da Formulario p.10, 15.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="../formulario.html" class="btn btn-primary">📐 Formulario pp.7, 15</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#triangolo">2. Triangolo velocità</a>
+        <a href="#procedura">3. Procedura CPA/TCPA</a>
+        <a href="#manovra">4. Manovra evasiva</a>
+        <a href="#colreg">5. COLREG essenziali</a>
+        <a href="#correlati">6. Correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="a-astronomia.html">→ A · Astronomia</a>
+      </div>
+    </aside>
+    <main class="t-main">
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>Il radar misura, a tempi diversi, la posizione di un bersaglio rispetto alla nostra nave (rilevamento + distanza). Dai due rilievi successivi ricaviamo il <strong>moto relativo</strong>. Dal moto relativo + il nostro moto, ricaviamo il moto assoluto del bersaglio.</p>
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>Mp</strong> = moto proprio (Rv, Vp)<br>
+          <strong>MR</strong> = moto relativo (osservato sul radar)<br>
+          <strong>MA</strong> = moto assoluto del bersaglio<br>
+          <strong>V_R</strong> = vettore velocità relativa<br>
+          <strong>CPA</strong> = Closest Point of Approach (distanza minima di passaggio)<br>
+          <strong>TCPA</strong> = Time to CPA (tempo prima del CPA)<br>
+          <strong>NCPA</strong> = New CPA (dopo manovra)<br>
+          <strong>BCR, BCT</strong> = Bow Crossing Range e Time
+        </div>
+      </section>
+
+      <section id="triangolo" class="t-section">
+        <h2><span class="section-num">02.</span>Il triangolo delle velocità</h2>
+        <p>Equazione vettoriale chiave:</p>
+        <div class="formula-box">
+          <div class="lbl">Composizione vettoriale</div>
+          V_R = V_target − V_propria<br>
+          (relativo = assoluto del bersaglio − assoluto nostro)<br>
+          → V_target = V_propria + V_R
+        </div>
+        <p>Sul maneuvering board: si plotta la posizione del bersaglio a t1 (punto B1) e a t2 (punto B2). La linea B1→B2 è il moto relativo. Dal centro del foglio si traccia il vettore nostro (Rv, V_propria) e si chiude il triangolo per ottenere il moto assoluto del bersaglio.</p>
+      </section>
+
+      <section id="procedura" class="t-section">
+        <h2><span class="section-num">03.</span>Procedura CPA/TCPA (foto 560-561)</h2>
+        <div class="step-list">
+          <div class="step">
+            <h4>Plotta le posizioni del bersaglio</h4>
+            <p>A t1: B1 (rilevamento, distanza). A t2 (es. 6 minuti dopo): B2. Tracciare i 2 punti dal centro del foglio polare.</p>
+          </div>
+          <div class="step">
+            <h4>Traccia il moto relativo</h4>
+            <p>La retta da B1 a B2, estesa, è la direzione del moto relativo. Distanza B1B2 / Δt = V_R.</p>
+          </div>
+          <div class="step">
+            <h4>CPA = distanza minima dal centro alla retta del moto relativo</h4>
+            <p>Traccia la perpendicolare dal centro (la nostra nave) alla retta B1-B2 estesa. La distanza è il CPA.</p>
+          </div>
+          <div class="step">
+            <h4>TCPA = (distanza da B2 al punto di CPA) / V_R</h4>
+            <p>Dal punto B2 misuri la distanza fino al CPA sulla retta. TCPA = quella distanza / V_R.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola moto assoluto del bersaglio</h4>
+            <p>Dal triangolo delle velocità: parti dal vettore proprio (centro → punto W) e dal punto W aggiungi il vettore V_R (= B1B2 / Δt diretto come moto relativo). L'estremo del triangolo dà il vettore assoluto V_target.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="manovra" class="t-section">
+        <h2><span class="section-num">04.</span>Manovra evasiva</h2>
+        <p>Se il CPA è troppo piccolo (es. &lt; 1 mg), bisogna manovrare. Due opzioni:</p>
+        <p><strong>Cambio Rv (turn):</strong> ruota la propria rotta a destra (consigliato da COLREG R.8) finché il NCPA ≥ minimo richiesto. Sul board, ruoti il vettore proprio fino a che la nuova retta relativa abbia distanza dal centro ≥ NCPA richiesto.</p>
+        <p><strong>Cambio V (slow/stop):</strong> riduci la propria velocità (raro, fai solo se Rv non è cambiabile).</p>
+        <div class="pitfall">
+          <div class="pf-title">⚠️ COLREG R.8 — Manovre per evitare collisioni</div>
+          <p>(a) Manovra <strong>chiara</strong>, <strong>tempestiva</strong>, <strong>ampia</strong>, <strong>visibile</strong>. (b) Preferire Rv invece di V. (c) Evitare manovre piccole successive.</p>
+        </div>
+      </section>
+
+      <section id="colreg" class="t-section">
+        <h2><span class="section-num">05.</span>COLREG essenziali (Formulario p.10 + p.15)</h2>
+        <div class="rule-card"><div class="r-num">R.2</div><div class="r-title">Responsabilità</div><div class="r-desc">Niente esonera da responsabilità: comandante e armatore responsabili in caso di mancata osservanza. Si può derogare alle Regole solo per evitare pericolo imminente.</div></div>
+        <div class="rule-card"><div class="r-num">R.5</div><div class="r-title">Servizio di vedetta</div><div class="r-desc">Vedetta visiva, uditiva e con ogni mezzo disponibile (radar/ARPA inclusi).</div></div>
+        <div class="rule-card"><div class="r-num">R.6</div><div class="r-title">Velocità di sicurezza</div><div class="r-desc">Sempre adeguata a stato del mare, visibilità, traffico, densità navi, manovrabilità, profondità.</div></div>
+        <div class="rule-card"><div class="r-num">R.7</div><div class="r-title">Rischio di collisione</div><div class="r-desc">Se rilevamento del bersaglio NON cambia col tempo (rilevamento costante) → rischio di collisione. Usare radar/ARPA per valutare.</div></div>
+        <div class="rule-card"><div class="r-num">R.8</div><div class="r-title">Manovre per evitare collisioni</div><div class="r-desc">Chiara, tempestiva, ampia, ben visibile, preferendo cambio Rv a cambio V.</div></div>
+        <div class="rule-card"><div class="r-num">R.13</div><div class="r-title">Nave raggiungente</div><div class="r-desc">Chi supera deve tenersi clear dell'altro. "Raggiunge" = arriva da settore poppa &gt;22.5° dal traverso.</div></div>
+        <div class="rule-card"><div class="r-num">R.15</div><div class="r-title">Rotte incrociate</div><div class="r-desc">Quando 2 a motore si incrociano, l'altra è a dritta → la propria DEVE manovrare (give-way).</div></div>
+        <div class="rule-card"><div class="r-num">R.16</div><div class="r-title">Nave che deve manovrare</div><div class="r-desc">Manovra ampia e tempestiva per restare clear.</div></div>
+        <div class="rule-card"><div class="r-num">R.17</div><div class="r-title">Nave che non deve manovrare (stand-on)</div><div class="r-desc">Mantenere Rv e V. Quando diventa palese che l'altra non manovra → manovra anche stand-on.</div></div>
+        <div class="rule-card"><div class="r-num">R.18</div><div class="r-title">Responsabilità tra navi</div><div class="r-desc">Gerarchia: PM (powered) cede a Vela, Vela cede a Pesca, Pesca cede a Limitata manovrabilità, Lim. cede a Non governa.</div></div>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">06.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📐 Dal Formulario</h3>
+          <div class="related-grid">
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 7</div><div class="rc-title">Procedura CPA manoscritta</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 10</div><div class="rc-title">Tabella FIX + COLREG</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 15</div><div class="rc-title">Regole + Fanali + Manovre</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📓 Dal Quaderno</h3>
+          <div class="related-grid">
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 560</div><div class="rc-title">Moto relativo teoria</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 561</div><div class="rc-title">Maneuvering board usato</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 562</div><div class="rc-title">Maneuvering board vuoto</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📜 Nelle prove</h3>
+          <div class="related-grid">
+            <a href="../prove.html" class="related-card"><div class="rc-label">2024 Exec</div><div class="rc-title">2 bersagli, no ARPA</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2015 Q3</div><div class="rc-title">TSS + COLREG</div></a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento B: Radar & COLREG</p></div></footer>
+<script src="../../assets/js/app.js"></script>
+<script>
+const tocLinks = document.querySelectorAll('.t-toc a');
+document.querySelectorAll('.t-section').forEach(s => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); }), {rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+</body>
+</html>

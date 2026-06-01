@@ -1,0 +1,191 @@
+Pag. 1/4                                                        Sessione ordinaria 2015
+                                                                Seconda prova scritta
+
+
+
+
+    M576       ESAME DI STATO DI ISTRUZIONE SECONDARIA SUPERIORE
+                             Indirizzo: ITCN TRASPORTI LOGISTICA
+                             ARTICOLAZIONE CONDUZIONE MEZZO
+                            OPZIONE CONDUZIONE MEZZO NAVALE
+
+  Tema di: SCIENZE NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+  Il candidato svolga la prima parte della prova e risponda a due dei quesiti proposti nella seconda
+  parte.
+
+
+  PRIMA PARTE
+  Pianificazione e controllo della traversata tra Hamburg (Germany) e Felixstowe (UK) e gestione
+  dei pesi a bordo.
+
+
+  Loading plan
+  In seguito alla caricazione ad Hamburg la nave, avente LPP = 312 m, galleggia sbandata di 1,5° sulla
+  dritta, con le seguenti immersioni estreme:
+  TA = 12,84 m
+  TF = 13,04 m
+  Si deve scaricare zavorra da una cassa prodiera di dritta e successivamente si intende procedere con
+  il bunkeraggio, caricando su due casse simmetriche poppiere, come meglio specificato nel seguente
+  schema:
+
+                 LONGITUDINAL      TRANSVERSAL         VERTICAL                           CURRENT
+     TANK                                                               CAPACITY
+                   POSITION          POSITION          POSITION                            STATUS
+                                          22 m            2,0 m                               300 t
+                      186 m                                                 300 t
+     Ballast                        from the centre       on the                          (to be partly
+                   from the AP
+                                     line (on STB)       baseline                         discharged)
+                                          16 m            5,0 m
+                      52 m
+      Fuel                          from the centre       on the            750 t            100 t
+                   from the AP
+                                     line (on STB)       baseline
+                                          16 m            5,0 m
+                      52 m
+      Fuel                          from the centre       on the            750 t            empty
+                   from the AP
+                                    line (on PORT)       baseline
+
+
+  Sono noti dalle curve idrostatiche    = 96371 t, LCF = 147,54 m from AP, TPC = 106,50 t,
+  MCTC = 1235,14 t·m, KM = 14,50 m, KG = 13,66 m (con AP perpendicolare addietro, LCF ascissa
+  del centro della figura di galleggiamento, TPC dislocamento unitario, MCTC momento unitario
+                                                        baseline, KG quota del baricentro sulla
+  baseline).
+Pag. 2/4                                                       Sessione ordinaria 2015
+                                                               Seconda prova scritta
+
+
+
+
+    M576      ESAME DI STATO DI ISTRUZIONE SECONDARIA SUPERIORE
+                            Indirizzo: ITCN TRASPORTI LOGISTICA
+                            ARTICOLAZIONE CONDUZIONE MEZZO
+                            OPZIONE CONDUZIONE MEZZO NAVALE
+
+  Tema di: SCIENZE NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+
+  Determinare quanta zavorra scaricare per rendere la nave dritta trasversalmente, quindi calcolare
+  quanto bunker caricare considerando 3 giorni di navigazione per la traversata che si deve
+  intraprendere e prevedendo un ulteriore 10% di riserva (è noto il consumo giornaliero pari a 155 t).
+  Dete
+                                     Elbe, tralasciando i consumi, essendo Hamburg un porto fluviale
+  avente acqua completamente dolce.
+
+  Passage planning appraisal/planning
+
+  posizione WP2 ( =                   =              E) da cui si dirigerà sulla N Shipwash Buoy al
+  largo di Felixstowe, posta in WP3 ( =             N, =              E) punto di reporting VTS, con
+  funzione anche di racon
+  Ad Hamburg viene assegnato un ETD che prevede di sfruttare una tidal window tale da poter
+  lasciare la banchina in sicurezza (
+  13,8 m occorre partire entro le tf =
+  partenza sia sufficiente anche per i vincoli di Compagnia (che richiede 2,0 m) considerando la
+  propria immersione effettiva. Sono noti i dati di marea del giorno di partenza, la profondità in
+  banchina e la pressione atmosferica.
+
+  HW       18:00 18/06   h = 4,2 m
+  LW       01:10 19/06   h = 0,2 m
+  Depth = 12,50 m
+  PATM = 1021 hPa
+
+
+  Dopo il disormeggio e la navigazione sul fiume Elbe si prevede di raggiungere la Pilot Station in
+  7 h; da lì in poi si manterrà una velocità di 14,0 kts.
+  Determinare analiticamente cammino e rotta per il leg finale che conduce alla N Shipwash Buoy di
+  Felixstowe                                                                              = 19:40 del
+  19/06/2015. Dalla boa si valuta di raggiungere poi la pilot boarding position in 30 minuti.
+  Predisporre inoltre i dati da comunicare quando si raggiungerà il VTS reporting point, ricordando di
+                                                           pilot boarding position, sapendo che viene
+Pag. 3/4                                                       Sessione ordinaria 2015
+                                                               Seconda prova scritta
+
+
+
+
+    M576      ESAME DI STATO DI ISTRUZIONE SECONDARIA SUPERIORE
+                            Indirizzo: ITCN TRASPORTI LOGISTICA
+                            ARTICOLAZIONE CONDUZIONE MEZZO
+                            OPZIONE CONDUZIONE MEZZO NAVALE
+
+  Tema di: SCIENZE NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+
+  Passage planning execution/monitoring
+          del 19/06, poco dopo aver sbarcato il pilota, in navigazione con R V = 250° e V = 14 kts,
+  quando al GPS si legge ( =                     =             E) si rileva con la gyro il sorgere del
+  lembo superiore del Sole, ottenendo ag = 045,5° al Tc = 02 55m00s.
+                                                            h
+
+
+  Verificare il buon funzionamento della gyro sapendo che lo stato assoluto del cronometro è
+  K = +01m23s.
+  Più tardi, alle UTC = 12:32 del 19/06, navigando nella nebbia che nel frattempo si è alzata,
+                                   V = 220° e V = 14 kts, in assenza di vento e corrente rilevanti, si
+  hanno al radar i seguenti bersagli:
+
+                 Target                UT                  R                     Range
+                                                         Bearing                 [NM]
+                                      12:32               000°                     8,5
+                    A
+                                      12:38               000°                     7,5
+                                      12:32               +036°                    8,0
+                    B
+                                      12:38               +036°                    6,0
+                                      12:32               -175°                    7,5
+                    C
+                                      12:38               -175°                    7,5
+
+  Valutare la situazione cinematica e agire nel modo più opportuno specificando i valori che
+  descrivono il moto relativo dei bersagli anche in seguito ad eventuali manovre, sapendo che le
+  consegne del Comandante prevedono un CPA minimo di 1,5 mg.
+Pag. 4/4                                                                      Sessione ordinaria 2015
+                                                                              Seconda prova scritta
+
+
+
+
+        M576      ESAME DI STATO DI ISTRUZIONE SECONDARIA SUPERIORE
+                                   Indirizzo: ITCN TRASPORTI LOGISTICA
+                                    ARTICOLAZIONE CONDUZIONE MEZZO
+                                   OPZIONE CONDUZIONE MEZZO NAVALE
+
+   Tema di: SCIENZE NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+
+
+   SECONDA PARTE
+
+   1.    Relativamente alla fase di pianificazione della traversata si è detto che la stessa è stata eseguita
+                                                                       full ECDIS
+         normativa attuale in termini di uso esclusivo della cartografia elettronica, spiegare in cosa
+         consiste in tal caso la fase di appraisal, con particolare riferimento alla procedura di
+         aggiornamento del database ENC (anche in base alle eventuali esperienze lavorative del
+         candidato).
+
+   2.    Si è detto che si utilizzerà la funzione racon della N Shipwash Buoy al largo di Felixstowe
+
+         pubblicazioni nautiche se ne possono trovare le caratteristiche (anche in base alle eventuali
+         esperienze lavorative del candidato).
+
+   3.    Relativamente alla fase di esecuzione della navigazione si è dovuta affrontare una certa
+         situazione cinematica in ambito TSS: dopo aver chiarito cosa si intende con questa sigla,
+         esporre brevemente le indicazioni contenute nella Convenzione COLREG a tal riguardo (anche
+         in base alle eventuali esperienze lavorative del candidato).
+
+   4.    Si è detto che è stata incontrata nebbia durante la navigazione: esporre brevemente quali
+
+         previsione della possibilità che essa si formi.
+
+
+
+
+____________________________
+Durata massima della prova: 6 ore.
+È consentito         calcolatrice scientifica non programmabile, tavole numeriche, manuali tecnici, formulari, pubblicazioni
+nautiche.
+                 del dizionario bilingue (italiano-lingua del paese di provenienza) per i candidati di madrelingua non italiana.
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Astronomia Nautica — Argomento A | Navigazione</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+.t-hero-bg { background:radial-gradient(circle at 30% 50%, rgba(168,85,247,0.18), transparent 50%); }
+.t-eyebrow { color:#a855f7; background:rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.3); }
+.t-hero h1 span { background:linear-gradient(135deg, #a855f7, #c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-section h2 .section-num { color:#a855f7; }
+.formula-box { border-left:4px solid #a855f7; }
+.step::before { background:linear-gradient(135deg, #a855f7, #c084fc); }
+</style>
+</head>
+<body>
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li>
+      <li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">⭐ Macro-argomento A · 80% delle prove</div>
+    <h1>Astronomia Nautica<br><span>Effemeridi, Punto Astronomico, Retta di Altezza</span></h1>
+    <p>Il quesito di astronomia è ricorrente nelle prove: punto nave al crepuscolo (con stelle multiple), osservazione del sole all'alba/tramonto, FIX con retta di altezza. Pagine 4-10 del formulario + foto 550-559 del tuo quaderno.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="../formulario.html" class="btn btn-primary">📐 Formulario pp.4-10</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#correzioni">2. Catena di correzioni</a>
+        <a href="#calcolo">3. Calcolo punto nave</a>
+        <a href="#sole">4. Sole ortiva/tramonto</a>
+        <a href="#polare">5. Stella Polare</a>
+        <a href="#correlati">6. Correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="g-rotte.html">→ G · Rotte</a>
+        <a href="b-radar-colreg.html">→ B · Radar/COLREG</a>
+      </div>
+    </aside>
+
+    <main class="t-main">
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>L'idea chiave: prendi misure del cielo (altezza di un astro col sestante) e dell'orologio (Tc cronometro), poi confronti con quello che <em>avresti dovuto vedere</em> nella posizione stimata. La differenza dà l'<strong>intercetta</strong>, che ti riposiziona.</p>
+
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>hi</strong> = altezza istrumentale (letta al sestante)<br>
+          <strong>ho</strong> = altezza osservata (dopo correzione indice)<br>
+          <strong>hv</strong> = altezza vera (dopo tutte le correzioni)<br>
+          <strong>hs</strong> = altezza stimata (calcolata dalla DR)<br>
+          <strong>Δh = hv − hs</strong> = intercetta (positiva = verso astro, negativa = contraria)<br>
+          <strong>P</strong> = angolo al polo (longitudine del piede dell'astro rispetto al meridiano)<br>
+          <strong>δ</strong> = declinazione astro (da effemeridi)<br>
+          <strong>Z</strong> = azimut (direzione dell'astro sull'orizzonte)<br>
+          <strong>e</strong> = elevazione dell'occhio sopra il livello del mare<br>
+          <strong>γc</strong> = correzione d'indice del sestante<br>
+          <strong>K</strong> = correzione cronometro
+        </div>
+      </section>
+
+      <section id="correzioni" class="t-section">
+        <h2><span class="section-num">02.</span>La catena di correzioni (foto 552)</h2>
+        <p>Il sestante misura hi. Prima di usarla, devi correggerla in 4 passi:</p>
+        <div class="step-list">
+          <div class="step">
+            <h4>hi → ho (correzione indice)</h4>
+            <p><code>ho = hi + γc</code> · γc è una correzione strumentale costante per il tuo sestante.</p>
+          </div>
+          <div class="step">
+            <h4>ho → applicazione scaletta astronomica</h4>
+            <p>Si applica una serie di correzioni dalle tavole/effemeridi:<br>
+            <code>+γ</code> (correzione dip orizzonte per "e"), <code>+c1</code> (rifrazione media), <code>+c2</code> (semidiametro per sole/luna), <code>−1°</code> (correzione standard)</p>
+          </div>
+          <div class="step">
+            <h4>Sole/Luna: aggiungi semidiametro + parallasse</h4>
+            <p>Lembo inferiore: somma il SD; lembo superiore: sottrai. La parallasse di rifrazione è già nelle tavole.</p>
+          </div>
+          <div class="step">
+            <h4>Risultato: hv</h4>
+            <p>Hai l'altezza vera, pronta per il calcolo del FIX.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="calcolo" class="t-section">
+        <h2><span class="section-num">03.</span>Calcolo punto nave (FIX) con retta di altezza</h2>
+
+        <div class="formula-box">
+          <div class="lbl">Formule essenziali (Formulario p.8)</div>
+          sin h = sin φ · sin δ + cos φ · cos δ · cos P (altezza stimata)<br>
+          tan Z = sin P / (tan δ · cos φ − sin φ · cos P) (azimut)<br>
+          Δh = hv − hs (intercetta)
+        </div>
+
+        <div class="step-list">
+          <div class="step">
+            <h4>Tm = Tc + K (correzione cronometro)</h4>
+          </div>
+          <div class="step">
+            <h4>Dalle effemeridi: T (angolo orario Greenwich) e δ</h4>
+            <p>Per Sole/Luna/Pianeti: leggi T(v) e δ direttamente. Per stelle: T(γ) + AS = T*.</p>
+          </div>
+          <div class="step">
+            <h4>Angolo al polo locale</h4>
+            <p><code>P = T ± λ</code> (segno secondo emisfero). Se P > 180° usa Pe = 360 − P.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola hs e Z dalla posizione stimata (DR)</h4>
+            <p>Con le 2 formule del riquadro qui sopra.</p>
+          </div>
+          <div class="step">
+            <h4>Δh = hv − hs, e traccia la retta di altezza</h4>
+            <p>La retta è perpendicolare alla direzione dell'azimut, a distanza Δh dalla DR. Se Δh > 0 vai verso l'astro.</p>
+          </div>
+          <div class="step">
+            <h4>2+ stelle → intersezione = FIX</h4>
+            <p>Per ogni stella ottieni una retta. L'intersezione di 2-3 rette dà il punto nave reale. Con 3 rette si forma il "cocked hat" (triangolino).</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="sole" class="t-section">
+        <h2><span class="section-num">04.</span>Sole all'alba/tramonto — Amplitudine ortiva (foto 551)</h2>
+        <p>Quando il sole è all'orizzonte (h=0°), la sua direzione (amplitudine) si calcola facile:</p>
+        <div class="formula-box">
+          <div class="lbl">Amplitudine</div>
+          sin Ampla = sin δ / cos φ<br>
+          Prefisso: <strong>E</strong> all'alba, <strong>W</strong> al tramonto<br>
+          Suffisso: stesso segno di δ (N se δ&gt;0, S se δ&lt;0)
+        </div>
+        <p>Si usa per verificare la bussola (Quesito 2024 Q1): confronti Pv (vera) = E±Ampla con quello che leggi sulla bussola magnetica e girobussola.</p>
+      </section>
+
+      <section id="polare" class="t-section">
+        <h2><span class="section-num">05.</span>Stella Polare — calcolo latitudine</h2>
+        <p>La Polare è speciale: la sua altezza ≈ latitudine. Formula precisa (Formulario p.9):</p>
+        <div class="formula-box">
+          <div class="lbl">Latitudine con Polare</div>
+          φ = hv + a0 + a1 + a2 − 1°<br>
+          dove a0, a1, a2 sono coefficienti dalle effemeridi
+        </div>
+        <p>Comodo per latitudine quando vedi solo la Polare (notte chiara nell'emisfero N).</p>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">06.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📐 Dal Formulario</h3>
+          <div class="related-grid">
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 4</div><div class="rc-title">Moto diurno + Ampiezza</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 5-6</div><div class="rc-title">Stelle, Sole, Astro X</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 8</div><div class="rc-title">Tempi + Pn astronomico</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 9-10</div><div class="rc-title">Scalette + Tabella FIX</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📓 Dal Quaderno (10 pagine)</h3>
+          <div class="related-grid">
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 550</div><div class="rc-title">Effemeridi teoria</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 551</div><div class="rc-title">Sole al tramonto</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 552</div><div class="rc-title">Schema correzione altezze</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 553-558</div><div class="rc-title">Punti astro multi-stelle</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 559</div><div class="rc-title">Costruzione retta altezza</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📜 Nelle prove d'esame (4/5 prove!)</h3>
+          <div class="related-grid">
+            <a href="../prove.html" class="related-card"><div class="rc-label">2024 Q1</div><div class="rc-title">Sole alba + bussola</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2024 Exec</div><div class="rc-title">Astro X + Spica</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2018 Q1</div><div class="rc-title">Sole + meridiana</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2016 Q1</div><div class="rc-title">Crepuscolo 2 stelle</div></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento A: Astronomia Nautica</p></div></footer>
+
+<script src="../../assets/js/app.js"></script>
+<script>
+const tocLinks = document.querySelectorAll('.t-toc a');
+document.querySelectorAll('.t-section').forEach(s => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); }), {rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+</body>
+</html>

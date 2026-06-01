@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulatore quesiti — Seconda prova | Navigazione</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.s-hero { padding:60px 0 30px; text-align:center; }
+.s-hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:0.5rem; }
+.s-hero p { color:var(--text-secondary); max-width:680px; margin:0 auto; }
+
+.macro-badge { display:inline-block; padding:2px 8px; border-radius:var(--radius-full); font-size:0.65rem; font-weight:700; }
+.macro-G { background:#10b981; color:#000; }
+.macro-A { background:#a855f7; color:#fff; }
+.macro-B { background:#f97316; color:#fff; }
+.macro-C { background:#0ea5e9; color:#fff; }
+.macro-D { background:#eab308; color:#000; }
+.macro-E { background:#06b6d4; color:#000; }
+.macro-F { background:#ef4444; color:#fff; }
+.macro-M { background:#84cc16; color:#000; }
+.macro-N { background:#6366f1; color:#fff; }
+.macro-S { background:#ec4899; color:#fff; }
+
+.sim-main { padding:40px 0 80px; }
+.sim-config { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:2rem; }
+.sim-config h2 { font-size:1.1rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
+.sim-filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.25rem; }
+.sim-chip { padding:6px 14px; border-radius:var(--radius-full); background:var(--bg-input); border:1px solid var(--border); color:var(--text-secondary); font-size:0.8rem; font-weight:600; cursor:pointer; transition:all var(--transition); display:flex; align-items:center; gap:6px; }
+.sim-chip:hover { border-color:var(--accent); color:var(--text-primary); }
+.sim-chip.active { background:var(--accent); color:var(--navy-900); border-color:var(--accent); }
+.sim-actions { display:flex; gap:0.75rem; flex-wrap:wrap; }
+
+.sim-quesito { background:var(--bg-card); border:2px solid var(--accent); border-radius:var(--radius-lg); padding:2rem; margin-bottom:2rem; display:none; position:relative; }
+.sim-quesito.visible { display:block; }
+.sim-quesito-header { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border); }
+.sim-quesito-title { font-size:1.25rem; margin:0; }
+.sim-quesito-meta { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:0.5rem; }
+.sim-quesito-text { background:var(--bg-input); padding:1.25rem; border-radius:var(--radius-md); border-left:3px solid var(--primary); font-size:0.95rem; line-height:1.7; color:var(--text-primary); margin-bottom:1.5rem; }
+
+.sim-timer { background:var(--navy-900); border:1px solid var(--accent); border-radius:var(--radius-md); padding:0.75rem 1.25rem; font-family:var(--font-mono); font-size:1.2rem; color:var(--accent); font-weight:700; }
+
+.sim-hint { background:var(--bg-input); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.25rem; margin-top:1rem; }
+.sim-hint h4 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--accent); margin-bottom:0.75rem; display:flex; align-items:center; gap:0.5rem; }
+.sim-hint .hint-content { color:var(--text-secondary); font-size:0.9rem; line-height:1.6; }
+.sim-hint .hint-content strong { color:var(--text-primary); }
+
+.sim-quesito-links { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:1rem; }
+.sim-quesito-links a { font-size:0.8rem; padding:5px 12px; border-radius:var(--radius-md); background:var(--bg-input); color:var(--text-primary); text-decoration:none; border:1px solid var(--border); transition:all var(--transition); }
+.sim-quesito-links a:hover { border-color:var(--accent); color:var(--accent); }
+
+.sim-stats { background:var(--bg-surface); border-radius:var(--radius-lg); padding:1.5rem; }
+.sim-stats h2 { font-size:1rem; margin-bottom:1rem; }
+.sim-stats-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(120px,1fr)); gap:0.75rem; }
+.sim-stat { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:0.75rem; text-align:center; }
+.sim-stat-num { font-family:var(--font-mono); font-size:1.5rem; color:var(--accent); font-weight:700; line-height:1; }
+.sim-stat-lbl { font-size:0.7rem; color:var(--text-secondary); margin-top:0.25rem; }
+
+.empty-state { text-align:center; padding:3rem 1rem; color:var(--text-secondary); }
+.empty-state .icon { font-size:4rem; opacity:0.3; margin-bottom:1rem; }
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">🏠 Home</a></li>
+      <li><a href="../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="s-hero">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Allenamento d'esame</div>
+    <h1>🎯 Simulatore quesiti</h1>
+    <p>Genera un quesito casuale dalle prove ministeriali 2015-2024. Allena la mente sotto cronometro e impara a riconoscere il pattern.</p>
+    <div style="margin-top:1.25rem"><a href="index.html" class="btn btn-secondary">← Hub Navigazione</a></div>
+  </div>
+</section>
+
+<section class="sim-main">
+  <div class="container">
+
+    <div class="sim-config">
+      <h2>⚙️ Configurazione</h2>
+      <div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.75rem">Quali tipi di quesito vuoi allenare? (multi-selezione)</div>
+      <div class="sim-filters" id="sim-filters">
+        <button class="sim-chip active" data-topic="A"><span class="macro-badge macro-A">A</span> Astronomia</button>
+        <button class="sim-chip active" data-topic="F"><span class="macro-badge macro-F">F</span> Stabilità</button>
+        <button class="sim-chip active" data-topic="B"><span class="macro-badge macro-B">B</span> Radar/COLREG</button>
+        <button class="sim-chip active" data-topic="G"><span class="macro-badge macro-G">G</span> Rotte</button>
+        <button class="sim-chip" data-topic="M"><span class="macro-badge macro-M">M</span> Meteo</button>
+        <button class="sim-chip" data-topic="N"><span class="macro-badge macro-N">N</span> Normativa</button>
+        <button class="sim-chip" data-topic="S"><span class="macro-badge macro-S">S</span> SAR/GMDSS</button>
+      </div>
+      <div class="sim-actions">
+        <button class="btn btn-primary" id="generate-btn">🎲 Genera quesito casuale</button>
+        <button class="btn btn-secondary" id="reset-btn">Reset</button>
+      </div>
+    </div>
+
+    <div class="sim-quesito" id="sim-quesito">
+      <div class="sim-quesito-header">
+        <div>
+          <h2 class="sim-quesito-title" id="q-title">—</h2>
+          <div class="sim-quesito-meta" id="q-meta"></div>
+        </div>
+        <div class="sim-timer" id="q-timer">00:00</div>
+      </div>
+      <div class="sim-quesito-text" id="q-text">—</div>
+
+      <button class="btn btn-primary" id="hint-btn" style="margin-right:0.5rem">💡 Mostra approccio</button>
+      <button class="btn btn-secondary" id="another-btn">🎲 Altro quesito</button>
+
+      <div class="sim-hint" id="q-hint" style="display:none">
+        <h4>💡 Come si imposta</h4>
+        <div class="hint-content" id="hint-content"></div>
+        <div class="sim-quesito-links" id="q-links"></div>
+      </div>
+    </div>
+
+    <div id="empty-state" class="empty-state">
+      <div class="icon">🎯</div>
+      <h3 style="font-size:1.1rem;margin-bottom:0.5rem">Pronto a iniziare?</h3>
+      <p>Seleziona almeno un argomento e clicca "Genera quesito casuale".</p>
+    </div>
+
+    <div class="sim-stats" style="margin-top:2rem">
+      <h2>📊 Statistiche sessione</h2>
+      <div class="sim-stats-grid">
+        <div class="sim-stat"><div class="sim-stat-num" id="stat-total">0</div><div class="sim-stat-lbl">Quesiti generati</div></div>
+        <div class="sim-stat"><div class="sim-stat-num" id="stat-A">0</div><div class="sim-stat-lbl">Astronomia</div></div>
+        <div class="sim-stat"><div class="sim-stat-num" id="stat-F">0</div><div class="sim-stat-lbl">Stabilità</div></div>
+        <div class="sim-stat"><div class="sim-stat-num" id="stat-B">0</div><div class="sim-stat-lbl">Radar</div></div>
+        <div class="sim-stat"><div class="sim-stat-num" id="stat-time">00:00</div><div class="sim-stat-lbl">Tempo totale</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Simulatore quesiti tipo seconda prova</p></div></footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+// Tutti i quesiti delle prove + hint per ognuno
+const QUESITI = [
+  // 2024 A063
+  {anno:2024, n:1, topic:"A", subtopic:"Bussola + sole all'alba (ortiva)", text:"Il 20 giugno 2024, in posizione φ=21°05.1'N, λ=127°20.9'W, navigando per RV=080° e V=16 kts, si rileva il sorgere del lembo superiore del Sole. Con bussola magnetica ab=070°, con girobussola ag=065°. Sono note: declinazione magnetica d(2020)=10°22'W (variazione annua 4'E) e deviazione attesa δ=4.3°E. Verificare il buon funzionamento delle bussole con tolleranza ±0.3°.", hint:"<strong>Step 1:</strong> Calcola l'amplitudine ortiva del Sole: sin Ampla = sin δ / cos φ.<br><strong>Step 2:</strong> Da Ampla → Pv (vera) all'orizzonte = E ± Ampla.<br><strong>Step 3:</strong> Confronta Pv con ab (Pm=ab+/-deviazione+/-declinazione corrente) e con ag (Pv=ag+/-correzione girobussola).<br><strong>Step 4:</strong> Aggiorna declinazione: d(2024) = d(2020) + 4 anni × 4'E = ridurre di 16'.<br><strong>Step 5:</strong> Confronta con tolleranza 0.3°. Pagina formulario: 5 (Bussola) e 4 (Amplitudine).", links:[{label:"📐 Formulario p4", href:"formulario.html"},{label:"📓 Foto quaderno 551", href:"esercizi.html"}]},
+  {anno:2024, n:2, topic:"F", subtopic:"Falla — GM e immersioni a compartimento allagato", text:"Una nave con TF=8.10 m, TA=8.30 m, Δ=17560 t, KG=8.10 m, subisce una falla in un locale isolato simmetrico al piano diametrale (μ=60%, dim 12.5×13.0×7.5m). Dati: LPP=143.16m, MCTC=200.22 t·m, TPC=23.66 t, LCF=70.41m, KM=KM'=8.27m. Coordinate G locale: XG=90.20m dalla PPAD, ZG=7.55m. Trovare GM' e immersioni estreme a compartimento allagato.", hint:"<strong>Step 1:</strong> v = L × W × D × μ = 12.5 × 13.0 × 7.5 × 0.60 = volume allagato.<br><strong>Step 2:</strong> a = L × W × μ = area sezione orizzontale allagata.<br><strong>Step 3:</strong> Sovraimmersione δTm = v / (AW − a). AW si ricava da TPC: AW = TPC × 100 / ρ.<br><strong>Step 4:</strong> Nuovo KG' invariato (no peso aggiunto, sposto v). Nuovo BM' = Ix/(V−v).<br><strong>Step 5:</strong> GM' = KM' − KG'.<br><strong>Step 6:</strong> Variazione assetto CT = Δ·B'B''/(100·MCTC). Calcola T'A e T'F. Pagine: 16 (falla) e 11-13 (stabilità).", links:[{label:"📐 Formulario p16", href:"formulario.html"},{label:"📓 Foto quaderno 575", href:"esercizi.html"}]},
+  {anno:2024, n:3, topic:"N", subtopic:"BWM Convention — zavorra", text:"Si delinei l'inquadramento normativo per il trattamento della zavorra a bordo, in ambito di prevenzione dell'inquinamento marino e alterazione del microclima batterico. Specificare legislazione, dotazioni tecniche, certificazione.", hint:"<strong>BWM Convention (IMO, 2004, in vigore 2017):</strong> Ballast Water Management Convention.<br><strong>D-1 standard:</strong> ricambio in mare aperto (cessato 2024 per nuove navi).<br><strong>D-2 standard:</strong> trattamento (UV, elettroclorinazione, filtrazione) con limiti su microrganismi viventi.<br><strong>Documenti:</strong> Ballast Water Management Plan, Ballast Water Record Book, IBWMC (International Ballast Water Management Certificate).<br><strong>Italia:</strong> recepimento via decreto. Controllo da PSC (Port State Control).", links:[]},
+  {anno:2024, n:4, topic:"M", subtopic:"Circolazione atmosferica", text:"Descrivere la circolazione atmosferica e illustrare i concetti chiave che riequilibrano i gradienti termico-barici attraverso venti e correnti.", hint:"<strong>Modello a 3 celle</strong>: Hadley (0-30°), Ferrel (30-60°), Polare (60-90°).<br><strong>Forza di Coriolis:</strong> deviazione a destra nell'emisfero Nord, sinistra a Sud.<br><strong>Alta pressione = anticiclone</strong> (aria discendente, tempo stabile); <strong>bassa pressione = ciclone</strong> (aria ascendente, perturbato).<br><strong>Alisei</strong> (trade winds): tropicali costanti da E.<br><strong>Westerlies:</strong> medie latitudini da W.<br><strong>Correnti oceaniche:</strong> gyre circolari (Gulf Stream, Kuroshio) trasportano calore. Bilancio energetico equatoriale-polare.", links:[]},
+  // 2023 A029 (B)
+  {anno:2023, n:1, topic:"G", subtopic:"Ortodromia Cabo San Lucas → Honolulu", text:"Pianificare la traversata Cabo San Lucas MEX (22°40'N, 109°47'W) → WP ingresso Honolulu (21°17'N, 157°14'W). Traiettoria ortodromica con spezzata WP ogni 24h. Trovare rotta iniziale, finale, cammino, coordinate vertice, ETA teorico locale, primi 2 WP della spezzata e rotta lossodromica di partenza. V=17.7 kts, ETD locale 0430 22/06/2023.", hint:"<strong>Step 1 — Cammino ortodromico:</strong> mo = cos⁻¹(sin φA·sin φB + cos φA·cos φB·cos Δλ) × 60.<br><strong>Step 2 — Rotta iniziale Ri:</strong> tan Ri = sin Δλ / (tan φB·cos φA − sin φA·cos Δλ).<br><strong>Step 3 — Vertice (φV, λV):</strong> φV = cos⁻¹(cos φA·sin Ri); λV via Napier.<br><strong>Step 4 — WP equidistanti:</strong> ogni 24h: cammino = V × 24 = 425 mg. Spezzata = sequenza di lossodromie tra WP.<br><strong>Step 5 — ETA:</strong> tempo totale = mo/V, +fuso Hawaii GMT-10.<br><strong>Step 6 — Lossodromia tratto1:</strong> tan Rv = Δλ·cos φm / Δφ. Pagina 3 (ortodromia).", links:[{label:"📐 Formulario p3", href:"formulario.html"}]},
+  {anno:2023, n:2, topic:"F", subtopic:"Movimentazione carico — 3 operazioni", text:"Δ=8420t, KG=5.15, LCG=62.6, KM=6.21. Operazioni: P1=190t sbarcato da z=4.8, Xp=76.4. P2=90t spostato da (z=7.9, Xp=50) a (z=2.1, Xp=80). P3=300t imbarcato a z=6.9, Xp=32.5. KM'=6.22. MCTC=310 t·m/cm. Trovare nuovo KG, coeff. resistenza inclinazioni prima/dopo, indicare se più dura/cedevole, variazione assetto.", hint:"<strong>Step 1 — Nuovo Δ':</strong> Δ' = Δ − P1 + P3 = 8420 − 190 + 300 = 8530t. P2 non cambia Δ.<br><strong>Step 2 — Nuovo KG:</strong> KG' = (Δ·KG + ΣPi·zi − P1·z1) / Δ' (rispetta segni: sbarco con −P, imbarco con +P, spostamento con (zf−zi)).<br><strong>Step 3 — Coeff. resistenza alle inclinazioni:</strong> Δ·GM (prima e dopo). GM = KM − KG; GM' = KM' − KG'.<br><strong>Step 4 — Dura/cedevole:</strong> GM' > GM ⇒ più dura. GM' < GM ⇒ più cedevole.<br><strong>Step 5 — Variazione assetto:</strong> CT = (ΣPi·di)/(100·MCTC), dove di = Xi − LCG (o LCF).", links:[{label:"📐 Formulario p11-13", href:"formulario.html"},{label:"📓 Foto 573-575", href:"esercizi.html"}]},
+  // 2018
+  {anno:2018, n:1, topic:"A", subtopic:"Sole lembo inferiore + meridiana", text:"DR(26°09.4'S, 157°41.6'W), RV=065.8°, V=11kts. Sole Tc=08:16:32 hio=30°29'. Meridiano (culminazione) hio=40°43'. K=+00m08s, γc=-3.0', e=22m. Calcolare punto nave al meridiano + tf (tempo locale).", hint:"<strong>Step 1 — Correzione altezze:</strong> hi → ho = hi + δi (correzione indice); poi ho → hv tramite scaletta sole (γ + c1 + c2 − 1grad + correzione 'e' per occhio).<br><strong>Step 2 — Tm cronometro:</strong> Tm = Tc + K.<br><strong>Step 3 — Effemeridi del sole 27/06:</strong> ricava T(v), δ.<br><strong>Step 4 — Angolo al polo P:</strong> per la prima osservazione, calcola Δh = hv − hs (con sin h = sin φ·sin δ + cos φ·cos δ·cos P).<br><strong>Step 5 — Meridiano:</strong> al passaggio meridiano P=0, quindi hv = 90° − |φ − δ|. Inversamente φ = 90° − hv ± δ.<br><strong>Step 6 — Trasporto retta osservazione 1 al meridiano</strong> (Δm = V·Δt/60), poi intersezione.<br><strong>tf:</strong> tempo locale = Tm + λ/15 (con segno).", links:[{label:"📐 Formulario p8-10", href:"formulario.html"},{label:"📓 Foto quaderno 552-555", href:"esercizi.html"}]},
+  {anno:2018, n:2, topic:"M", subtopic:"Cicloni tropicali (assenza zona)", text:"Descrivere i cicloni tropicali (formazione, struttura, frequenza, moto, rischi sia in porto sia in navigazione). Spiegare perché sono quasi assenti tra Auckland e Panama in giugno.", hint:"<strong>Formazione:</strong> acqua mare ≥ 26.5°C su prof. 50m, divergenza in quota, bassa shear verticale, lontano dall'equatore (Coriolis necessaria).<br><strong>Struttura:</strong> occhio centrale (calma), eyewall (venti max), rainbands.<br><strong>Frequenza emisfero Nord:</strong> stagione giugno-novembre (Atlantico, Pacifico NW, NE).<br><strong>Emisfero Sud:</strong> dicembre-aprile (a giugno è inverno australe → no cicloni).<br><strong>Pacifico SE (rotta verso Panama):</strong> acque fredde della corrente di Humboldt impediscono SST≥26.5°C anche in estate.<br><strong>Rischio in porto:</strong> ormeggi, dragaggio, evacuazione. <strong>In nav:</strong> evitare 1° quadrante (NH), 4° quadrante (SH).", links:[]},
+  // 2016
+  {anno:2016, n:1, topic:"A", subtopic:"FIX crepuscolo 2 stelle", text:"Crepuscolo vespertino 20/06, (42°14.9'N, 028°22.7'W). UT 22:14:06 Stella centrale Corona Boreale (Alphecca) hi=68°05.7'. UT 22:17:00 Stella coda Cigno (Deneb) hi=25°43.7'. e=18m, no correzione indice (γi=0). Calcolare coordinate Pn.", hint:"<strong>Step 1 — Identifica stelle:</strong> Alphecca (α Coronae Borealis), Deneb (α Cygni). Cerca δ e AS in effemeridi.<br><strong>Step 2 — Correzione altezza:</strong> ho = hi (γi=0). hv = ho − correzione 'e' (rifrazione e altezza occhio).<br><strong>Step 3 — Per ogni stella:</strong> calcola P (angolo al polo) e azimut a partire dalla DR.<br><strong>Step 4 — Altezza stimata:</strong> sin hs = sin φ·sin δ + cos φ·cos δ·cos P.<br><strong>Step 5 — Δh = hv − hs:</strong> Intercetta, direzione = azimut.<br><strong>Step 6 — Traccia 2 rette di altezza</strong> e intersezione = FIX. Anche con sola 2 stelle, l'intersezione dà il Pn.<br><strong>Trasporto:</strong> tra le 2 osservazioni Δt = 3 min × V ≈ piccolo, ma da considerare.", links:[{label:"📐 Formulario p8-10", href:"formulario.html"},{label:"📓 Foto 553-557", href:"esercizi.html"}]},
+  // 2015
+  {anno:2015, n:3, topic:"B", subtopic:"TSS + COLREG", text:"In ambito TSS si è dovuta affrontare una situazione cinematica. Spiegare cos'è il TSS e citare le indicazioni COLREG a riguardo.", hint:"<strong>TSS</strong> = Traffic Separation Scheme: corridoi di navigazione obbligatori in zone congestionate (Canale della Manica, Bosforo, etc.) decisi da IMO.<br><strong>Regola COLREG 10</strong> (specifica per TSS):<br>• Navigare nella direzione del traffic flow della corsia.<br>• Tenersi clear of separation line/zone.<br>• Attraversare il TSS con angolo prossimo a 90° (right angle).<br>• Navi <20m e vela non devono ostacolare navi soggette al TSS.<br>• Pesca non deve ostacolare il traffico nelle lanes.<br>• Navi al limite della costa: prediligere l'inshore traffic zone solo se necessario.", links:[]}
+];
+
+let activeTopics = new Set(["A","F","B","G"]);
+let currentTimer = null;
+let timerSeconds = 0;
+let stats = {total:0, A:0, F:0, B:0, totalTime:0};
+
+document.querySelectorAll('.sim-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('active');
+    const t = chip.dataset.topic;
+    if (chip.classList.contains('active')) activeTopics.add(t);
+    else activeTopics.delete(t);
+  });
+});
+
+function fmt(sec){
+  const m = Math.floor(sec/60);
+  const s = sec%60;
+  return String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+}
+
+function startTimer(){
+  clearInterval(currentTimer);
+  timerSeconds = 0;
+  document.getElementById('q-timer').textContent = '00:00';
+  currentTimer = setInterval(() => {
+    timerSeconds++;
+    document.getElementById('q-timer').textContent = fmt(timerSeconds);
+  }, 1000);
+}
+
+function generate(){
+  const available = QUESITI.filter(q => activeTopics.has(q.topic));
+  if (available.length === 0) {
+    alert('Seleziona almeno un argomento!');
+    return;
+  }
+  const q = available[Math.floor(Math.random() * available.length)];
+  document.getElementById('empty-state').style.display = 'none';
+  const sim = document.getElementById('sim-quesito');
+  sim.classList.add('visible');
+  document.getElementById('q-title').textContent = `${q.subtopic}`;
+  document.getElementById('q-meta').innerHTML = `<span class="macro-badge macro-${q.topic}">${q.topic}</span> · Quesito ${q.n} · Prova ${q.anno}`;
+  document.getElementById('q-text').textContent = q.text;
+  document.getElementById('q-hint').style.display = 'none';
+  document.getElementById('hint-content').innerHTML = q.hint;
+  document.getElementById('q-links').innerHTML = (q.links||[]).map(l => `<a href="${l.href}">${l.label}</a>`).join('');
+  startTimer();
+  stats.total++;
+  if (stats[q.topic] !== undefined) stats[q.topic]++;
+  updateStats();
+  sim.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function updateStats(){
+  document.getElementById('stat-total').textContent = stats.total;
+  document.getElementById('stat-A').textContent = stats.A;
+  document.getElementById('stat-F').textContent = stats.F;
+  document.getElementById('stat-B').textContent = stats.B;
+  document.getElementById('stat-time').textContent = fmt(stats.totalTime + timerSeconds);
+}
+
+document.getElementById('generate-btn').addEventListener('click', generate);
+document.getElementById('another-btn').addEventListener('click', () => {
+  stats.totalTime += timerSeconds;
+  generate();
+});
+document.getElementById('hint-btn').addEventListener('click', () => {
+  document.getElementById('q-hint').style.display = 'block';
+});
+document.getElementById('reset-btn').addEventListener('click', () => {
+  clearInterval(currentTimer);
+  timerSeconds = 0;
+  stats = {total:0, A:0, F:0, B:0, totalTime:0};
+  updateStats();
+  document.getElementById('sim-quesito').classList.remove('visible');
+  document.getElementById('empty-state').style.display = 'block';
+});
+</script>
+
+</body>
+</html>

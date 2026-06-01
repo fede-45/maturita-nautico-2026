@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maree e Correnti — Argomento C | Navigazione</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<style>
+.t-hero { padding:80px 0 40px; position:relative; overflow:hidden; }
+.t-hero-bg { position:absolute; inset:0; background:radial-gradient(circle at 20% 50%, rgba(14,165,233,0.18), transparent 50%); pointer-events:none; }
+.t-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:0.85rem; color:#0ea5e9; background:rgba(14,165,233,0.12); border:1px solid rgba(14,165,233,0.3); padding:5px 14px; border-radius:var(--radius-full); margin-bottom:1rem; font-weight:600; }
+.t-hero h1 { font-size:clamp(2rem,5vw,3rem); margin-bottom:0.5rem; }
+.t-hero h1 span { background:linear-gradient(135deg, #0ea5e9, #38bdf8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-hero p { color:var(--text-secondary); font-size:1.05rem; max-width:780px; line-height:1.7; }
+
+/* Sidebar layout */
+.t-layout { display:grid; grid-template-columns:240px 1fr; gap:2rem; padding:40px 0; }
+.t-sidebar { position:sticky; top:80px; max-height:calc(100vh - 120px); overflow-y:auto; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.25rem; }
+.t-sidebar h3 { font-size:0.8rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:0.75rem; }
+.t-toc { display:flex; flex-direction:column; gap:2px; margin-bottom:1.25rem; }
+.t-toc a { padding:8px 12px; color:var(--text-secondary); text-decoration:none; font-size:0.85rem; border-radius:var(--radius-sm); transition:all var(--transition); border-left:2px solid transparent; }
+.t-toc a:hover { background:var(--bg-input); color:var(--text-primary); border-left-color:var(--accent); }
+.t-toc a.active { background:var(--bg-input); color:var(--accent); border-left-color:var(--accent); font-weight:600; }
+
+.t-main { min-width:0; }
+.t-section { margin-bottom:3rem; scroll-margin-top:80px; }
+.t-section h2 { font-size:1.6rem; margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; padding-bottom:0.75rem; border-bottom:2px solid var(--border); }
+.t-section h2 .section-num { font-family:var(--font-mono); color:#0ea5e9; opacity:0.7; }
+.t-section h3 { font-size:1.15rem; margin:1.5rem 0 0.75rem; color:var(--accent); }
+.t-section p { font-size:0.95rem; line-height:1.7; margin-bottom:1rem; color:var(--text-primary); }
+.t-section p strong { color:var(--accent); }
+
+/* Formula box */
+.formula-box { background:var(--bg-card); border:1px solid var(--border); border-left:4px solid #0ea5e9; border-radius:var(--radius-md); padding:1.25rem 1.5rem; margin:1rem 0; font-family:var(--font-mono); font-size:1.05rem; color:var(--text-primary); }
+.formula-box .lbl { font-family:var(--font-main); font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:0.5rem; }
+.formula-box .desc { font-family:var(--font-main); font-size:0.8rem; color:var(--text-secondary); margin-top:0.4rem; line-height:1.5; }
+
+/* Step list */
+.step-list { display:flex; flex-direction:column; gap:1rem; counter-reset:step; margin:1.5rem 0; }
+.step { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.25rem 1.5rem 1.25rem 3.5rem; position:relative; counter-increment:step; }
+.step::before { content:counter(step); position:absolute; left:1rem; top:1.25rem; width:32px; height:32px; background:linear-gradient(135deg,#0ea5e9,#38bdf8); color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-family:var(--font-mono); }
+.step h4 { font-size:1rem; margin-bottom:0.5rem; color:var(--text-primary); }
+.step p { font-size:0.9rem; margin-bottom:0.5rem; color:var(--text-secondary); }
+.step p:last-child { margin-bottom:0; }
+.step code { background:var(--bg-input); padding:1px 6px; border-radius:3px; font-family:var(--font-mono); color:var(--accent); font-size:0.85rem; }
+
+/* Worked example */
+.example { background:linear-gradient(135deg, rgba(245,166,35,0.08), rgba(14,165,233,0.05)); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; margin:1.5rem 0; }
+.example-header { display:flex; align-items:center; gap:0.5rem; margin-bottom:1rem; }
+.example-header .ex-tag { background:var(--accent); color:var(--navy-900); padding:3px 10px; border-radius:var(--radius-sm); font-size:0.75rem; font-weight:700; }
+.example-header h3 { margin:0; color:var(--text-primary); font-size:1.05rem; }
+.example-given { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:0.5rem; margin-bottom:1rem; }
+.given-item { background:var(--bg-input); padding:0.5rem 0.75rem; border-radius:var(--radius-sm); border-left:3px solid var(--primary); font-size:0.85rem; font-family:var(--font-mono); }
+.given-item .gk { color:var(--text-muted); font-size:0.7rem; display:block; }
+.example-solution { background:var(--bg-base); border:1px dashed var(--border); border-radius:var(--radius-md); padding:1rem; font-size:0.9rem; line-height:1.7; }
+.example-solution h4 { font-size:0.85rem; color:var(--accent); margin-bottom:0.5rem; text-transform:uppercase; letter-spacing:0.5px; }
+.example-result { background:rgba(16,185,129,0.1); border-left:3px solid #10b981; padding:0.75rem 1rem; border-radius:0 var(--radius-sm) var(--radius-sm) 0; margin-top:1rem; font-family:var(--font-mono); color:#10b981; font-size:0.95rem; }
+
+/* Pitfall */
+.pitfall { background:rgba(239,68,68,0.06); border:1px solid rgba(239,68,68,0.2); border-left:4px solid #ef4444; border-radius:var(--radius-md); padding:1rem 1.25rem; margin:1rem 0; }
+.pitfall .pf-title { font-size:0.85rem; font-weight:700; color:#ef4444; margin-bottom:0.4rem; }
+.pitfall p { font-size:0.88rem; margin:0; color:var(--text-secondary); }
+
+/* Diagram */
+.diagram { background:#fff; border-radius:var(--radius-md); padding:1rem; margin:1rem 0; }
+.diagram svg { width:100%; height:auto; display:block; }
+
+/* Related */
+.related { margin-top:2rem; padding:1.5rem; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); }
+.related h3 { font-size:0.9rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:0.75rem; }
+.related-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(180px,1fr)); gap:0.75rem; }
+.related-card { background:var(--bg-input); border:1px solid var(--border); border-radius:var(--radius-md); padding:0.75rem 1rem; text-decoration:none; color:var(--text-primary); transition:all var(--transition); }
+.related-card:hover { border-color:var(--accent); transform:translateY(-2px); }
+.related-card .rc-label { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; }
+.related-card .rc-title { font-size:0.9rem; font-weight:600; margin-top:0.2rem; }
+
+@media(max-width:900px){
+  .t-layout{grid-template-columns:1fr;}
+  .t-sidebar{position:static; max-height:none;}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li>
+      <li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">🌊 Macro-argomento C · 100% delle prove</div>
+    <h1>Maree e Correnti<br><span>Calcolo dell'altezza di marea ad un'ora data</span></h1>
+    <p>L'argomento più "sicuro" della seconda prova: <strong>esce SEMPRE</strong> nella prima parte (passage planning) per calcolare la marea al momento dell'arrivo in porto. Si combina con UKC e Squat. Una volta capita la formula cosinusoide diventa meccanica. Qui c'è il metodo step-by-step di Federico.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="../formulario.html#17" class="btn btn-primary">📐 Formulario p17-18</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc" id="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#formule">2. Formule chiave</a>
+        <a href="#diretto">3. Problema diretto</a>
+        <a href="#inverso">4. Problema inverso</a>
+        <a href="#esempio">5. Esempio svolto</a>
+        <a href="#correnti">6. Correnti di marea</a>
+        <a href="#errori">7. Errori comuni</a>
+        <a href="#correlati">8. Materiali correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="d-ukc-squat.html">→ D · UKC + Squat</a>
+        <a href="e-air-draft.html">→ E · Air Draft</a>
+        <a href="f-stabilita.html">→ F · Stabilità</a>
+      </div>
+    </aside>
+
+    <main class="t-main">
+
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>La marea è un'oscillazione <strong>sinusoidale</strong> del livello del mare causata principalmente dalla Luna (e in parte dal Sole). Nella maggior parte dei posti si hanno <strong>due alte e due basse maree</strong> al giorno (regime semidiurno).</p>
+
+        <h3>Il vocabolario</h3>
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>HW</strong> (High Water) = alta marea — livello massimo nel ciclo<br>
+          <strong>LW</strong> (Low Water) = bassa marea — livello minimo<br>
+          <strong>LM</strong> = livello medio = (HW + LW) / 2<br>
+          <strong>A</strong> = ampiezza = HW − LW<br>
+          <strong>α (semiampiezza)</strong> = A / 2<br>
+          <strong>T</strong> = periodo = tempo tra HW e LW successivi (≈ 6h)<br>
+          <strong>CD</strong> (Chart Datum) = livello zero della carta nautica
+          <div class="desc">In Italia il CD = Lowest Astronomical Tide (LAT) o MLLWS a seconda del portolano.</div>
+        </div>
+
+        <h3>Lo schema verticale</h3>
+        <div class="diagram">
+          <svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#7dd3fc"/>
+                <stop offset="100%" stop-color="#0c4a6e"/>
+              </linearGradient>
+            </defs>
+            <!-- Fondo -->
+            <rect x="0" y="240" width="600" height="40" fill="#a16207"/>
+            <text x="20" y="265" font-family="Inter" font-size="11" fill="#000">Fondale marino</text>
+            <!-- Linee livelli -->
+            <line x1="80" y1="50" x2="560" y2="50" stroke="#dc2626" stroke-dasharray="4,2" stroke-width="1.5"/>
+            <text x="565" y="54" font-family="Inter" font-size="12" fill="#dc2626" font-weight="700">HW</text>
+            <line x1="80" y1="110" x2="560" y2="110" stroke="#9333ea" stroke-dasharray="4,2" stroke-width="1.5"/>
+            <text x="565" y="114" font-family="Inter" font-size="12" fill="#9333ea" font-weight="700">LM</text>
+            <line x1="80" y1="170" x2="560" y2="170" stroke="#2563eb" stroke-dasharray="4,2" stroke-width="1.5"/>
+            <text x="565" y="174" font-family="Inter" font-size="12" fill="#2563eb" font-weight="700">LW</text>
+            <line x1="80" y1="220" x2="560" y2="220" stroke="#000" stroke-width="1.5"/>
+            <text x="565" y="224" font-family="Inter" font-size="12" fill="#000" font-weight="700">CD</text>
+            <!-- Sinusoide marea -->
+            <path d="M 80 110 Q 140 50, 200 50 T 320 110 T 440 170 T 560 110" stroke="url(#water)" stroke-width="3" fill="none"/>
+            <!-- hx esempio -->
+            <line x1="240" y1="80" x2="240" y2="220" stroke="#f59e0b" stroke-width="2"/>
+            <circle cx="240" cy="80" r="5" fill="#f59e0b"/>
+            <text x="248" y="80" font-family="JetBrains Mono" font-size="12" fill="#000" font-weight="700">hx (ora tx)</text>
+            <!-- Ampiezza -->
+            <line x1="40" y1="50" x2="40" y2="170" stroke="#000" stroke-width="1"/>
+            <line x1="35" y1="50" x2="45" y2="50" stroke="#000" stroke-width="1"/>
+            <line x1="35" y1="170" x2="45" y2="170" stroke="#000" stroke-width="1"/>
+            <text x="15" y="115" font-family="JetBrains Mono" font-size="11" fill="#000" font-weight="700">A=HW-LW</text>
+            <!-- Angolo α -->
+            <text x="195" y="35" font-family="JetBrains Mono" font-size="11" fill="#0ea5e9" font-weight="700">α' = (Δt/T)·180°</text>
+          </svg>
+        </div>
+
+        <p>L'idea della formula: il livello del mare oscilla come un coseno tra HW (α'=0°) e LW (α'=180°). Per un istante intermedio, <strong>l'altezza si trova proiettando</strong> sul cerchio che ha raggio = semiampiezza α (=A/2).</p>
+      </section>
+
+      <section id="formule" class="t-section">
+        <h2><span class="section-num">02.</span>Formule chiave</h2>
+        <p>Dal Formulario di Maree (pag 17). Le 3 formule fondamentali:</p>
+
+        <div class="formula-box">
+          <div class="lbl">Proporzione di base</div>
+          T : 180° = Δt : α'
+          <div class="desc">È la chiave di tutto. T è il periodo (in tempo), 180° è il "periodo" angolare equivalente, Δt è il tempo trascorso dall'alta marea (o dalla bassa), α' è l'angolo corrispondente.</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="lbl">Calcoli preliminari (da fare sempre)</div>
+          A/2 = (HW − LW) / 2 = α (semiampiezza)<br>
+          LM = (HW + LW) / 2 (livello medio)<br>
+          T = | t_AM − t_BM |
+          <div class="desc">Esegui sempre questi 3 calcoli all'inizio. Salvali su un foglietto a parte.</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="lbl">Problema diretto — noto t, trovare h</div>
+          α' = (Δt · 180°) / T<br>
+          OH = (A/2) · cos α'<br>
+          h = LM ± OH (segno secondo se in salita o discesa)
+          <div class="desc">Se Δt si misura DALL'ALTA marea, l'altezza scende: h = LM + OH se ancora vicina HW, h = LM − OH dopo aver passato LM.</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="lbl">Problema inverso — nota h, trovare t</div>
+          OH = h − LM<br>
+          cos α' = OH / (A/2)<br>
+          Δt = T · α' / 180°
+          <div class="desc">Per evitare ambiguità di segno, riferisciti SEMPRE all'istante dell'alta marea.</div>
+        </div>
+      </section>
+
+      <section id="diretto" class="t-section">
+        <h2><span class="section-num">03.</span>Problema diretto (noto t → h)</h2>
+        <p>Il caso più comune: "qual è l'altezza di marea alle ore 15:30?"</p>
+
+        <div class="step-list">
+          <div class="step">
+            <h4>Identifica HW e LW più vicini al tempo richiesto tx</h4>
+            <p>Dalle tabelle di marea hai una sequenza di HW/LW. Trova quella più vicina a tx — di solito l'alta marea PRIMA dell'istante richiesto.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola i 3 valori preliminari</h4>
+            <p><code>A/2 = (HW − LW) / 2</code> · <code>LM = (HW + LW) / 2</code> · <code>T = |t_LW − t_HW|</code></p>
+          </div>
+          <div class="step">
+            <h4>Calcola Δt</h4>
+            <p>Δt = tx − t_HW (tempo trascorso dall'alta marea di riferimento). Se tx < t_HW, usa il ciclo precedente.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola α'</h4>
+            <p><code>α' = (Δt · 180°) / T</code> — sempre in gradi, tra 0° e 180°.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola OH (scarto dal livello medio)</h4>
+            <p><code>OH = (A/2) · cos α'</code> — può essere positivo (acqua sopra LM) o negativo.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola hx</h4>
+            <p><code>hx = LM + OH</code> se α' ≤ 90° (siamo ancora "in zona alta marea")<br>
+            <code>hx = LM − |OH|</code> se α' > 90° (siamo "in zona bassa marea")</p>
+            <p>Trucco: usa direttamente <code>hx = LM + (A/2)·cos α'</code>: il segno del coseno fa il resto da solo.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="inverso" class="t-section">
+        <h2><span class="section-num">04.</span>Problema inverso (nota h → t)</h2>
+        <p>Più importante: "a che ora avrò 5,5m di marea per uscire dal porto?" Pattern degli esami!</p>
+
+        <div class="step-list">
+          <div class="step">
+            <h4>Stessi calcoli preliminari A/2, LM, T</h4>
+          </div>
+          <div class="step">
+            <h4>Calcola OH dall'altezza richiesta</h4>
+            <p><code>OH = hx − LM</code> (con segno!)</p>
+          </div>
+          <div class="step">
+            <h4>Calcola α' tramite arcocoseno</h4>
+            <p><code>cos α' = OH / (A/2)</code> → α' = arccos(...). <strong>Attenzione</strong>: c'è ambiguità — α' può essere prima o dopo LM.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola Δt</h4>
+            <p><code>Δt = (T · α') / 180°</code></p>
+          </div>
+          <div class="step">
+            <h4>Trova tx</h4>
+            <p>tx = t_HW + Δt (se cerchi il momento dopo l'alta marea, in discesa)<br>
+            oppure tx = t_HW − Δt (se cerchi il momento PRIMA, in salita).</p>
+            <p><strong>Il portolano vuole sempre 2 soluzioni</strong>: una in salita e una in discesa. Scegli quella che ha senso fisicamente (es. "prima di entrare in porto" vs "dopo aver lasciato").</p>
+          </div>
+        </div>
+
+        <div class="pitfall">
+          <div class="pf-title">⚠️ Ambiguità del coseno</div>
+          <p>arccos(x) restituisce sempre un valore tra 0° e 180°. La marea passa per la stessa altezza DUE volte in un ciclo (una in salita, una in discesa). Specificare quale interessa.</p>
+        </div>
+      </section>
+
+      <section id="esempio" class="t-section">
+        <h2><span class="section-num">05.</span>Esempio svolto (stile prova d'esame)</h2>
+
+        <div class="example">
+          <div class="example-header">
+            <span class="ex-tag">ESEMPIO</span>
+            <h3>Marea per ingresso porto — tipo prova 2024 La Paz</h3>
+          </div>
+          <p style="margin-bottom:1rem;font-size:0.9rem;color:var(--text-secondary)">La nave arriva a La Paz alle ore <strong>13:30 UTC</strong> del 23/06. Vuoi calcolare l'altezza di marea hx in quel momento, per poi verificare l'UKC.</p>
+          <div class="example-given">
+            <div class="given-item"><span class="gk">HW₁ 23/06</span> 09h14 / 1.0m</div>
+            <div class="given-item"><span class="gk">LW 23/06</span> 15h18 / 0.1m</div>
+            <div class="given-item"><span class="gk">Pressione</span> 993 hPa</div>
+            <div class="given-item"><span class="gk">tx</span> 13h30 UTC</div>
+          </div>
+          <div class="example-solution">
+            <h4>SOLUZIONE step-by-step</h4>
+            <p><strong>Step 1 — Preliminari:</strong><br>
+            A = HW − LW = 1.0 − 0.1 = 0.9 m → α = A/2 = 0.45 m<br>
+            LM = (HW + LW)/2 = (1.0 + 0.1)/2 = 0.55 m<br>
+            T = |15h18 − 09h14| = 6h04m = 364 minuti</p>
+
+            <p><strong>Step 2 — Δt:</strong><br>
+            Δt = 13h30 − 09h14 = 4h16m = 256 minuti</p>
+
+            <p><strong>Step 3 — α':</strong><br>
+            α' = (256 · 180°) / 364 = 126.6°</p>
+
+            <p><strong>Step 4 — OH:</strong><br>
+            OH = α · cos(126.6°) = 0.45 · (−0.595) = −0.268 m</p>
+
+            <p><strong>Step 5 — hx (rispetto al CD):</strong><br>
+            hx = LM + OH = 0.55 + (−0.268) = <strong>0.28 m</strong> sopra il CD</p>
+
+            <p><strong>Step 6 — Correzione pressione:</strong><br>
+            Pressione 993 hPa < 1013 standard, differenza = 20 hPa. Ogni 1 hPa di depressione = +1 cm sul livello previsto.<br>
+            hx corretto = 0.28 + 0.20 = <strong>0.48 m</strong></p>
+
+            <div class="example-result">
+              hx corretto ≈ 0.48 m sopra il Chart Datum.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="correnti" class="t-section">
+        <h2><span class="section-num">06.</span>Correnti di marea</h2>
+        <p>Stessa identica matematica, ma applicata alla velocità della corrente. La corrente oscilla anch'essa sinusoidalmente tra "SLACK" (calma, V=0) e Vmax.</p>
+
+        <div class="formula-box">
+          <div class="lbl">Problema diretto (noto t → V)</div>
+          α' = (Δt · 180°) / T<br>
+          V = Vmax · sin α'
+          <div class="desc">⚠️ Per le correnti si usa il SENO (non il coseno) perché lo zero della corrente coincide con SLACK (cambia direzione), non con il massimo.</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="lbl">Problema inverso (nota V → t)</div>
+          sin α' = V / Vmax<br>
+          Δt = T · α' / 180°
+        </div>
+      </section>
+
+      <section id="errori" class="t-section">
+        <h2><span class="section-num">07.</span>Errori comuni (da NON fare)</h2>
+
+        <div class="pitfall">
+          <div class="pf-title">❌ Confondere CD e LM</div>
+          <p>Tutte le altezze di marea sono <strong>sopra il Chart Datum</strong>, non sopra il livello medio. Quando in problema dice "hx=5.5m", è 5.5m sopra il CD!</p>
+        </div>
+
+        <div class="pitfall">
+          <div class="pf-title">❌ Sbagliare il segno di OH</div>
+          <p>OH può essere negativo (sotto LM, vicino LW). La formula <code>cos α'</code> già gestisce il segno se α' > 90° (cos diventa negativo). Non aggiungere segni "manuali".</p>
+        </div>
+
+        <div class="pitfall">
+          <div class="pf-title">❌ Dimenticare la correzione barometrica</div>
+          <p>1 hPa di depressione ⇒ +1 cm di marea. In condizione di bassa pressione (993 hPa vs 1013) l'acqua si "alza" di 20 cm. <strong>Questa correzione la chiedono SEMPRE.</strong></p>
+        </div>
+
+        <div class="pitfall">
+          <div class="pf-title">❌ Confondere seno e coseno tra maree e correnti</div>
+          <p>Maree → <code>cos α'</code>. Correnti → <code>sin α'</code>. È il punto in cui sbagliano in tanti.</p>
+        </div>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">08.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📐 Dal Formulario</h3>
+          <div class="related-grid">
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 17</div><div class="rc-title">Formulario Maree</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 18</div><div class="rc-title">Correnti di Marea</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📓 Dal Quaderno</h3>
+          <div class="related-grid">
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 563</div><div class="rc-title">Teoria delle maree</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 564</div><div class="rc-title">Problemi inversi</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 565</div><div class="rc-title">Esempio multi-quesito</div></a>
+            <a href="../esercizi.html" class="related-card"><div class="rc-label">Foto 566</div><div class="rc-title">5 sotto-esercizi misti</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📜 Nelle prove d'esame</h3>
+          <div class="related-grid">
+            <a href="../prove.html" class="related-card"><div class="rc-label">2024 A063</div><div class="rc-title">La Paz UKC + marea</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2018 I243</div><div class="rc-title">Auckland-Panama</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2016 M591</div><div class="rc-title">Lisbona ingresso porto</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2015 M576</div><div class="rc-title">Felixstowe tidal window</div></a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento C: Maree e Correnti</p></div></footer>
+
+<script src="../../assets/js/app.js"></script>
+<script>
+// TOC active state via scroll
+const sections = document.querySelectorAll('.t-section');
+const tocLinks = document.querySelectorAll('.t-toc a');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const id = e.target.id;
+      tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+    }
+  });
+}, {rootMargin:"-30% 0px -60% 0px"});
+sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rotte — Lossodromia & Ortodromia | Argomento G</title>
+<link rel="stylesheet" href="../../assets/css/style.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+.t-hero-bg { background:radial-gradient(circle at 30% 50%, rgba(16,185,129,0.18), transparent 50%); }
+.t-eyebrow { color:#10b981; background:rgba(16,185,129,0.12); border:1px solid rgba(16,185,129,0.3); }
+.t-hero h1 span { background:linear-gradient(135deg, #10b981, #34d399); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.t-section h2 .section-num { color:#10b981; }
+.formula-box { border-left:4px solid #10b981; }
+.step::before { background:linear-gradient(135deg, #10b981, #34d399); color:#000; }
+</style>
+</head>
+<body>
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../../index.html" class="navbar-brand"><div class="brand-icon">⚓</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../../index.html">🏠 Home</a></li><li><a href="../../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="../index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle">🌙</button></div>
+  </div>
+</nav>
+
+<section class="t-hero">
+  <div class="t-hero-bg"></div>
+  <div class="container">
+    <div class="t-eyebrow">🗺️ Macro-argomento G · Passage planning</div>
+    <h1>Rotte<br><span>Lossodromia & Ortodromia</span></h1>
+    <p>Calcolo cammino e rotta tra due punti. <strong>Lossodromia</strong> = rotta a rotta vera costante (linea retta sulla carta di Mercatore). <strong>Ortodromia</strong> = cerchio massimo, il percorso più breve sulla sfera. Pagine 1-3 del formulario.</p>
+    <div style="margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="../index.html" class="btn btn-secondary">← Hub Navigazione</a>
+      <a href="../formulario.html" class="btn btn-primary">📐 Formulario pp.1-3</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="t-layout">
+    <aside class="t-sidebar">
+      <h3>Su questa pagina</h3>
+      <div class="t-toc">
+        <a href="#concetti">1. Concetti base</a>
+        <a href="#lossodromia">2. Lossodromia</a>
+        <a href="#ortodromia">3. Ortodromia</a>
+        <a href="#spezzata">4. Spezzata lossodromica</a>
+        <a href="#correlati">5. Correlati</a>
+      </div>
+      <h3>Argomenti vicini</h3>
+      <div class="t-toc">
+        <a href="a-astronomia.html">→ A · Astronomia</a>
+        <a href="c-maree.html">→ C · Maree</a>
+      </div>
+    </aside>
+    <main class="t-main">
+      <section id="concetti" class="t-section">
+        <h2><span class="section-num">01.</span>Concetti base</h2>
+        <p>Tra due punti A e B sulla Terra, ci sono due "rotte" possibili:</p>
+        <p><strong>Lossodromia (Rv costante):</strong> facile da navigare (un solo Rv), ma più lunga. Linea retta sulla carta di Mercatore.</p>
+        <p><strong>Ortodromia (cerchio massimo):</strong> la più corta. Sulla carta di Mercatore appare curva. Si percorre cambiando Rv continuamente. Per traversate corte le due sono quasi uguali; per traversate transoceaniche l'ortodromia può risparmiare anche 100+ mg.</p>
+        <div class="formula-box">
+          <div class="lbl">Glossario</div>
+          <strong>φA, λA</strong> = coordinate punto A; <strong>φB, λB</strong> = coordinate punto B<br>
+          <strong>Δφ</strong> = φB − φA (differenza latitudine)<br>
+          <strong>Δλ</strong> = λB − λA (differenza longitudine)<br>
+          <strong>m</strong> = cammino in mg (miglia di gradi)<br>
+          <strong>Rv</strong> = rotta vera (azimut)<br>
+          <strong>Ri, Rf</strong> = rotta iniziale e finale (ortodromia)<br>
+          <strong>(φV, λV)</strong> = coordinate del vertice (latitudine max raggiunta dal cerchio max)
+        </div>
+      </section>
+
+      <section id="lossodromia" class="t-section">
+        <h2><span class="section-num">02.</span>Lossodromia (Formulario p.1-2)</h2>
+        <p>Due metodi a seconda dell'estensione:</p>
+
+        <h3>Metodo approssimato (Δφ ≤ 2°, m ≤ 500 mgl)</h3>
+        <div class="formula-box">
+          <div class="lbl">Approssimato</div>
+          Δφ' = m · cos Rv<br>
+          Δλ' = (m · sin Rv) / cos φm<br>
+          φm = (φA + φB) / 2<br>
+          tan Rv = (Δλ · cos φm) / Δφ<br>
+          m = Δφ / cos Rv
+        </div>
+
+        <h3>Metodo esatto (latitudini crescenti, Δφ &gt; 2° o m &gt; 500 mgl)</h3>
+        <div class="formula-box">
+          <div class="lbl">Esatto — Latitudine crescente</div>
+          φC = (10800'/π) · ln(tan(45° + φ/2))<br>
+          Δφ_C = φC_B − φC_A<br>
+          tan Rv = Δλ / Δφ_C<br>
+          m = Δφ / cos Rv
+          <div class="desc">Si calcola φC per A e B, poi si fa la differenza. La rotta Rv è quella che apparirebbe perpendicolare ai meridiani sulla proiezione Mercatore.</div>
+        </div>
+      </section>
+
+      <section id="ortodromia" class="t-section">
+        <h2><span class="section-num">03.</span>Ortodromia (Formulario p.3)</h2>
+        <div class="formula-box">
+          <div class="lbl">Cammino ortodromico</div>
+          mo = cos⁻¹(sin φA · sin φB + cos φA · cos φB · cos Δλ) · 60<br>
+          (mo in mg, l'arcocoseno in gradi)
+        </div>
+        <div class="formula-box">
+          <div class="lbl">Rotta iniziale Ri</div>
+          tan Ri = sin Δλ / (tan φB · cos φA − sin φA · cos Δλ)
+        </div>
+        <div class="formula-box">
+          <div class="lbl">Coordinate del vertice</div>
+          φV = cos⁻¹(cos φA · sin Ri)<br>
+          λV via formule di Napier
+        </div>
+      </section>
+
+      <section id="spezzata" class="t-section">
+        <h2><span class="section-num">04.</span>Spezzata lossodromica (Quesito 2023)</h2>
+        <p>Si approssima l'ortodromia con una serie di tratti lossodromici (più facili da navigare). Tipico richiesto: <strong>WP ogni 24h di navigazione</strong>.</p>
+        <div class="step-list">
+          <div class="step">
+            <h4>Calcola cammino ortodromico totale mo</h4>
+          </div>
+          <div class="step">
+            <h4>Determina la distanza per ciascun tratto</h4>
+            <p>d_tratto = V · 24h. Numero tratti N = mo / d_tratto.</p>
+          </div>
+          <div class="step">
+            <h4>Calcola le coordinate dei WP intermedi sull'ortodromia</h4>
+            <p>Usa la formula del punto intermedio sull'ortodromia (dipende da Ri e cammino già percorso).</p>
+          </div>
+          <div class="step">
+            <h4>Calcola Rv lossodromica per ogni tratto</h4>
+            <p>Da WP_i a WP_(i+1) con formula lossodromia approssimata o esatta.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="correlati" class="t-section">
+        <h2><span class="section-num">05.</span>Materiali correlati</h2>
+        <div class="related">
+          <h3>📐 Dal Formulario</h3>
+          <div class="related-grid">
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 1</div><div class="rc-title">Lossodromia</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 2</div><div class="rc-title">Intersezioni lossodromiche</div></a>
+            <a href="../formulario.html" class="related-card"><div class="rc-label">Pagina 3</div><div class="rc-title">Ortodromia</div></a>
+          </div>
+        </div>
+        <div class="related">
+          <h3>📜 Nelle prove</h3>
+          <div class="related-grid">
+            <a href="../prove.html" class="related-card"><div class="rc-label">2023 Q1</div><div class="rc-title">Ortodromia Cabo→Honolulu</div></a>
+            <a href="../prove.html" class="related-card"><div class="rc-label">2018 PP</div><div class="rc-title">Auckland WP5 lossodromia</div></a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer class="footer"><div class="container"><p>⚓ Maturità Nautico 2026 — Argomento G: Rotte</p></div></footer>
+<script src="../../assets/js/app.js"></script>
+<script>
+const tocLinks = document.querySelectorAll('.t-toc a');
+document.querySelectorAll('.t-section').forEach(s => new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href')==='#'+e.target.id)); }), {rootMargin:"-30% 0px -60% 0px"}).observe(s));
+</script>
+</body>
+</html>

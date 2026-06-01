@@ -1,0 +1,258 @@
+{
+  "totalPages": 18,
+  "imagePath": "images/formulario/pag-{NN}.jpg",
+  "school": "Istituto Superiore A. Rizza - Siracusa",
+  "macroCategories": {
+    "G": "Rotte (Lossodromia & Ortodromia)",
+    "A": "Astronomia Nautica",
+    "B": "Carteggio Radar & COLREG",
+    "C": "Maree e Correnti",
+    "D": "UKC + Squat",
+    "E": "Air Draft (Passaggio sotto ponte)",
+    "F": "Stabilita & Gestione Pesi"
+  },
+  "pages": [
+    {
+      "n": 1,
+      "title": "Lossodromia",
+      "macro": "G",
+      "subtopics": [
+        "Metodo approssimato (Delta phi <= 2 gradi, m <= 500 mgl)",
+        "Metodo esatto (Delta phi > 2 gradi, m > 500 mgl)",
+        "Primo problema: da A trovare B noto cammino e rotta",
+        "Secondo problema: da A e B trovare cammino e rotta"
+      ],
+      "keyFormulas": [
+        "Delta phi' = m * cos Rv (approssimato)",
+        "phi_C = 10800'/pi * ln(tan(45 + phi/2)) (esatto, latitudine crescente)",
+        "tan Rv = Delta lambda * cos phi_m / Delta phi (approssimato)",
+        "tan Rv = Delta lambda / Delta phi_C (esatto)"
+      ]
+    },
+    {
+      "n": 2,
+      "title": "Lossodromia - intersezioni",
+      "macro": "G",
+      "subtopics": [
+        "Intersezione lossodromia con un meridiano",
+        "Intersezione lossodromia con un parallelo",
+        "Intersezione di due lossodromie note"
+      ]
+    },
+    {
+      "n": 3,
+      "title": "Ortodromia",
+      "macro": "G",
+      "subtopics": [
+        "Cammino ortodromico m_o",
+        "Rotta iniziale R_i",
+        "Rotta finale R_f",
+        "Coordinate del vertice (phi_V, lambda_V)"
+      ],
+      "keyFormulas": [
+        "m_o = cos^-1(sin phi_A * sin phi_B + cos phi_A * cos phi_B * cos Delta lambda) * 60",
+        "tan R_i = sin Delta lambda / (tan phi_B * cos phi_A - sin phi_A * cos Delta lambda)",
+        "phi_V = cos^-1(cos phi_A * sin R_i)"
+      ]
+    },
+    {
+      "n": 4,
+      "title": "Astronomia - Moto diurno (parte 1)",
+      "macro": "A",
+      "subtopics": [
+        "Riconoscimento astri (sorgenti/tramontanti vs circumpolari)",
+        "Altezze meridiane (passaggio superiore e inferiore)",
+        "Calcolo intervallo di tempo per altezze di culminazione",
+        "Amplitudine astronomica (sin ampl_a = sin delta / cos phi)"
+      ]
+    },
+    {
+      "n": 5,
+      "title": "Bussola + Astronomia (Stelle)",
+      "macro": "A",
+      "subtopics": [
+        "Formulario Bussola - Declinazione magnetica (metodo italiano aum/dim e internazionale var e/w)",
+        "Formulario Bussola - Deviazione magnetica (Rilm/Rilv, Pv/Pm)",
+        "Formulario Bussola - ETA (ETD - lambda_fuso - tm - Delta T = T'm + lambda_fuso = ETA)",
+        "Astronomia Stelle - tempo approssimato, correzione cronometro",
+        "Astronomia Stelle - calcolo angolo al polo T*",
+        "Astronomia Stelle - calcolo TgZ (sen angolo al polo)"
+      ],
+      "note": "Questa pagina contiene ANCHE il formulario bussola, fondamentale per ogni calcolo nautico"
+    },
+    {
+      "n": 6,
+      "title": "Astronomia (Sole, Astro X)",
+      "macro": "A",
+      "subtopics": [
+        "Sole - schema completo (Tf, Tc, Tm, angolo al polo)",
+        "Sole - DeltaT, m = V*DeltaT, DeltaPhi'",
+        "Sole - disegno altezza meridiana e disegno fix",
+        "Astro X - calcolo identificazione (Ts, hi, T*, SenS)"
+      ]
+    },
+    {
+      "n": 7,
+      "title": "Carteggio Radar - procedura CPA (note grafiche)",
+      "macro": "B",
+      "subtopics": [
+        "Procedura per indicatrice di moto relativo",
+        "Costruzione triangolo delle velocita",
+        "Determinazione CPA, TCPA, NCPA",
+        "Manovra evasiva (variazione Rv o variazione Vp)"
+      ],
+      "note": "Pagina manoscritta con note di procedura, complementare a pag 10 e 15"
+    },
+    {
+      "n": 8,
+      "title": "Tempi + Punto nave astronomico",
+      "macro": "A",
+      "subtopics": [
+        "Trasformazione tempo-angolo al polo (se t<180 Pw=t; se t>180 Pe=360-t)",
+        "Equazione fondamentale angoli orari: t-t_s = coalpha",
+        "Tempo simultaneo rispetto a Greenwich",
+        "Equazione del tempo vero: eps_V = t_m - t_v",
+        "Correzione cronometro: Tm = Tc + K",
+        "Fusi orari: tf = Tm + lambda_f",
+        "Punto nave - calcolo altezza stimata: sin h = sin phi sin delta + cos phi cos delta cos P",
+        "Punto nave - calcolo azimut: tan Z = sin P / (tan delta cos phi - sin phi cos P)",
+        "Differenza altezza vera-stimata: Delta h = hv - hs",
+        "Errori per Pn con 4 rette (sistematico e accidentale)"
+      ]
+    },
+    {
+      "n": 9,
+      "title": "Astronomia - correzioni e scalette",
+      "macro": "A",
+      "subtopics": [
+        "Correzione altezze strumentali (scalette per Stelle e Sole/Luna/Pianeti)",
+        "Calcolo latitudine con hv stella Polare (formula a0+a1+a2-1)",
+        "Scalette determinazione P e delta degli astri",
+        "Riconoscimento astro incognito (astro X)"
+      ]
+    },
+    {
+      "n": 10,
+      "title": "Punto nave - tabella FIX + COLREG (parte 1)",
+      "macro": "A",
+      "subtopics": [
+        "Schema calcolo astro non noto",
+        "Stella Polare - schema completo",
+        "TABELLA FIX (astro, Tm, DeltaT, M, DeltaH, azimut)",
+        "Procedura grafica costruzione retta di altezza (8 passi)",
+        "P2 = P1 +/- DeltaP, Lambda2 = Lambda1 +/- DeltaLambda",
+        "COLREG: R.2 responsabilita, R.5 servizio di vedetta, R.6 velocita di sicurezza, R.7 rischio di collisione, R.15 situazione di rotte che si incrociano, R.16 comportamento della nave che deve manovrare"
+      ],
+      "macroSecondary": "B"
+    },
+    {
+      "n": 11,
+      "title": "Spostamento Pesi",
+      "macro": "F",
+      "subtopics": [
+        "Elementi base: Tm, Tm ponderata, dislocamento Delta, TPC, DWA, FWA, MCTC, momento inerzia Ix",
+        "Assetto: As = TA - TF, CT = As' - As",
+        "Spostamento baricentro generico: GG' = (p*d)/Delta",
+        "Spostamento baricentro 3 componenti (delta XG, YG, ZG)",
+        "Spostamento verticale: GM' = GM +/- (p*z)/Delta",
+        "Spostamento trasversale (sbandamento): tan phi = (p*y)/(Delta*GM)",
+        "Spostamento longitudinale: CT = (p*x)/(100*MCTC), DTA, DTF"
+      ]
+    },
+    {
+      "n": 12,
+      "title": "Imbarco/Sbarco Pesi",
+      "macro": "F",
+      "subtopics": [
+        "Elementi base: Tm, As, CT, Bunker, Portata netta, Periodo di rollio (T = 2pi * sqrt(Ix/(Delta*GM)))",
+        "Variazione immersione media: delta Tm = sigma P / (100 * TPC_m)",
+        "Ascissa centro zona di carena di sovraimmersione X_BZ",
+        "Variazione assetto e immersioni estreme",
+        "Calcolo nuove immersioni T'A, T'F",
+        "Calcolo alternativo del momento d'assetto totale"
+      ]
+    },
+    {
+      "n": 13,
+      "title": "Imbarco/sbarco - altezza metacentrica e sbandamento",
+      "macro": "F",
+      "subtopics": [
+        "Calcolo nuova altezza metacentrica GM' = KM' - KG'",
+        "Calcolo eventuale sbandamento: tan phi = My / (Delta' * GM')",
+        "Imbarco/sbarco peso di lieve entita - nuove immersioni",
+        "Imbarco/sbarco peso di lieve entita - nuova altezza metacentrica GM' = GM + (p*z)/Delta",
+        "Sbandamento da peso di lieve entita: tan phi = (p*y)/(Delta * GM')",
+        "Punti neutri (xNA, xNF): combinazioni TPC/MCTC che non modificano trim"
+      ]
+    },
+    {
+      "n": 14,
+      "title": "Piano di carico, carichi deformabili, incaglio",
+      "macro": "F",
+      "subtopics": [
+        "Piano di carico: bunker, portata netta, net capacity, periodo di rollio",
+        "Carichi deformabili (FSE - Free Surface Effect): FSE = (sigma ix * omega) / Delta",
+        "Incaglio - reazione del fondo: R = Delta - Delta'",
+        "Incaglio - ascissa punto incaglio xk",
+        "Incaglio - limite stabilita nave incagliata",
+        "Incaglio - sbandamento fuori piano diametrale",
+        "Disincaglio senza rotazione (sistema con scarico pesi)"
+      ]
+    },
+    {
+      "n": 15,
+      "title": "COLREG - regole + tabella manovre + fanali",
+      "macro": "B",
+      "subtopics": [
+        "Norme COLREG: R.17 nave che non manovra, R.18 responsabilita tra navi (PM/Vela/Pesca/Lim/Cond/Non g), R.9 navigazione canali e passaggi stretti, R.13 nave raggiungente",
+        "Tabella manovre acustiche: sorpasso, si, no, dritta, sinistra, indietro, PM abbrivio - 2 min",
+        "Fanali e segnali: navi a vela, pesca a strascico, pesca non a strascico, condotti pesca, manovrabilita limitata, draga, non governa, all'ancora, incagliata, rimorchio, pilotina, dragamine"
+      ]
+    },
+    {
+      "n": 16,
+      "title": "Falla (allagamento)",
+      "macro": "F",
+      "subtopics": [
+        "Permeabilita: mu = (SF - 1/omega) * 100 / SF",
+        "Portata della falla: P = k * S * sqrt(2*g*h)",
+        "Sovraimmersione: delta Tm = v / (AW - a) o delta Tm = v*mu / (AW - a*mu)",
+        "Spostamento orizzontale volume carena: B'B'' = v*d / (V-v)",
+        "Sbandamento da falla: tan phi = B'B''/(GM)'",
+        "Variazione di assetto da falla: CT = Delta*B'B''/(100*MCTC)"
+      ]
+    },
+    {
+      "n": 17,
+      "title": "Formulario di Maree",
+      "macro": "C",
+      "subtopics": [
+        "Schema verticale: HW, LM, LW, CD, fondale marino, altezza h, angolo alpha",
+        "Proporzione di base: T : 180 = Delta t : alpha",
+        "Calcoli preliminari: A/2 = (HW-LW)/2, LM = (HW+LW)/2, T = |t_AM - t_BM|",
+        "Problema diretto (noto t, trovare h): alpha = Delta t * 180 / T; OH = A/2 * cos alpha; h = LM + OH",
+        "Problema inverso (nota h, trovare t): OH = h - LM; cos alpha = OH / (A/2); Delta t = T*alpha / 180"
+      ]
+    },
+    {
+      "n": 18,
+      "title": "Correnti di Marea",
+      "macro": "C",
+      "subtopics": [
+        "Schema con SLACK e Vmax (andamento armonico velocita corrente)",
+        "Problema diretto (noto t, trovare V): alpha = Delta t * 180 / T; V = Vmax * sin alpha",
+        "Problema inverso (nota V, trovare t): sin alpha = V/Vmax; Delta t = T*alpha / 180"
+      ]
+    }
+  ],
+  "coverageByMacro": {
+    "G_Rotte": [1, 2, 3],
+    "A_Astronomia": [4, 5, 6, 8, 9, 10],
+    "B_Radar_COLREG": [7, 10, 15],
+    "C_Maree": [17, 18],
+    "D_UKC_Squat": [],
+    "E_AirDraft": [],
+    "F_Stabilita_Pesi": [11, 12, 13, 14, 16],
+    "note_D_E": "D (UKC+Squat) ed E (Air Draft) non hanno una pagina dedicata nel formulario perche derivano dalle stesse formule di marea (pag 17) combinate con dati di pescaggio - vedere quaderno foto 567-570"
+  }
+}

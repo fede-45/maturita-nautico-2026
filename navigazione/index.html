@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navigazione — Seconda Prova Scritta | Maturità Nautico 2026</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+/* Hero specifico Navigazione */
+.nav-hero { position:relative; padding:100px 0 60px; overflow:hidden; }
+.nav-hero-bg { position:absolute; inset:0; background:radial-gradient(circle at 30% 50%, rgba(0,168,212,0.15), transparent 50%), radial-gradient(circle at 70% 50%, rgba(245,166,35,0.10), transparent 50%); pointer-events:none; }
+.nav-hero h1 { font-size:clamp(2rem, 5vw, 3.5rem); line-height:1.1; margin-bottom:1rem; }
+.nav-hero h1 span { background:linear-gradient(135deg, var(--ocean-300), var(--ocean-400)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+.nav-hero-eyebrow { display:inline-block; background:rgba(0,168,212,0.12); border:1px solid rgba(0,168,212,0.3); color:var(--ocean-300); padding:6px 14px; border-radius:var(--radius-full); font-size:0.8rem; font-weight:600; margin-bottom:1.25rem; letter-spacing:0.5px; }
+.nav-hero p { font-size:1.05rem; color:var(--text-secondary); max-width:720px; line-height:1.7; }
+
+/* Countdown */
+.nav-countdown { display:inline-flex; gap:12px; align-items:center; margin-top:2rem; padding:1rem 1.25rem; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); box-shadow:var(--shadow-md); }
+.cd-blocks { display:flex; gap:8px; align-items:center; }
+.cd-block-mini { text-align:center; min-width:48px; }
+.cd-block-mini .num { font-family:var(--font-mono); font-size:1.5rem; font-weight:700; color:var(--accent); line-height:1; }
+.cd-block-mini .lab { font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+.cd-sep-mini { color:var(--text-muted); font-size:1.5rem; opacity:0.5; }
+
+/* Quick access bar */
+.quick-access { padding:30px 0; background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.quick-row { display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+.quick-tile { display:flex; flex-direction:column; align-items:center; padding:1.5rem 1rem; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); text-decoration:none; transition:all var(--transition); text-align:center; }
+.quick-tile:hover { transform:translateY(-3px); border-color:var(--accent); box-shadow:var(--glow-gold); }
+.quick-tile .qt-icon { font-size:2rem; margin-bottom:0.5rem; }
+.quick-tile .qt-title { font-size:0.95rem; font-weight:700; color:var(--text-primary); margin-bottom:0.25rem; }
+.quick-tile .qt-sub { font-size:0.75rem; color:var(--text-secondary); }
+
+/* Macro section */
+.macro-section { padding:80px 0; }
+.macro-section h2 { text-align:center; margin-bottom:0.5rem; font-size:clamp(1.5rem, 3vw, 2.2rem); }
+.section-sub { text-align:center; color:var(--text-secondary); font-size:0.95rem; max-width:680px; margin:0 auto 3rem; line-height:1.7; }
+
+.macro-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(310px, 1fr)); gap:1.5rem; }
+.macro-card { position:relative; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-xl); padding:2rem 1.75rem; text-decoration:none; color:inherit; transition:all var(--transition); overflow:hidden; }
+.macro-card::before { content:''; position:absolute; top:0; left:0; width:100%; height:4px; background:linear-gradient(90deg, var(--accent), var(--primary)); opacity:0.6; transition:opacity var(--transition); }
+.macro-card:hover { transform:translateY(-4px); border-color:var(--accent); box-shadow:var(--shadow-lg), var(--glow-gold); }
+.macro-card:hover::before { opacity:1; }
+.macro-card .macro-id { display:inline-block; font-family:var(--font-mono); font-size:0.7rem; font-weight:700; color:var(--accent); padding:3px 8px; background:rgba(245,166,35,0.12); border-radius:var(--radius-sm); margin-bottom:1rem; letter-spacing:1px; }
+.macro-card h3 { font-size:1.2rem; margin-bottom:0.5rem; }
+.macro-card .macro-icon { font-size:2.2rem; margin-bottom:1rem; }
+.macro-card p { font-size:0.9rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1rem; }
+.macro-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:1rem; }
+.macro-meta span { font-size:0.7rem; padding:3px 8px; border-radius:var(--radius-sm); background:rgba(0,168,212,0.1); color:var(--ocean-300); border:1px solid rgba(0,168,212,0.2); }
+
+/* Mantra section */
+.mantra { padding:60px 0; background:linear-gradient(135deg, rgba(0,168,212,0.08), rgba(245,166,35,0.05)); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.mantra-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:1.5rem; }
+.mantra-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; text-align:center; }
+.mantra-num { font-family:var(--font-mono); font-size:2.5rem; font-weight:700; color:var(--accent); line-height:1; margin-bottom:0.5rem; }
+.mantra-lbl { font-size:0.85rem; color:var(--text-secondary); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
+
+@media(max-width:768px){
+  .quick-row{grid-template-columns:repeat(2,1fr);}
+  .macro-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand">
+      <div class="brand-icon">⚓</div>
+      <span>Nautico 2026</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">🏠 Home</a></li>
+      <li><a href="../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="btn-icon" id="theme-toggle" title="Cambia tema">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="nav-hero">
+  <div class="nav-hero-bg"></div>
+  <div class="container">
+    <div class="nav-hero-eyebrow">⚓ Seconda Prova Scritta · 19 Giugno 2026</div>
+    <h1>Scienze della Navigazione<br><span>Struttura e Costruzione del Mezzo Navale</span></h1>
+    <p>Il "mantra" della seconda prova: formulario completo, esercizi svolti dal quaderno di Federico, prove degli anni passati classificate per argomento, e simulatore. Step-by-step pensato per chi non vuole prendere meno di 8 — e anche per chi prenderebbe meno di 5.</p>
+
+    <div class="nav-countdown">
+      <div style="font-size:0.8rem;color:var(--text-muted);margin-right:8px;">Mancano</div>
+      <div class="cd-blocks">
+        <div class="cd-block-mini"><div class="num" id="cd-days">--</div><div class="lab">giorni</div></div>
+        <div class="cd-sep-mini">:</div>
+        <div class="cd-block-mini"><div class="num" id="cd-hours">--</div><div class="lab">ore</div></div>
+        <div class="cd-sep-mini">:</div>
+        <div class="cd-block-mini"><div class="num" id="cd-mins">--</div><div class="lab">min</div></div>
+      </div>
+      <div style="padding-left:14px;border-left:1px solid var(--border);margin-left:6px;">
+        <div style="font-size:0.7rem;color:var(--text-muted)">alla 2ª prova</div>
+        <div style="font-size:0.85rem;font-weight:700;color:var(--ocean-300)">19 giu 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK ACCESS -->
+<section class="quick-access">
+  <div class="container">
+    <div class="quick-row">
+      <a href="formulario.html" class="quick-tile">
+        <div class="qt-icon">📐</div>
+        <div class="qt-title">Formulario</div>
+        <div class="qt-sub">18 pagine · Rizza</div>
+      </a>
+      <a href="esercizi.html" class="quick-tile">
+        <div class="qt-icon">📓</div>
+        <div class="qt-title">Esercizi svolti</div>
+        <div class="qt-sub">26 pagine quaderno</div>
+      </a>
+      <a href="prove.html" class="quick-tile">
+        <div class="qt-icon">📜</div>
+        <div class="qt-title">Prove anni passati</div>
+        <div class="qt-sub">2015 → 2024</div>
+      </a>
+      <a href="simulatore.html" class="quick-tile">
+        <div class="qt-icon">🎯</div>
+        <div class="qt-title">Simulatore</div>
+        <div class="qt-sub">Quesiti random</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MACRO ARGOMENTI -->
+<section class="macro-section">
+  <div class="container">
+    <div class="section-label" style="text-align:center">I 7 macro-argomenti</div>
+    <h2>Gli argomenti della seconda prova</h2>
+    <p class="section-sub">Ogni macro-argomento ha la sua pagina dedicata con teoria, formule del formulario, esercizi svolti del quaderno e quesiti d'esame classificati. Clicca per aprire.</p>
+
+    <div class="macro-grid">
+
+      <a href="argomenti/g-rotte.html" class="macro-card">
+        <span class="macro-id">G · ROTTE</span>
+        <div class="macro-icon">🗺️</div>
+        <h3>Lossodromia & Ortodromia</h3>
+        <p>Calcolo cammino e rotta tra due punti. Lossodromia (rotta a Rv costante) con metodo approssimato ed esatto. Ortodromia (cerchio massimo) con coordinate del vertice e spezzata di WP.</p>
+        <div class="macro-meta">
+          <span>Form. pag 1-3</span>
+          <span>Quesito 2023</span>
+        </div>
+      </a>
+
+      <a href="argomenti/a-astronomia.html" class="macro-card">
+        <span class="macro-id">A · ASTRONOMIA</span>
+        <div class="macro-icon">⭐</div>
+        <h3>Astronomia Nautica</h3>
+        <p>Effemeridi nautiche, schema correzione altezze, sole al tramonto/alba, punto astronomico al crepuscolo con stelle multiple, costruzione retta di altezza, errori per Pn con 4 rette.</p>
+        <div class="macro-meta">
+          <span>Form. pag 4-10</span>
+          <span>Quad. foto 550-559</span>
+          <span>Quesito 2018, 2024</span>
+        </div>
+      </a>
+
+      <a href="argomenti/b-radar-colreg.html" class="macro-card">
+        <span class="macro-id">B · RADAR</span>
+        <div class="macro-icon">📡</div>
+        <h3>Carteggio Radar & COLREG</h3>
+        <p>Moto relativo e maneuvering board: CPA, TCPA, NCPA, manovra evasiva. Convenzione COLREG: regole R.2/5/6/7/13/15/16/17/18, fanali e segnali, tabella manovre acustiche.</p>
+        <div class="macro-meta">
+          <span>Form. pag 7,10,15</span>
+          <span>Quad. foto 560-562</span>
+          <span>Quesito 2024</span>
+        </div>
+      </a>
+
+      <a href="argomenti/c-maree.html" class="macro-card">
+        <span class="macro-id">C · MAREE</span>
+        <div class="macro-icon">🌊</div>
+        <h3>Maree e Correnti</h3>
+        <p>Problema diretto (noto t, trovare h) e inverso (nota h, trovare t). Metodo cosinusoide armonica con T:180=Δt:α. Correnti di marea con stessa procedura per V.</p>
+        <div class="macro-meta">
+          <span>Form. pag 17-18</span>
+          <span>Quad. foto 563-566</span>
+          <span>Prima parte 5/5 prove</span>
+        </div>
+      </a>
+
+      <a href="argomenti/d-ukc-squat.html" class="macro-card">
+        <span class="macro-id">D · UKC + SQUAT</span>
+        <div class="macro-icon">🛳️</div>
+        <h3>UKC e Squat</h3>
+        <p>Under Keel Clearance per passaggio sicuro su basso fondale. Squat (sovra-immersione dinamica): B = Cb · V²/50. Rollio + sovra-immersione del ginocchio (box-shaped). Effetto pressione atmosferica.</p>
+        <div class="macro-meta">
+          <span>Quad. foto 567-568</span>
+          <span>Prima parte 2018, 2024</span>
+        </div>
+      </a>
+
+      <a href="argomenti/e-air-draft.html" class="macro-card">
+        <span class="macro-id">E · AIR DRAFT</span>
+        <div class="macro-icon">🌉</div>
+        <h3>Passaggio sotto un ponte</h3>
+        <p>Calcolo Air Clearance: AC = HP + Z₀ - AD - hx. Formula chiave HP+Z₀ = AC+AD+hx. Effetto della marea e dell'altezza nave sul margine di sicurezza al ponte.</p>
+        <div class="macro-meta">
+          <span>Quad. foto 569-570</span>
+          <span>Variante avanzata 2024</span>
+        </div>
+      </a>
+
+      <a href="argomenti/f-stabilita.html" class="macro-card">
+        <span class="macro-id">F · STABILITÀ</span>
+        <div class="macro-icon">⚖️</div>
+        <h3>Stabilità & Gestione Pesi</h3>
+        <p>Spostamento pesi (verticale, trasversale, longitudinale), imbarco/sbarco, coordinate G nave, momenti, FSE, incaglio, falla con permeabilità. Trim, GM, angolo sbandamento.</p>
+        <div class="macro-meta">
+          <span>Form. pag 11-16</span>
+          <span>Quad. foto 571-575</span>
+          <span>Quesito 4/5 prove</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS / MANTRA -->
+<section class="mantra">
+  <div class="container">
+    <div class="section-label" style="text-align:center">I numeri del materiale</div>
+    <h2 style="text-align:center; margin-bottom:2.5rem; font-size:1.5rem">Tutto quello che serve, in un posto solo</h2>
+    <div class="mantra-grid">
+      <div class="mantra-item"><div class="mantra-num">18</div><div class="mantra-lbl">Pagine di Formulario</div></div>
+      <div class="mantra-item"><div class="mantra-num">26</div><div class="mantra-lbl">Esercizi svolti</div></div>
+      <div class="mantra-item"><div class="mantra-num">5</div><div class="mantra-lbl">Prove anni passati</div></div>
+      <div class="mantra-item"><div class="mantra-num">20</div><div class="mantra-lbl">Quesiti classificati</div></div>
+      <div class="mantra-item"><div class="mantra-num">7</div><div class="mantra-lbl">Macro-argomenti</div></div>
+      <div class="mantra-item"><div class="mantra-num">6h</div><div class="mantra-lbl">Durata prova</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Strategia -->
+<section class="tips-section">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Strategia d'esame</div>
+    <h2 style="text-align:center; margin-bottom:3rem">Come affrontare la seconda prova</h2>
+    <div class="grid-2" style="gap:1.25rem">
+      <div class="tip-card">
+        <div class="tip-icon">📋</div>
+        <div class="tip-title">Struttura della prova</div>
+        <div class="tip-text">
+          <strong>Prima parte:</strong> passage planning di una traversata oceanica con calcoli di rotte, maree, UKC e gestione pesi. Vale 12-13 punti su 20.<br><br>
+          <strong>Seconda parte:</strong> scegli <strong>2 quesiti su 4</strong>. Vale 7-8 punti su 20. I quesiti pratici (calcoli) valgono di più dei teorici.
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⏱️</div>
+        <div class="tip-title">Gestione del tempo (6 ore)</div>
+        <div class="tip-text">
+          <strong>0:00-3:30</strong> — Prima parte completa (passage planning).<br>
+          <strong>3:30-5:00</strong> — Due quesiti scelti.<br>
+          <strong>5:00-5:30</strong> — Disegno grafici (cartesiani per maree, retta di altezza, schema box-shaped).<br>
+          <strong>5:30-6:00</strong> — Rilettura e correzione errori.
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🎯</div>
+        <div class="tip-title">Quali quesiti scegliere</div>
+        <div class="tip-text">
+          Federico, l'astronomia compare nel 4/5 delle prove e la stabilità 4/5. Allenati su questi due. Il 3° quesito è sempre teorico (meteorologia o normativa) — preparati una risposta breve "di scorta" su ognuno per spendere poco tempo lì.
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🧠</div>
+        <div class="tip-title">Cosa portare al banco</div>
+        <div class="tip-text">
+          Tavole nautiche, formulari (questo!), pubblicazioni nautiche, calcolatrice scientifica/grafica (no CAS, no internet). Dizionario bilingue solo per madrelingua non italiana. Non si può uscire prima di 3 ore.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>⚓ Maturità Nautico 2026 — Sezione Navigazione costruita con il formulario, il quaderno e le prove di Federico</p>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+// Countdown al 19 giugno 2026 ore 8:30
+(function(){
+  const target = new Date('2026-06-19T08:30:00').getTime();
+  function tick(){
+    const now = Date.now();
+    let diff = Math.max(0, target - now);
+    const d = Math.floor(diff/86400000);
+    diff -= d*86400000;
+    const h = Math.floor(diff/3600000);
+    diff -= h*3600000;
+    const m = Math.floor(diff/60000);
+    document.getElementById('cd-days').textContent = d;
+    document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-mins').textContent = String(m).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 60000);
+})();
+</script>
+
+</body>
+</html>

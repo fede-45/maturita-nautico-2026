@@ -1,0 +1,138 @@
+  Pag. 1/3                                                           Sessione ordinaria 2024
+                                                                     Seconda prova scritta
+
+
+
+
+                          Ministero dell’istruzione e del merito
+ A063 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+                               Indirizzo: ITCN – TRASPORTI E LOGISTICA
+                              ARTICOLAZIONE CONDUZIONE DEL MEZZO
+                              OPZIONE CONDUZIONE DEL MEZZO NAVALE
+Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+
+ Il candidato svolga il tema indicato nella prima parte e risponda a due soli quesiti tra i
+ quattro proposti nella seconda parte.
+
+ PRIMA PARTE
+ Pianificazione e controllo della traversata tra le Isole Hawaii (USA) e La Paz (Mex).
+ Planning
+ In partenza dalle Hawaii, si pianifica la traversata verso La Paz, in Messico.
+ Nonostante la scarsa marea all’arrivo, riportata di seguito, si rende necessaria un’attenta
+ valutazione del fondale disponibile, a causa di una depressione tropicale prevista nei giorni
+ successivi.
+ In particolare, all’arrivo si dovrà evoluire fuori dal porto, in un’area con fondale di 15 m, per poi
+ eseguire l’ingresso di poppa. Vanno tuttavia considerati due fenomeni contrastanti, in merito alla
+ valutazione dell’UKC: secondo quanto riportato dai bollettini meteo, la pressione atmosferica sarà di
+ 993 hPa, ma lo stato del mare sarà tale da poter causare possibili moti di rollio della propria nave
+ fino a 12°, con conseguente aumento del pescaggio per sovra-immersione del ginocchio.
+ Determinare se sia possibile effettuare la manovra descritta in sicurezza, considerando come ora di
+ arrivo quella calcolata rispetto a Greenwich: ETA UTC 1330 23/06. Esporre considerazioni e calcoli
+ in una breve relazione tecnica da presentare al Comandante, ricordando che in questi casi l’SMS
+ impone di avere sempre almeno 4.5 m di tirante d’acqua tra la parte più immersa della nave e il
+ fondale.
+      Note e dati di marea:
+          −   ai fini della valutazione dell’ora locale si legge sulle Sailing Directions americane “In La Paz MST
+              (Mountain Standard Time) GMT -7 hours is adopted. Daylight Saving Time no more in use”.
+          −   ai fini della valutazione dell’UKC si consideri la sovra-immersione del ginocchio durante il rollio,
+              sapendo che la larghezza della nave è pari a 32 m (si consideri per semplicità la nave box-shaped)
+              e che all’arrivo è previsto un pescaggio pari a T=8.20 m.
+          −   dati di marea:
+
+                                                             23/06
+                                           Previsioni di
+                                                           0244   0.2
+                                             marea a
+                                                           0914   1.0
+                                             La Paz
+                                             (MEX)         1518   0.1
+                                                           2224   1.2
+  Pag. 2/3                                                    Sessione ordinaria 2024
+                                                              Seconda prova scritta
+
+
+
+
+                        Ministero dell’istruzione e del merito
+ A063 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+                           Indirizzo: ITCN – TRASPORTI E LOGISTICA
+                          ARTICOLAZIONE CONDUZIONE DEL MEZZO
+                          OPZIONE CONDUZIONE DEL MEZZO NAVALE
+Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+
+
+
+ Execution/monitoring
+ Durante la successiva navigazione nell’Oceano Pacifico, con un vettore proprio 080° – 16 kts, la
+ nostra unità rileva al radar due bersagli. Non avendo a disposizione il sistema ARPA per un
+ malfunzionamento momentaneo, si sceglie di risolvere il problema di cinematica con il rapportatore
+ diagramma.
+
+      Bersaglio “A”                                 Bersaglio “B”
+      Ore 1016 RilV 118° – dist. 12.0 mg            Ore 1016 RilV 143° – dist. 12.7 mg
+      Ore 1022 RilV 118° – dist. 9.4 mg             Ore 1022 RilV 143° – dist. 9.7 mg
+
+ Il candidato determini moto relativo, CPA, TCPA, moto assoluto di A e B e individui la manovra più
+ opportuna per il passaggio in sicurezza rispetto ad entrambe le navi, infine determini i nuovi CPA’ e
+ TCPA’. Motivi la scelta fatta anche in relazione alla normativa internazionale Colreg 72.
+ In navigazione nell’Oceano Pacifico, durante il crepuscolo serale del 19 giugno 2024, in
+ PS (φ=20°36.3’N, λ=130°15.6’W), si osservano gli astri:
+ Astro X   Tc=02h35m14s hi=53°05.0’ Azs=030°
+ Spica       Tc=02h36m02s hi=50°34.3’
+ Sono noti RV=260°, VP=18 kts, K=+1m, γc=+1.0’, e=18 m.
+ Dopo aver individuato l’astro incognito, il candidato determini il punto nave astronomico all’istante
+ dell’ultima osservazione ed esprima una valutazione sulla qualità dello stesso, in termini descrittivi
+ sulla scelta degli astri e le condizioni di osservazione.
+   Pag. 3/3                                                                 Sessione ordinaria 2024
+                                                                            Seconda prova scritta
+
+
+
+
+                              Ministero dell’istruzione e del merito
+ A063 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+                                 Indirizzo: ITCN – TRASPORTI E LOGISTICA
+                                ARTICOLAZIONE CONDUZIONE DEL MEZZO
+                                OPZIONE CONDUZIONE DEL MEZZO NAVALE
+Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO NAVALE
+
+ SECONDA PARTE
+ Quesito 1
+ All’alba del giorno 20 giugno 2024, quando in posizione (φ=21°05.1’N, λ=127°20.9’W), navigando
+ per RV=080° e V=16 kts, si rileva il sorgere del lembo superiore del Sole con la bussola magnetica e
+ con la girobussola (con auto-correttore fuori uso), ottenendo ab=070°, ag=065°.
+ Sono note la declinazione magnetica per l’anno 2020, pari a d(2020)=10°22’W(4’E) e la deviazione
+ bussola attesa come da tabella delle deviazioni, pari a δ=4.3°E.
+ Si verifichi il buon funzionamento delle bussole considerando per entrambe una tolleranza massima
+ di 0.3° rispetto a quanto atteso.
+ Nel commento finale si spieghi anche perché tra i dati in nostro possesso non figura l’istante di
+ osservazione, qui superfluo, ma normalmente necessario al fine del calcolo della declinazione.
+ Quesito 2
+ Una nave, avente immersioni TF=8.10 m e TA=8.30 m, dislocamento Δ=17560 t ed una quota
+ iniziale del baricentro KG=8.10 m, a causa di cattive condizioni meteomarine ha difficoltà di
+ manovra. Dopo qualche ora, l’impatto su uno scoglio provoca una falla. L’acqua tende ad invadere
+ un locale isolato e simmetrico rispetto al piano diametrale (permeabilità μ=60%), limitato da un
+ copertino stagno, avente dimensioni: length 12.5 m, width 13.0 m, depth 7.5 m.
+ Il candidato determini la nuova altezza metacentrica GM e le immersioni estreme a compartimento
+ completamente allagato.
+        Siano: LPP=143.16 m, MCTC=200.22 t∙m, TPC=23.66 t, LCF=70.41 m, KM=KM’=8.27 m. Le coordinate del
+        baricentro “G” del locale allagato sono: XG=90.20 m dalla PPAD, ZG=KG=7.55 m dalla baseline.
+ Quesito 3
+ Si delinei l’inquadramento normativo che attiene al trattamento della zavorra a bordo delle navi, in
+ ambito di prevenzione dell’inquinamento marino e alterazione del microclima batterico delle acque,
+ avendo cura di specificare la legislazione di riferimento, le dotazioni tecniche delle navi, e la
+ certificazione necessaria.
+ Quesito 4
+ Il candidato descriva la circolazione atmosferica e ne illustri i concetti chiave che contribuiscono
+ a riequilibrare i gradienti termico-barici attraverso venti e correnti.
+____________________________
+Durata massima della prova: 6 ore.
+È consentito soltanto l’uso di tavole nautiche, formulari, pubblicazioni nautiche e calcolatrici scientifiche o grafiche purché
+non siano dotate della capacità di elaborazione simbolica algebrica e non abbiano la disponibilità di connessione a
+Internet.
+È consentito l’uso del dizionario bilingue (italiano-lingua del paese di provenienza) per i candidati di madrelingua non
+italiana.
+Non è consentito lasciare l’Istituto prima che siano trascorse 3 ore dalla consegna della traccia.
+

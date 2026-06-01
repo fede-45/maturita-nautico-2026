@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario Nautico — 18 pagine | Navigazione</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+.f-hero { padding:60px 0 30px; text-align:center; }
+.f-hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:0.5rem; }
+.f-hero p { color:var(--text-secondary); max-width:680px; margin:0 auto; }
+
+.f-toolbar { padding:20px 0; background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:50; backdrop-filter:blur(10px); }
+.f-toolbar-inner { display:flex; gap:1rem; align-items:center; flex-wrap:wrap; }
+.f-filter { display:flex; gap:6px; flex-wrap:wrap; }
+.f-chip { padding:6px 12px; border-radius:var(--radius-full); background:var(--bg-card); border:1px solid var(--border); color:var(--text-secondary); font-size:0.8rem; font-weight:600; cursor:pointer; transition:all var(--transition); }
+.f-chip:hover { border-color:var(--accent); color:var(--text-primary); }
+.f-chip.active { background:var(--accent); color:var(--navy-900); border-color:var(--accent); }
+.f-counter { margin-left:auto; font-family:var(--font-mono); font-size:0.85rem; color:var(--text-secondary); }
+.f-counter strong { color:var(--accent); }
+
+.f-main { padding:30px 0 80px; }
+.f-layout { display:grid; grid-template-columns:280px 1fr; gap:2rem; }
+
+.f-sidebar { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.25rem; max-height:calc(100vh - 180px); overflow-y:auto; position:sticky; top:80px; }
+.f-sidebar h3 { font-size:0.85rem; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted); margin-bottom:0.75rem; }
+.f-thumb-list { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+.f-thumb { position:relative; aspect-ratio:0.71; background:var(--bg-input); border:2px solid var(--border); border-radius:var(--radius-sm); overflow:hidden; cursor:pointer; transition:all var(--transition); }
+.f-thumb img { width:100%; height:100%; object-fit:cover; opacity:0.6; transition:opacity var(--transition); }
+.f-thumb:hover { border-color:var(--accent); }
+.f-thumb:hover img { opacity:1; }
+.f-thumb.active { border-color:var(--accent); box-shadow:var(--glow-gold); }
+.f-thumb.active img { opacity:1; }
+.f-thumb .f-thumb-num { position:absolute; top:4px; right:4px; background:rgba(0,0,0,0.7); color:#fff; font-size:0.65rem; padding:1px 5px; border-radius:3px; font-family:var(--font-mono); }
+.f-thumb.hidden { display:none; }
+
+.f-viewer { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; }
+.f-viewer-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid var(--border); }
+.f-viewer-header h2 { font-size:1.3rem; margin:0; }
+.f-viewer-nav { display:flex; gap:8px; }
+.f-btn { padding:6px 14px; background:var(--bg-input); border:1px solid var(--border); color:var(--text-primary); border-radius:var(--radius-md); cursor:pointer; font-size:0.85rem; transition:all var(--transition); font-family:var(--font-main); }
+.f-btn:hover:not(:disabled) { border-color:var(--accent); color:var(--accent); }
+.f-btn:disabled { opacity:0.4; cursor:not-allowed; }
+.f-image-wrap { background:#fff; border-radius:var(--radius-md); overflow:hidden; cursor:zoom-in; position:relative; }
+.f-image-wrap img { width:100%; display:block; }
+.f-info { margin-top:1.5rem; display:grid; grid-template-columns:auto 1fr; gap:1rem 1.5rem; }
+.f-info-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.8px; color:var(--text-muted); font-weight:600; }
+.f-info-value { font-size:0.9rem; color:var(--text-primary); }
+.f-subtopics { display:flex; flex-direction:column; gap:6px; }
+.f-subtopic { padding:8px 12px; background:var(--bg-input); border-left:3px solid var(--accent); border-radius:var(--radius-sm); font-size:0.85rem; color:var(--text-primary); }
+
+/* Macro badges */
+.macro-badge { display:inline-block; padding:3px 10px; border-radius:var(--radius-full); font-size:0.7rem; font-weight:700; letter-spacing:0.5px; }
+.macro-G { background:#10b981; color:#000; }
+.macro-A { background:#a855f7; color:#fff; }
+.macro-B { background:#f97316; color:#fff; }
+.macro-C { background:#0ea5e9; color:#fff; }
+.macro-F { background:#ef4444; color:#fff; }
+.macro-DE { background:#f59e0b; color:#000; }
+
+/* Zoom modal */
+.f-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:1000; padding:40px; cursor:zoom-out; }
+.f-modal.open { display:flex; align-items:center; justify-content:center; }
+.f-modal img { max-width:100%; max-height:100%; box-shadow:0 0 40px rgba(0,0,0,0.5); }
+.f-modal-close { position:absolute; top:20px; right:30px; color:#fff; font-size:2rem; cursor:pointer; background:rgba(0,0,0,0.5); border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; border:none; }
+
+@media(max-width:900px){
+  .f-layout { grid-template-columns:1fr; }
+  .f-sidebar { position:static; max-height:300px; }
+  .f-thumb-list { grid-template-columns:repeat(6,1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand">
+      <div class="brand-icon">⚓</div><span>Nautico 2026</span>
+    </a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">🏠 Home</a></li>
+      <li><a href="../orale/index.html">🎤 Orale</a></li>
+      <li><a href="../scritti/italiano.html">✍️ Italiano</a></li>
+      <li><a href="index.html" class="active">⚓ Navigazione</a></li>
+      <li><a href="#pcto" class="locked">🏢 PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">🏛️ Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions">
+      <button class="btn-icon" id="theme-toggle" title="Cambia tema">🌙</button>
+    </div>
+  </div>
+</nav>
+
+<section class="f-hero">
+  <div class="container">
+    <div class="section-label" style="text-align:center">Istituto Superiore A. Rizza · Siracusa</div>
+    <h1>📐 Formulario Nautico</h1>
+    <p>18 pagine di formule per la seconda prova scritta. Filtra per macro-argomento, scorri con le frecce, clicca sull'immagine per zoom a schermo intero.</p>
+    <div style="margin-top:1.25rem;display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
+      <a href="index.html" class="btn btn-secondary">← Torna al hub</a>
+      <a href="images/prove/Formulario%20nautico.pdf" download class="btn btn-primary">⬇️ Scarica PDF</a>
+    </div>
+  </div>
+</section>
+
+<section class="f-toolbar">
+  <div class="container">
+    <div class="f-toolbar-inner">
+      <span style="font-size:0.85rem;color:var(--text-secondary);font-weight:600">Filtra per argomento:</span>
+      <div class="f-filter" id="f-filter">
+        <button class="f-chip active" data-filter="all">Tutti</button>
+        <button class="f-chip" data-filter="G"><span class="macro-badge macro-G">G</span> Rotte</button>
+        <button class="f-chip" data-filter="A"><span class="macro-badge macro-A">A</span> Astronomia</button>
+        <button class="f-chip" data-filter="B"><span class="macro-badge macro-B">B</span> Radar/COLREG</button>
+        <button class="f-chip" data-filter="C"><span class="macro-badge macro-C">C</span> Maree</button>
+        <button class="f-chip" data-filter="F"><span class="macro-badge macro-F">F</span> Stabilità</button>
+      </div>
+      <div class="f-counter">Pagina <strong id="cur-page">1</strong> di <strong>18</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="f-main">
+  <div class="container">
+    <div class="f-layout">
+      <aside class="f-sidebar">
+        <h3>Pagine</h3>
+        <div class="f-thumb-list" id="thumb-list"><!-- popolato da JS --></div>
+      </aside>
+
+      <div class="f-viewer">
+        <div class="f-viewer-header">
+          <h2 id="page-title">—</h2>
+          <div class="f-viewer-nav">
+            <button class="f-btn" id="prev-btn">← Prec</button>
+            <button class="f-btn" id="next-btn">Succ →</button>
+          </div>
+        </div>
+        <div class="f-image-wrap" id="image-wrap">
+          <img id="page-img" src="" alt="Pagina formulario">
+        </div>
+        <div class="f-info">
+          <div class="f-info-label">Argomento</div>
+          <div class="f-info-value"><span id="page-macro" class="macro-badge">—</span> <span id="page-macro-name">—</span></div>
+          <div class="f-info-label">Contenuto</div>
+          <div class="f-info-value f-subtopics" id="page-subtopics"></div>
+          <div class="f-info-label" id="formula-label" style="display:none">Formule chiave</div>
+          <div class="f-info-value f-subtopics" id="page-formulas" style="display:none"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Zoom modal -->
+<div class="f-modal" id="zoom-modal">
+  <button class="f-modal-close" id="modal-close" aria-label="Chiudi">✕</button>
+  <img id="modal-img" src="" alt="Zoom pagina">
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>⚓ Maturità Nautico 2026 — Formulario by Istituto A. Rizza Siracusa · Digitalizzato per la classe</p>
+  </div>
+</footer>
+
+<script src="../assets/js/app.js"></script>
+<script>
+// Dati del formulario (dal formulario-index.json — inline qui per zero dipendenze)
+const MACRO_NAMES = {
+  G: "Rotte (Lossodromia & Ortodromia)",
+  A: "Astronomia Nautica",
+  B: "Carteggio Radar & COLREG",
+  C: "Maree e Correnti",
+  F: "Stabilità & Gestione Pesi"
+};
+
+const PAGES = [
+  {n:1, title:"Lossodromia", macro:"G", subtopics:["Metodo approssimato (Δφ ≤ 2°, m ≤ 500 mgl)","Metodo esatto (Δφ > 2°, m > 500 mgl)","Primo problema: da A trovare B","Secondo problema: da A,B trovare cammino e rotta"], formulas:["Δφ' = m · cos Rv","φC = (10800'/π) · ln(tan(45+φ/2))","tan Rv = Δλ·cos φm / Δφ"]},
+  {n:2, title:"Lossodromia — Intersezioni", macro:"G", subtopics:["Intersezione lossodromia con meridiano","Intersezione lossodromia con parallelo","Intersezione di due lossodromie note"]},
+  {n:3, title:"Ortodromia (cerchio massimo)", macro:"G", subtopics:["Cammino mo","Rotta iniziale Ri e finale Rf","Coordinate del vertice (φV, λV)"], formulas:["mo = cos⁻¹(sin φA·sin φB + cos φA·cos φB·cos Δλ) · 60","tan Ri = sin Δλ / (tan φB·cos φA − sin φA·cos Δλ)","φV = cos⁻¹(cos φA·sin Ri)"]},
+  {n:4, title:"Astronomia — Moto diurno", macro:"A", subtopics:["Riconoscimento astri (sorgenti/tramontanti vs circumpolari)","Altezze meridiane (passaggio sup. e inf.)","Calcolo intervallo per altezze di culminazione","Amplitudine astronomica"]},
+  {n:5, title:"Bussola + Astronomia Stelle", macro:"A", subtopics:["Declinazione magnetica (metodo italiano e internazionale)","Deviazione magnetica","ETA = ETD − λfuso − tm − ΔT + λfuso","Stelle: tempo approssimato, T*, TgZ"]},
+  {n:6, title:"Astronomia — Sole & Astro X", macro:"A", subtopics:["Sole: schema completo (Tf, Tc, Tm, angolo polo)","Sole: ΔT, m = V·ΔT, Δφ'","Astro X: calcolo identificazione (Ts, hi, T*, SenS)"]},
+  {n:7, title:"Carteggio Radar — Procedura CPA", macro:"B", subtopics:["Indicatrice di moto relativo","Triangolo delle velocità","Determinazione CPA, TCPA, NCPA","Manovra evasiva (ΔRv o ΔVp)"]},
+  {n:8, title:"Tempi + Punto nave astronomico", macro:"A", subtopics:["Trasformazione tempo ↔ angolo al polo","Equazione fondamentale angoli orari","Equazione del tempo vero","sin h = sin φ·sin δ + cos φ·cos δ·cos P","tan Z = sin P / (tan δ·cos φ − sin φ·cos P)","Errori per Pn con 4 rette"]},
+  {n:9, title:"Correzioni altezze + Stella Polare", macro:"A", subtopics:["Correzione altezze strumentali (scalette)","Calcolo latitudine con hv Polare (a0+a1+a2−1)","Scalette determinazione P e δ astri","Riconoscimento astro incognito"]},
+  {n:10, title:"Tabella FIX + COLREG (parte 1)", macro:"A", subtopics:["Schema calcolo astro non noto","Tabella FIX completa","Stella Polare schema","Costruzione grafica retta di altezza (8 passi)","COLREG: R.2/5/6/7/15/16"]},
+  {n:11, title:"Spostamento Pesi", macro:"F", subtopics:["Elementi base: Tm, Δ, TPC, DWA, FWA, MCTC","Spostamento baricentro: GG' = (p·d)/Δ","Spostamento verticale: GM' = GM ± (p·z)/Δ","Trasversale (sbandamento): tan φ = (p·y)/(Δ·GM)","Longitudinale: CT, δTA, δTF"]},
+  {n:12, title:"Imbarco/Sbarco Pesi", macro:"F", subtopics:["Elementi base + periodo di rollio","Variazione immersione media δTm","Ascissa centro zona carena di sovraimmersione","Variazione assetto e immersioni estreme"]},
+  {n:13, title:"Imbarco/sbarco — GM' + sbandamento", macro:"F", subtopics:["Nuova altezza metacentrica GM' = KM' − KG'","Sbandamento: tan φ = My/(Δ'·GM')","Lieve entità: nuove immersioni e GM","Punti neutri xNA, xNF"]},
+  {n:14, title:"Piano carico + FSE + Incaglio", macro:"F", subtopics:["Bunker, portata netta, net capacity","Periodo di rollio T = 2π·√(Ix/(Δ·GM))","FSE (Free Surface Effect)","Incaglio: reazione fondo, ascissa, disincaglio"]},
+  {n:15, title:"COLREG — Regole + Fanali", macro:"B", subtopics:["R.17, R.18 (responsabilità PM/Vela/Pesca/Lim)","R.9 canali, R.13 nave raggiungente","Tabella manovre acustiche","Fanali e segnali (vela, pesca, ancora, etc.)"]},
+  {n:16, title:"Falla (allagamento)", macro:"F", subtopics:["Permeabilità µ","Portata della falla","Sovraimmersione","Sbandamento da falla","Variazione assetto"]},
+  {n:17, title:"Formulario di Maree", macro:"C", subtopics:["Proporzione di base: T : 180 = Δt : α","Calcoli preliminari (A/2, LM, T)","Problema diretto (noto t → trovare h)","Problema inverso (nota h → trovare t)"], formulas:["α = (Δt · 180) / T","h = LM ± (A/2) · cos α","Δt = T · α / 180"]},
+  {n:18, title:"Correnti di Marea", macro:"C", subtopics:["Schema con SLACK e Vmax","Problema diretto: noto t → V","Problema inverso: nota V → t"], formulas:["V = Vmax · sin α","sin α = V/Vmax → Δt"]}
+];
+
+let currentIdx = 0;
+let currentFilter = "all";
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+function renderThumbs(){
+  const container = document.getElementById('thumb-list');
+  container.innerHTML = PAGES.map((p,i) => `
+    <div class="f-thumb ${i === currentIdx ? 'active' : ''} ${currentFilter !== 'all' && p.macro !== currentFilter ? 'hidden' : ''}" data-idx="${i}" data-macro="${p.macro}">
+      <img src="images/formulario/pag-${pad(p.n)}.jpg" alt="Pagina ${p.n}" loading="lazy">
+      <span class="f-thumb-num">${p.n}</span>
+    </div>
+  `).join('');
+  container.querySelectorAll('.f-thumb').forEach(el => {
+    el.addEventListener('click', () => {
+      currentIdx = parseInt(el.dataset.idx);
+      renderViewer();
+    });
+  });
+}
+
+function renderViewer(){
+  const p = PAGES[currentIdx];
+  document.getElementById('cur-page').textContent = p.n;
+  document.getElementById('page-title').textContent = `${p.n}. ${p.title}`;
+  document.getElementById('page-img').src = `images/formulario/pag-${pad(p.n)}.jpg`;
+  document.getElementById('page-macro').textContent = p.macro;
+  document.getElementById('page-macro').className = `macro-badge macro-${p.macro}`;
+  document.getElementById('page-macro-name').textContent = MACRO_NAMES[p.macro] || p.macro;
+  document.getElementById('page-subtopics').innerHTML = p.subtopics.map(s => `<div class="f-subtopic">${s}</div>`).join('');
+  const formulasEl = document.getElementById('page-formulas');
+  const formulasLabel = document.getElementById('formula-label');
+  if (p.formulas && p.formulas.length) {
+    formulasLabel.style.display = 'block';
+    formulasEl.style.display = 'flex';
+    formulasEl.innerHTML = p.formulas.map(f => `<div class="f-subtopic" style="font-family:var(--font-mono); border-left-color:var(--primary)">${f}</div>`).join('');
+  } else {
+    formulasLabel.style.display = 'none';
+    formulasEl.style.display = 'none';
+  }
+  document.getElementById('prev-btn').disabled = currentIdx === 0;
+  document.getElementById('next-btn').disabled = currentIdx === PAGES.length - 1;
+  // Highlight thumb
+  document.querySelectorAll('.f-thumb').forEach((el,i) => el.classList.toggle('active', i === currentIdx));
+}
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+  if (currentIdx > 0) { currentIdx--; renderViewer(); }
+});
+document.getElementById('next-btn').addEventListener('click', () => {
+  if (currentIdx < PAGES.length - 1) { currentIdx++; renderViewer(); }
+});
+
+// Filter
+document.querySelectorAll('.f-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.f-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentFilter = chip.dataset.filter;
+    // Hide/show thumbs
+    document.querySelectorAll('.f-thumb').forEach(t => {
+      const macro = t.dataset.macro;
+      t.classList.toggle('hidden', currentFilter !== 'all' && macro !== currentFilter);
+    });
+    // Jump to first matching page
+    if (currentFilter !== 'all') {
+      const firstMatch = PAGES.findIndex(p => p.macro === currentFilter);
+      if (firstMatch >= 0) { currentIdx = firstMatch; renderViewer(); }
+    }
+  });
+});
+
+// Zoom modal
+document.getElementById('image-wrap').addEventListener('click', () => {
+  const modal = document.getElementById('zoom-modal');
+  document.getElementById('modal-img').src = document.getElementById('page-img').src;
+  modal.classList.add('open');
+});
+document.getElementById('modal-close').addEventListener('click', () => document.getElementById('zoom-modal').classList.remove('open'));
+document.getElementById('zoom-modal').addEventListener('click', e => { if (e.target.id === 'zoom-modal') e.target.classList.remove('open'); });
+
+// Keyboard nav
+document.addEventListener('keydown', e => {
+  if (document.getElementById('zoom-modal').classList.contains('open')) {
+    if (e.key === 'Escape') document.getElementById('zoom-modal').classList.remove('open');
+    return;
+  }
+  if (e.key === 'ArrowLeft' && currentIdx > 0) { currentIdx--; renderViewer(); }
+  if (e.key === 'ArrowRight' && currentIdx < PAGES.length - 1) { currentIdx++; renderViewer(); }
+});
+
+renderThumbs();
+renderViewer();
+</script>
+
+</body>
+</html>

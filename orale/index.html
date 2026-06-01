@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colloquio Orale &mdash; Maturit&agrave; Nautico 2026</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes pulse-glow { 0%,100%{box-shadow:0 0 20px rgba(245,166,35,0.15)} 50%{box-shadow:0 0 40px rgba(245,166,35,0.3)} }
+    @keyframes shimmer { 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+    @keyframes rotate-slow { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes scale-in { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
+
+    .hub-page { min-height:100vh; padding-top:80px; position:relative; overflow:hidden; }
+    .hub-bg-orb {
+      position:absolute; border-radius:50%; filter:blur(80px); opacity:0.08; pointer-events:none;
+    }
+    .hub-bg-orb.orb-1 { width:500px;height:500px;background:var(--accent);top:-100px;right:-100px;animation:float 8s ease-in-out infinite; }
+    .hub-bg-orb.orb-2 { width:400px;height:400px;background:var(--primary);bottom:-50px;left:-100px;animation:float 10s ease-in-out infinite 2s; }
+    .hub-bg-orb.orb-3 { width:300px;height:300px;background:var(--green-500);top:50%;left:50%;transform:translate(-50%,-50%);animation:float 12s ease-in-out infinite 4s; }
+
+    .hub-hero { text-align:center; padding:60px 0 40px; position:relative; z-index:1; animation:fadeInUp 0.6s ease both; }
+    .hub-hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 20px; background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.25);
+      border-radius:999px; font-size:0.8rem; font-weight:600; color:var(--gold-300);
+      margin-bottom:1.5rem; letter-spacing:0.04em;
+    }
+    .hub-hero-badge .badge-dot { width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse-glow 2s ease-in-out infinite; }
+    .hub-hero h1 { font-size:clamp(2rem,5vw,3rem); font-weight:800; margin-bottom:0.75rem; line-height:1.15; }
+    .hub-hero h1 .accent { color:var(--accent); }
+    .hub-hero p { max-width:580px; margin:0 auto; color:var(--text-secondary); font-size:1.05rem; line-height:1.7; }
+
+    .hub-section-label {
+      text-align:center; margin-top:40px; margin-bottom:2rem; position:relative; z-index:1;
+      animation:fadeInUp 0.6s ease 0.2s both;
+    }
+    .hub-section-label span {
+      font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase;
+      color:var(--text-muted); background:var(--bg-base); padding:0 16px; position:relative;
+    }
+    .hub-section-label span::before, .hub-section-label span::after {
+      content:''; position:absolute; top:50%; width:60px; height:1px;
+      background:linear-gradient(to right, transparent, var(--border-strong));
+    }
+    .hub-section-label span::before { right:100%; background:linear-gradient(to left, transparent, var(--border-strong)); }
+    .hub-section-label span::after { left:100%; }
+
+    .hub-grid {
+      display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:1.25rem; max-width:960px; margin:0 auto; padding:0 1.5rem 60px;
+      position:relative; z-index:1;
+    }
+
+    .hub-card {
+      background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-xl);
+      padding:2rem; text-decoration:none; display:flex; flex-direction:column;
+      transition:all 0.3s cubic-bezier(0.4,0,0.2,1); position:relative; overflow:hidden;
+      animation:scale-in 0.5s ease both; cursor:pointer;
+    }
+    .hub-card:nth-child(1){animation-delay:0.1s} .hub-card:nth-child(2){animation-delay:0.2s}
+    .hub-card:nth-child(3){animation-delay:0.3s} .hub-card:nth-child(4){animation-delay:0.4s}
+    .hub-card:nth-child(5){animation-delay:0.5s} .hub-card:nth-child(6){animation-delay:0.6s}
+
+    .hub-card::before {
+      content:''; position:absolute; inset:0; opacity:0; transition:opacity 0.3s;
+      background:radial-gradient(circle at 50% 0%, var(--card-glow), transparent 70%);
+    }
+    .hub-card:hover::before { opacity:1; }
+    .hub-card:hover { transform:translateY(-6px); border-color:var(--card-border); }
+
+    .hub-card.locked { opacity:0.45; pointer-events:none; }
+    .hub-card.locked:hover { transform:none; }
+    .hub-card.locked::before { display:none; }
+
+    .hub-card-icon {
+      width:56px; height:56px; border-radius:var(--radius-lg); display:flex;
+      align-items:center; justify-content:center; font-size:28px; margin-bottom:1.25rem;
+      position:relative; z-index:1;
+    }
+    .hub-card h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text-primary); position:relative; z-index:1; }
+    .hub-card p { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1rem; position:relative; z-index:1; }
+
+    .hub-card-status {
+      display:inline-flex; align-items:center; gap:6px; padding:4px 12px;
+      border-radius:999px; font-size:0.72rem; font-weight:600; margin-top:auto;
+      position:relative; z-index:1;
+    }
+    .hub-card-status.ready { background:rgba(34,197,94,0.12); color:var(--green-400); border:1px solid rgba(34,197,94,0.25); }
+    .hub-card-status.progress { background:rgba(245,166,35,0.12); color:var(--gold-300); border:1px solid rgba(245,166,35,0.25); }
+    .hub-card-status.locked { background:rgba(100,120,140,0.1); color:var(--text-muted); border:1px solid var(--border); }
+
+    .hub-card .status-dot { width:6px;height:6px;border-radius:50%; }
+    .hub-card-status.ready .status-dot { background:var(--green-400); }
+    .hub-card-status.progress .status-dot { background:var(--gold-300); animation:pulse-glow 2s ease-in-out infinite; }
+    .hub-card-status.locked .status-dot { background:var(--text-muted); }
+
+    /* Card color variants */
+    .hub-card.gold { --card-glow:rgba(245,166,35,0.08); --card-border:rgba(245,166,35,0.4); }
+    .hub-card.gold .hub-card-icon { background:rgba(245,166,35,0.12); }
+    .hub-card.ocean { --card-glow:rgba(0,168,212,0.08); --card-border:rgba(0,168,212,0.4); }
+    .hub-card.ocean .hub-card-icon { background:rgba(0,168,212,0.12); }
+    .hub-card.green { --card-glow:rgba(34,197,94,0.08); --card-border:rgba(34,197,94,0.4); }
+    .hub-card.green .hub-card-icon { background:rgba(34,197,94,0.12); }
+    .hub-card.purple { --card-glow:rgba(162,25,66,0.08); --card-border:rgba(162,25,66,0.4); }
+    .hub-card.purple .hub-card-icon { background:rgba(162,25,66,0.12); }
+    .hub-card.gray { --card-glow:rgba(100,120,140,0.05); --card-border:var(--border); }
+    .hub-card.gray .hub-card-icon { background:rgba(100,120,140,0.1); }
+
+    .hub-back { text-align:center; padding:0 0 60px; position:relative; z-index:1; animation:fadeInUp 0.6s ease 0.7s both; }
+    .hub-back a { color:var(--text-secondary); font-size:0.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:6px; transition:color 0.2s; }
+    .hub-back a:hover { color:var(--accent); }
+
+    @media(max-width:600px) {
+      .hub-grid { grid-template-columns:1fr; gap:1rem; }
+      .hub-hero { padding:40px 0 20px; }
+      .hub-section-label span::before, .hub-section-label span::after { width:30px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="reading-progress"><div class="reading-progress-fill"></div></div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../index.html" class="navbar-brand"><div class="brand-icon">&#9875;</div><span>Nautico 2026</span></a>
+    <ul class="navbar-nav">
+      <li><a href="../index.html">&#127968; Home</a></li>
+      <li><a href="index.html" class="active">&#127897; Orale</a></li>
+      <li><a href="../scritti/italiano.html">&#9997;&#65039; Italiano</a></li>
+      <li><a href="../navigazione/index.html">&#9875; Navigazione</a></li>
+      <li><a href="#pcto" class="locked">&#127970; PCTO</a></li>
+      <li><a href="../educazione-civica/index.html">&#127963; Ed. Civica</a></li>
+    </ul>
+    <div class="navbar-actions"><button class="btn-icon" id="theme-toggle" title="Cambia tema">&#127769;</button></div>
+  </div>
+</nav>
+
+<div class="hub-page">
+  <div class="hub-bg-orb orb-1"></div>
+  <div class="hub-bg-orb orb-2"></div>
+  <div class="hub-bg-orb orb-3"></div>
+
+  <div class="hub-hero">
+    <div class="hub-hero-badge"><span class="badge-dot"></span>Colloquio Orale</div>
+    <h1>Scegli la <span class="accent">materia</span></h1>
+    <p>Seleziona un argomento per iniziare a studiare. Ogni materia ha testo completo, mappe concettuali, flashcard, quiz e domande della commissione.</p>
+  </div>
+
+  <div class="hub-section-label"><span>Materie del colloquio</span></div>
+
+  <div class="hub-grid">
+
+    <a href="macchine.html" class="hub-card gold">
+      <div class="hub-card-icon">&#9881;&#65039;</div>
+      <h3>Macchine</h3>
+      <p>Termodinamica, motori a combustione, cicli Otto/Diesel, impianti frigoriferi, oleodinamica e difesa dagli incendi.</p>
+      <div class="hub-card-status ready"><span class="status-dot"></span>6 capitoli completi</div>
+    </a>
+
+    <a href="italiano.html" class="hub-card ocean">
+      <div class="hub-card-icon">&#128214;</div>
+      <h3>Italiano</h3>
+      <p>Il filo del "Doppio": D'Annunzio, Svevo, Pirandello, Ungaretti, Montale, Quasimodo, Neorealismo, Eco.</p>
+      <div class="hub-card-status progress"><span class="status-dot"></span>In costruzione</div>
+    </a>
+
+    <a href="navigazione.html" class="hub-card green locked">
+      <div class="hub-card-icon">&#9875;</div>
+      <h3>Navigazione</h3>
+      <p>Carteggio, astronomia, meteorologia, stabilit&agrave; della nave e sicurezza in mare.</p>
+      <div class="hub-card-status locked"><span class="status-dot"></span>Prossimamente</div>
+    </a>
+
+    <a href="inglese.html" class="hub-card purple locked">
+      <div class="hub-card-icon">&#127468;&#127463;</div>
+      <h3>Inglese</h3>
+      <p>Maritime English, terminologia tecnica, grammatica avanzata e comprensione testi.</p>
+      <div class="hub-card-status locked"><span class="status-dot"></span>Prossimamente</div>
+    </a>
+
+  </div>
+
+  <div class="hub-section-label" style="margin-top:20px"><span>Sezioni trasversali</span></div>
+
+  <div class="hub-grid">
+
+    <a href="../educazione-civica/index.html" class="hub-card ocean">
+      <div class="hub-card-icon">&#127963;</div>
+      <h3>Educazione Civica</h3>
+      <p>Agenda 2030 e Medio Oriente. Goal 16: Pace, giustizia e istituzioni solide con collegamenti interdisciplinari.</p>
+      <div class="hub-card-status ready"><span class="status-dot"></span>Completa</div>
+    </a>
+
+    <a href="../pcto/index.html" class="hub-card gray locked">
+      <div class="hub-card-icon">&#127970;</div>
+      <h3>PCTO &mdash; Alternanza</h3>
+      <p>Relazione e video di presentazione dell'esperienza di formazione scuola-lavoro da esporre all'orale.</p>
+      <div class="hub-card-status locked"><span class="status-dot"></span>In arrivo</div>
+    </a>
+
+  </div>
+
+  <div class="hub-back">
+    <a href="../index.html">&#8592; Torna alla homepage</a>
+  </div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+</body>
+</html>

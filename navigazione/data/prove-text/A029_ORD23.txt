@@ -1,0 +1,251 @@
+Pag. 1/6                                     Sessione ordinaria 2023
+                                             Seconda prova scritta
+
+
+
+
+                Ministero dell’istruzione e del merito
+  A029 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+
+Indirizzo: ITCD – TRASPORTI E LOGISTICA ARTICOLAZIONE CONDUZIONE DEL MEZZO
+
+ Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO
+
+
+
+
+  La presente prova è costituita da due opzioni riferite a:
+
+
+     • OPZIONE A - CONDUZIONE DEL MEZZO AEREO
+     • OPZIONE B - CONDUZIONE DEL MEZZO NAVALE
+
+
+  Si invita il Presidente della commissione a verificare che
+  i candidati di ciascuna classe ricevano e svolgano la
+  prova d’esame coerente al percorso di studio seguito.
+ Pag. 2/6                                                       Sessione ordinaria 2023
+                                                                Seconda prova scritta
+
+
+
+
+                        Ministero dell’istruzione e del merito
+    A029 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+
+  Indirizzo: ITCD – TRASPORTI E LOGISTICA ARTICOLAZIONE CONDUZIONE DEL MEZZO
+
+  Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO
+
+
+ OPZIONE A - CONDUZIONE DEL MEZZO AEREO
+Il candidato svolga il tema indicato nella prima parte e risponda a due soli quesiti tra i quattro
+proposti nella seconda parte.
+
+PRIMA PARTE
+Due piloti militari, in addestramento su velivoli F-35, sono in volo sull’Oceano Indiano con velocità
+TAS=0,9 M. La missione prevede l’intercettazione di un aereo cisterna KC-10 per un rifornimento in
+volo. La comunicazione della missione arriva ai piloti alle ore ZT=16:10 con gli intercettori già in volo
+sulla posizione 0640S06817E. Alla stessa ora l’aereo cisterna decolla dalla base di Diego Garcia
+(0719S07225E). La salita prevede di mantenere TC=130° e una GS media pari a 260 kts. Raggiunta
+la quota di crociera a FL300 in 5 minuti, l’aerocisterna vira per seguire rotta vera 065° per altri 8 minuti
+prima di assumere la rotta finale Nord sulla quale avverranno le operazioni di rifornimento. Su
+quest’ultima rotta il KC-10 ha una velocità GS pari a 300 kts.
+Le condizioni meteorologiche in superficie sono riportate nel seguente bollettino:
+METAR: FJDG 221055Z 13812KT 9999 FEW024 SCT250 34/24 A2978 RMK SLP081 T03350239
+Alla quota di crociera, la presenza di una vasta area anticiclonica, causa una variazione nella
+direzione del vento di 3° e risulta in intensità maggiore di 3 kts.
+Il candidato calcoli il GMT di intercetto e riporti la missione di tutti i velivoli su un reticolato di
+navigazione appropriato alla zona geografica in cui avvengono le operazioni utilizzando a tale scopo
+una scala a piacere.
+
+
+SECONDA PARTE
+1. Un elicottero della protezione civile Bell 412 decolla dall’a/p di Alghero/Fertilia (FE=87 ft) a
+   GMT=07:00 per una missione di ricerca e soccorso in mare. La missione prevede di raggiungere
+   il punto di uscita VFR ARGENTIERA seguendo QTE=328°/D=8 NM dal VOR ALG e da questo
+   punto iniziare la ricerca per settore. Al pilota è stato affidato il settore compreso tra le direzioni
+   vere 270° e 300° e di lunghezza 85 NM rispetto al punto di riporto. Il velivolo volerà a 3000 ft di
+   altitudine mantenendo CAS=128 kts. Dal METAR dell’a/p si deduce una temperatura esterna
+   minore dello standard di 4°C, QNH=1004 hPa e un vento da 160°/25 kts.
+   Il candidato calcoli gli orari dei turning point e di quanto si potrebbe estendere il raggio di settore
+   sfruttando l’autonomia di 2h30m del velivolo prima di rientrare a Fertilia.
+   Pag. 3/6                                                                Sessione ordinaria 2023
+                                                                           Seconda prova scritta
+
+
+
+
+                              Ministero dell’istruzione e del merito
+       A029 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+
+    Indirizzo: ITCD – TRASPORTI E LOGISTICA ARTICOLAZIONE CONDUZIONE DEL MEZZO
+
+    Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO
+
+
+ 2. Sia nota la posizione di un a/m (52°30’S; 078°25’E) e quella di una radioassistenza
+    VOR (52°30’S; 072°25’E). Il candidato calcoli qual è il rilevamento vero (TB) del velivolo dalla
+    radioassistenza quando esso viene tracciato su una carta conica conforme di Lambert con
+    paralleli standard 40°S e 50°S. Commenti il risultato sottolineando le differenze nel tracciamento
+    di un rilevamento tra la carta di Lambert e quella di Mercatore.
+ 3. Il candidato analizzi accuratamente lo spaccato verticale della procedura dell’a/p di
+    Milano/Malpensa per RWY 17L sotto riportata e rappresenti la sezione della vista in pianta, della
+    stessa procedura, riportando e commentando le informazioni principali che con la propria
+    esperienza formativa riesce a dedurre dall’analisi.
+
+
+
+
+ 4. Il volo della Singapore Airlines SIA 809, in partenza da Tokyo/Narita (3546N14023E) e diretto a
+    Singapore/Changi (0122N10359E), ha imbarcato carburante per un’autonomia di 8 ore.
+    Il candidato calcoli le coordinate del punto di non ritorno sul percorso ortodromico sapendo che
+    in allontanamento il velivolo mantiene una GS media uguale a 425 kts mentre sul tragitto di rientro
+    la GS media è pari a 465 kts.
+
+
+
+
+____________________________
+Durata massima della prova: 6 ore.
+È consentito soltanto l’uso di manuali tecnici e di calcolatrici non programmabili.
+È consentito l’uso del dizionario bilingue (italiano-lingua del paese di provenienza) per i candidati di madrelingua non
+italiana.
+Non è consentito lasciare l’Istituto prima che siano trascorse 3 ore dalla consegna della traccia.
+ Pag. 4/6                                                          Sessione ordinaria 2023
+                                                                   Seconda prova scritta
+
+
+
+
+                         Ministero dell’istruzione e del merito
+    A029 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+
+  Indirizzo: ITCD – TRASPORTI E LOGISTICA ARTICOLAZIONE CONDUZIONE DEL MEZZO
+
+  Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO
+
+
+OPZIONE B - CONDUZIONE DEL MEZZO NAVALE
+Il candidato svolga il tema indicato nella prima parte e risponda a due soli quesiti tra i quattro
+proposti nella seconda parte.
+
+PRIMA PARTE
+Pianificazione e controllo della traversata tra Southampton (UK) e Bergen (Norway).
+Planning
+In fase di pianiﬁcazione della traversata, si stima di raggiungere la propria destinazione il giorno
+20/06/2023 alle tf= 05:20, poco prima dell’ingresso in porto è presente un ponte ferroviario. L’altezza
+delle strutture inferiori del ponte dal livello medio dei mari è di 11,1 m e l’altezza dell’opera morta della
+nave è di 10,2 m, il valore di Zo = 0,43 m.
+I valori di marea del giorno sono i seguenti:
+tf = 03:21      HAM = 0,95 m
+tf = 09:44      HBM = 0,29 m
+tf = 15:58      HAM = 1,13 m
+La nave deve passare sotto il ponte con almeno un metro di luce.
+Considerando una profondità segnata sulla carta di 8 m e un pescaggio di 7 m, il candidato determini
+gli estremi temporali del primo intervallo di tempo utile per il passaggio e il battente d’acqua (UKC)
+nel momento dell’arrivo e al primo istante utile al passaggio. Pressione atmosferica 1023 hPa.
+NB: tutti gli orari dati sono già comprensivi dell’ora estiva.
+Execution/monitoring
+Durante la traversata, quando ci si trova in navigazione con P V=044° e V=18 kts lungo una porzione
+della corsia NE del Canale della Manica, si rilevano i seguenti bersagli al radar:
+
+     Time             Bersaglio A                                Bersaglio B
+
+                      Relative bearing      Distance             Relative bearing            Distance
+
+     t1= 1144         000°                  8.4 NM               +038°                       8.3 NM
+
+     t2= 1150         000°                  7.0 NM               +037°                       6.0 NM
+
+Determinare tutti i dati relativi ed assoluti di entrambi i bersagli.
+ Pag. 5/6                                                      Sessione ordinaria 2023
+                                                               Seconda prova scritta
+
+
+
+
+                        Ministero dell’istruzione e del merito
+    A029 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+
+  Indirizzo: ITCD – TRASPORTI E LOGISTICA ARTICOLAZIONE CONDUZIONE DEL MEZZO
+
+  Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO
+
+
+Si intende manovrare alle 11:53 per disimpegnarsi da entrambi i bersagli e si ipotizza un’accostata a
+dritta di 10°. Verificare i nuovi CPA e TCPA dei due bersagli, valutandone l’adeguatezza.
+Si esprimano le proprie considerazioni, anche alla luce delle COLREGs, in una breve relazione
+tecnica, comprensiva di eventuali soluzioni alternative che il candidato ritenga più adeguate.
+Al crepuscolo mattutino del 18/06/2023 si naviga con Rv=006° e V=18 kts. La posizione stimata risulta
+(52°12,0’ N, 003°34,2’ E).
+Si decide di eseguire un controllo della posizione con un fix astronomico ottenuto osservando i
+seguenti 4 astri:
+SATURNO            Tc = 02:18:50       hi = 20° 42,8’
+SCHEDAR            Tc = 02:20:54       hi = 53°10,2’
+RASALHAGUE         Tc = 02:23:05       a=235,4°               h = +1.0'
+KOCHAB             Tc = 02:25:14       a=334,2°               h = +1.4'
+Sono noti: K = - 00m05s,  = + 0.0', e = 25 m.
+Determinare il FIX per l’istante dell’ultima osservazione, valutare gli errori e fornire un giudizio sulla
+bontà del punto nave ottenuto, attraverso una breve relazione tecnica. Includere anche eventuali
+considerazioni sulle possibili accortezze che avrebbero potuto rendere questo FIX migliore.
+
+
+
+SECONDA PARTE
+Quesito 1
+Si pianifichi la traversata tra Cabo San Lucas - MEX (22°40’N, 109°47’W) e il WP di ingresso per
+Honolulu – Hawaii (21°17’N, 157°14’W) ipotizzando una traiettoria ortodromica da percorrere con una
+spezzata ottenuta con punti equidistanti in cammino (1 WP ogni 24 ore).
+Si determini rotta iniziale, rotta finale, cammino, coordinate del vertice, ETA teorico ortodromico in
+ora locale e le coordinate dei primi due WP della spezzata, oltre alla conseguente rotta lossodromica
+di partenza.
+È nota la velocità pianificata, pari a 17,7 kts, e l’ETD locale: 0430 22/06/2023.
+     Pag. 6/6                                                              Sessione ordinaria 2023
+                                                                           Seconda prova scritta
+
+
+
+
+                              Ministero dell’istruzione e del merito
+       A029 - ESAME DI STATO CONCLUSIVO DEL SECONDO CICLO DI ISTRUZIONE
+
+     Indirizzo: ITCD – TRASPORTI E LOGISTICA ARTICOLAZIONE CONDUZIONE DEL MEZZO
+
+      Disciplina: SCIENZE DELLA NAVIGAZIONE, STRUTTURA E COSTRUZIONE DEL MEZZO
+
+
+ Quesito 2
+ Una nave ha un dislocamento di 8420 t, un valore di KG di 5,15 m, una LCG di 62,6 m e un KM di
+ 6,21 m. Vengono effettuate le seguenti operazioni sul carico:
+ −     peso P1 = 190 t sbarcato dalla quota di 4,8 m e dalla Xp = 76,4 m.
+ −     peso P2 = 90 t spostato da quota 7,9 m alla quota di 2,1 m e dalla Xp di 50 m a Xp di 80 m.
+ −     peso P3 = 300 t imbarcato alla quota di 6,9 m e alla Xp di 32,5 m.
+ Il valore di KM’ è di 6,22 m.
+ Determinare il nuovo valore del KG e i coefficienti di resistenza alle inclinazioni prima e dopo la
+ movimentazione del carico. Indicare se la nave risulta più dura o più cedevole e di come è variato
+ l’assetto se la nave era inizialmente longitudinalmente dritta. È noto il momento unitario d’assetto,
+ pari a 310 t·m/cm.
+
+
+ Quesito 3
+ Si delinei l’inquadramento normativo che attiene al trasporto di idrocarburi e prodotti chimici in ambito
+ di prevenzione dell’inquinamento marino, avendo cura di specificare le dotazioni tecniche delle navi
+ destinate a tali trasporti, i regimi di discarica, le aree speciali coinvolte e la certificazione necessaria.
+
+
+ Quesito 4
+ Il candidato evidenzi le differenze, vantaggi e svantaggi, tra rotte meteorologiche e rotte
+ climatologiche; mostri con l’aiuto di eventuali schizzi come tracciarle sulle carte in fase di
+ pianificazione.
+
+
+
+
+____________________________
+Durata massima della prova: 6 ore.
+È consentito soltanto l’uso di tavole nautiche, formulari, pubblicazioni nautiche e calcolatrici non programmabili.
+È consentito l’uso del dizionario bilingue (italiano-lingua del paese di provenienza) per i candidati di madrelingua non
+italiana.
+Non è consentito lasciare l’Istituto prima che siano trascorse 3 ore dalla consegna della traccia.
+
