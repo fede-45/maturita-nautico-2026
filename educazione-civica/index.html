@@ -1,418 +1,774 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Educazione Civica &mdash; Agenda 2030 | Maturit&agrave; Nautico 2026</title>
+<title>Educazione Civica &mdash; SDG 16, Democrazia e 1984 | Maturit&agrave; Nautico 2026</title>
 <link rel="stylesheet" href="../assets/css/style.css">
 <style>
-/* Page setup */
-.edc-page {
-  --sdg-red: #E5243B; --sdg-orange: #FCA311; --sdg-yellow: #DDA63A;
-  --sdg-green1: #4C9F38; --sdg-green2: #3F7E44; --sdg-green3: #1F6D4A;
-  --sdg-blue1: #26BDE2; --sdg-blue2: #00AED9; --sdg-blue3: #0A97D9;
-  --sdg-purple: #A21942; --sdg-pink: #E11484;
-  --sdg-text: #0A1628;
+/* ── Ed. Civica — SDG 16, Democrazia & 1984 ── */
+
+/* SDG 16 Banner */
+.sdg16-banner {
+  background: linear-gradient(135deg, #00689D 0%, #004D73 100%);
+  border-bottom: 3px solid #26BDE2; padding: 0;
+  position: relative; overflow: hidden;
 }
+.sdg16-banner::before {
+  content: '16'; position: absolute; right: 2rem; top: 50%;
+  transform: translateY(-50%); font-size: 8rem; font-weight: 900;
+  color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none;
+  font-family: var(--font-mono);
+}
+.sdg16-inner {
+  max-width: 1280px; margin: 0 auto; padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.sdg16-badge {
+  flex-shrink: 0; width: 72px; height: 72px;
+  background: rgba(255,255,255,0.15); border: 2px solid rgba(255,255,255,0.3);
+  border-radius: var(--radius-lg); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; color: #fff;
+}
+.sdg16-badge-num { font-size: 1.8rem; font-weight: 900; line-height: 1; }
+.sdg16-badge-lbl { font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; opacity: 0.8; }
+.sdg16-text { color: #fff; flex: 1; }
+.sdg16-text-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.75; margin-bottom: 2px; }
+.sdg16-text-main { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+.sdg16-text-sub { font-size: 0.78rem; opacity: 0.8; margin-top: 2px; line-height: 1.4; }
+.sdg16-targets { display: flex; gap: 8px; flex-wrap: wrap; }
+.sdg16-target {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  border-radius: var(--radius-full); padding: 4px 12px;
+  font-size: 0.7rem; font-weight: 600; color: #fff;
+}
+.sdg16-target strong { color: #7EE8FF; }
+
+/* SDG 16 Deep-dive section */
+.sdg16-section { padding: 70px 0; }
+.sdg16-targets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.sdg16-tcard {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.25rem;
+  border-left: 4px solid #00689D; transition: all var(--transition);
+}
+.sdg16-tcard:hover { border-left-color: #26BDE2; box-shadow: var(--shadow-sm); }
+.sdg16-tcard-code { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; color: #26BDE2; margin-bottom: 4px; }
+.sdg16-tcard-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+.sdg16-tcard-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.sdg16-tcard-link { font-size: 0.72rem; color: #F87171; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.sdg16-bridge {
+  margin-top: 2.5rem;
+  background: linear-gradient(135deg, rgba(0,104,157,0.12), rgba(239,68,68,0.08));
+  border: 1px solid rgba(0,104,157,0.3); border-radius: var(--radius-xl);
+  padding: 1.75rem 2rem; display: flex; gap: 1.5rem; align-items: flex-start; flex-wrap: wrap;
+}
+.sdg16-bridge-arrow { font-size: 2rem; flex-shrink: 0; margin-top: 4px; }
+.sdg16-bridge-text { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.75; flex: 1; }
+.sdg16-bridge-text strong { color: var(--text-primary); }
+
 /* Hero */
-.edc-hero { padding:120px 0 60px; text-align:center; position:relative; }
-.edc-hero h1 { font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; margin-bottom:1rem; }
-.edc-hero h1 span { background:linear-gradient(135deg,#26BDE2,#E5243B,#FCA311,#4C9F38); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-.edc-hero p { max-width:650px; margin:0 auto 2rem; color:var(--text-secondary); font-size:1rem; line-height:1.7; }
-.edc-hero-imgs { display:flex; justify-content:center; gap:1.5rem; margin-bottom:2rem; flex-wrap:wrap; }
-.edc-hero-imgs img { border-radius:var(--radius-lg); max-width:100%; border:1px solid var(--border); }
-.edc-hero-imgs img:first-child { max-width:600px; }
-.edc-hero-imgs img:last-child { max-width:300px; align-self:center; }
-
-/* SDG grid interactive */
-.sdg-section { padding:60px 0; background:var(--bg-surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
-.sdg-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap:0.75rem; }
-.sdg-card { border-radius:var(--radius-lg); padding:1.25rem; cursor:pointer; transition:all 0.2s ease; position:relative; overflow:hidden; border:2px solid transparent; }
-.sdg-card:hover, .sdg-card.expanded { transform:translateY(-2px); box-shadow:var(--shadow-md); z-index:2; }
-.sdg-card.expanded { border-color:rgba(255,255,255,0.3); }
-.sdg-card-num { font-size:2rem; font-weight:800; opacity:0.7; margin-bottom:0.25rem; }
-.sdg-card-title { font-size:0.7rem; font-weight:700; line-height:1.3; text-transform:uppercase; letter-spacing:0.03em; }
-.sdg-card-icon { font-size:1.8rem; margin-bottom:0.5rem; }
-.sdg-card-detail { display:none; margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid rgba(255,255,255,0.2); font-size:0.75rem; line-height:1.5; }
-.sdg-card.expanded .sdg-card-detail { display:block; }
-
-/* SDG colors */
-.sdg-1 { background:#E5243B; color:#fff; } .sdg-2 { background:#DDA63A; color:#fff; }
-.sdg-3 { background:#4C9F38; color:#fff; } .sdg-4 { background:#C5192D; color:#fff; }
-.sdg-5 { background:#FF3A21; color:#fff; } .sdg-6 { background:#26BDE2; color:#fff; }
-.sdg-7 { background:#FCA311; color:#000; } .sdg-8 { background:#A21942; color:#fff; }
-.sdg-9 { background:#FD6925; color:#fff; } .sdg-10 { background:#DD1367; color:#fff; }
-.sdg-11 { background:#FD9D24; color:#000; } .sdg-12 { background:#BF8B2E; color:#fff; }
-.sdg-13 { background:#3F7E44; color:#fff; } .sdg-14 { background:#0A97D9; color:#fff; }
-.sdg-15 { background:#56C02B; color:#fff; } .sdg-16 { background:#00689D; color:#fff; }
-.sdg-17 { background:#19486A; color:#fff; }
-
-/* Focus Goal 16 */
-.goal16-section { padding:70px 0; }
-.goal16-hero { display:grid; grid-template-columns:200px 1fr; gap:2rem; align-items:center; background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-xl); padding:2rem; }
-.goal16-icon-big { width:180px; height:180px; border-radius:50%; background:#00689D; display:flex; align-items:center; justify-content:center; font-size:5rem; color:#fff; flex-shrink:0; }
-.goal16-targets { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:0.75rem; margin-top:1.5rem; }
-.goal16-target { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-md); padding:1.25rem; border-left:3px solid #00689D; }
-.goal16-target h5 { font-size:0.85rem; font-weight:700; margin-bottom:4px; color:#26BDE2; }
-.goal16-target p { font-size:0.8rem; color:var(--text-secondary); line-height:1.5; }
-
-/* Medio Oriente reflection */
-.me-section { padding:60px 0; background:var(--bg-surface); border-top:1px solid var(--border); }
-.me-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius-lg); padding:1.5rem; margin-bottom:1rem; }
-.me-card h4 { font-size:0.95rem; font-weight:700; margin-bottom:0.5rem; display:flex; align-items:center; gap:8px; }
-.me-card p { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; }
-.me-card .me-stat { display:flex; gap:1.5rem; margin-top:0.75rem; padding-top:0.75rem; border-top:1px solid var(--border); }
-.me-stat-item { text-align:center; }
-.me-stat-num { font-family:var(--font-mono); font-size:1.1rem; font-weight:700; color:var(--accent); }
-.me-stat-lbl { font-size:0.7rem; color:var(--text-muted); }
-
-/* Timeline */
-.timeline-mini { position:relative; padding:0; }
-.tl-dot { display:flex; gap:1rem; padding:0.75rem 0; border-bottom:1px solid var(--border); align-items:baseline; }
-.tl-dot:last-child { border:none; }
-.tl-year { font-family:var(--font-mono); font-size:0.8rem; font-weight:700; color:var(--accent); min-width:70px; }
-.tl-text { font-size:0.85rem; color:var(--text-secondary); }
-
-/* Suez callout */
-.suez-callout { background:linear-gradient(135deg, rgba(0,168,212,0.1) 0%, transparent); border:1px solid rgba(0,168,212,0.3); border-radius:var(--radius-lg); padding:1.25rem; }
-.suez-callout h5 { color:var(--primary); margin-bottom:0.5rem; }
-
-/* Print */
-@media print { .navbar,.reading-progress,.sidebar { display:none; } }
-
-/* Responsive */
-@media (max-width:768px) {
-  .goal16-hero { grid-template-columns:1fr; text-align:center; }
-  .goal16-icon-big { margin:0 auto; }
-  .edc-hero-imgs img:first-child { max-width:100%; }
-  .edc-hero-imgs img:last-child { max-width:240px; }
+.edc-hero { padding: 130px 0 70px; position: relative; overflow: hidden; }
+.edc-hero-bg {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(239,68,68,0.1) 0%, transparent 70%),
+              radial-gradient(ellipse 50% 40% at 20% 80%, rgba(245,166,35,0.07) 0%, transparent 60%);
+  pointer-events: none;
 }
+.edc-hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(239,68,68,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(239,68,68,0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+.edc-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25);
+  border-radius: var(--radius-full); padding: 6px 16px;
+  font-size: 0.8rem; font-weight: 600; color: #F87171;
+  letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 1.5rem;
+}
+.edc-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); margin-bottom: 0.75rem; }
+.edc-hero h1 .red { background: linear-gradient(135deg, #EF4444, #F59E0B); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.edc-hero-quote {
+  max-width: 700px; margin: 1.5rem 0 2rem;
+  background: var(--bg-card); border-left: 4px solid #EF4444;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  padding: 1.25rem 1.5rem;
+}
+.edc-hero-quote blockquote { font-size: 1.05rem; font-style: italic; color: var(--text-primary); line-height: 1.7; margin-bottom: 0.5rem; }
+.edc-hero-quote cite { font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-mono); }
+.edc-hero-pills { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.5rem; }
+.edc-pill {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-full); padding: 6px 16px;
+  font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+}
+.edc-pill.red { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.3); color: #F87171; }
+.edc-pill.gold { background: rgba(245,166,35,0.1); border-color: rgba(245,166,35,0.3); color: var(--accent); }
+.edc-pill.ocean { background: rgba(0,168,212,0.1); border-color: rgba(0,168,212,0.3); color: var(--primary); }
+
+/* Section header */
+.sec-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+.sec-label.red { color: #EF4444; }
+.sec-label.gold { color: var(--accent); }
+.sec-label.ocean { color: var(--primary); }
+.sec-label.green { color: var(--green-400); }
+.sec-title { font-size: clamp(1.3rem, 3vw, 1.8rem); font-weight: 700; margin-bottom: 0.5rem; }
+.sec-sub { font-size: 0.9rem; color: var(--text-secondary); max-width: 640px; line-height: 1.6; }
+
+/* 1984 Section */
+.orwell-section { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid var(--border); }
+.orwell-intro {
+  display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; align-items: start; margin-bottom: 3rem;
+}
+@media (max-width: 700px) { .orwell-intro { grid-template-columns: 1fr; } }
+.orwell-book {
+  background: linear-gradient(160deg, #1a0a0a, #2d0e0e);
+  border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-xl);
+  padding: 2rem 1.5rem; text-align: center; position: relative; overflow: hidden;
+}
+.orwell-book::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(239,68,68,0.15) 0%, transparent 70%);
+}
+.orwell-book-emoji { font-size: 4rem; display: block; margin-bottom: 1rem; position: relative; z-index: 1; }
+.orwell-book-title { font-size: 1.8rem; font-weight: 800; color: #EF4444; position: relative; z-index: 1; }
+.orwell-book-sub { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 4px; position: relative; z-index: 1; }
+.orwell-book-author { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.5rem; font-family: var(--font-mono); position: relative; z-index: 1; }
+.orwell-book-year {
+  display: inline-block; margin-top: 1rem; padding: 4px 12px;
+  background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4);
+  border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; color: #F87171;
+  position: relative; z-index: 1;
+}
+.orwell-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; }
+.orwell-desc strong { color: var(--text-primary); }
+
+.orwell-concepts { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; }
+.orwell-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.25rem;
+  position: relative; overflow: hidden; transition: all var(--transition);
+}
+.orwell-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--oc, #EF4444); }
+.orwell-card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.orwell-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.orwell-card-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-primary); }
+.orwell-card-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.orwell-card-link {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 0.75rem; font-size: 0.72rem; font-weight: 700; color: #F87171;
+  border-top: 1px solid var(--border); padding-top: 0.75rem; width: 100%;
+}
+
+/* Democrazia Section */
+.demo-section { padding: 80px 0; }
+.demo-pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+.demo-pillar {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.5rem;
+  transition: all var(--transition); position: relative;
+}
+.demo-pillar:hover { border-color: var(--border-strong); box-shadow: var(--shadow-md); }
+.demo-pillar-num {
+  font-family: var(--font-mono); font-size: 2.5rem; font-weight: 800;
+  color: var(--dp-color, var(--primary)); opacity: 0.2;
+  position: absolute; top: 1rem; right: 1.25rem; line-height: 1;
+}
+.demo-pillar-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.demo-pillar-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+.demo-pillar-desc { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.65; }
+.demo-pillar-thinker {
+  display: inline-flex; align-items: center; gap: 4px;
+  margin-top: 0.875rem; padding: 3px 10px;
+  background: rgba(0,168,212,0.1); border: 1px solid rgba(0,168,212,0.2);
+  border-radius: var(--radius-full); font-size: 0.7rem; font-weight: 600; color: var(--primary);
+}
+
+/* Costituzione Section */
+.cost-section { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid var(--border); }
+.cost-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+.cost-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.5rem;
+  border-left: 4px solid var(--cc-color, var(--primary));
+  transition: all var(--transition);
+}
+.cost-card:hover { border-color: var(--cc-color, var(--primary)); box-shadow: var(--shadow-sm); }
+.cost-card-art {
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700;
+  color: var(--cc-color, var(--primary)); text-transform: uppercase;
+  letter-spacing: 0.08em; margin-bottom: 6px;
+}
+.cost-card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+.cost-card-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; font-style: italic; margin-bottom: 0.75rem; padding: 0.5rem 0.75rem; background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); }
+.cost-card-link1984 {
+  font-size: 0.75rem; color: #F87171; font-weight: 600;
+  display: flex; align-items: center; gap: 6px;
+  padding-top: 0.75rem; border-top: 1px solid var(--border);
+}
+
+/* Confronto Section */
+.vs-section { padding: 80px 0; }
+.vs-table { width: 100%; border-collapse: collapse; margin-top: 2rem; }
+.vs-table th {
+  padding: 0.875rem 1.25rem; text-align: left;
+  font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 2px solid var(--border);
+}
+.vs-table th:nth-child(2) { color: #EF4444; }
+.vs-table th:nth-child(3) { color: var(--primary); }
+.vs-table td { padding: 0.875rem 1.25rem; font-size: 0.85rem; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.6; }
+.vs-table td:first-child { font-weight: 700; color: var(--text-secondary); font-size: 0.78rem; }
+.vs-table td:nth-child(2) { color: #F87171; background: rgba(239,68,68,0.03); }
+.vs-table td:nth-child(3) { color: var(--text-primary); }
+.vs-table tr:hover td { background: var(--bg-card); }
+@media (max-width: 640px) { .vs-table, .vs-table tbody, .vs-table tr, .vs-table td { display: block; } .vs-table th { display: none; } .vs-table td:first-child { color: var(--primary); font-size: 0.7rem; padding-bottom: 0; } }
+
+/* Oggi Section */
+.oggi-section { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid var(--border); }
+.oggi-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 2rem; }
+.oggi-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.25rem;
+  transition: border-color var(--transition);
+}
+.oggi-card:hover { border-color: var(--border-strong); }
+.oggi-card-icon { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.oggi-card-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+.oggi-card-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+.oggi-card-1984 { font-size: 0.72rem; color: #F87171; margin-top: 0.75rem; display: flex; gap: 4px; }
+
+/* Orale Section */
+.orale-section { padding: 80px 0; }
+.orale-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+@media (max-width: 768px) { .orale-grid { grid-template-columns: 1fr; } }
+.orale-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: 1.75rem; }
+.orale-card h3 { font-size: 0.95rem; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 8px; }
+.orale-item { display: flex; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+.orale-item:last-child { border: none; padding-bottom: 0; }
+.orale-num {
+  width: 26px; height: 26px; flex-shrink: 0;
+  background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 800; color: #F87171; font-family: var(--font-mono);
+}
+.orale-text { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.65; }
+.orale-text strong { color: var(--text-primary); }
+.link-card { background: linear-gradient(135deg, rgba(239,68,68,0.07), rgba(245,166,35,0.05)); border: 1px solid rgba(239,68,68,0.2); border-radius: var(--radius-xl); padding: 1.75rem; }
+.link-item { margin-bottom: 1rem; }
+.link-item:last-child { margin-bottom: 0; }
+.link-materia { font-size: 0.78rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+.link-text { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.6; padding-left: 1rem; border-left: 2px solid rgba(245,166,35,0.3); }
 </style>
 </head>
-<body class="edc-page">
-
+<body>
 <div class="reading-progress"><div class="reading-progress-fill"></div></div>
 
+<!-- NAVBAR -->
 <nav class="navbar">
   <div class="navbar-inner">
     <a href="../index.html" class="navbar-brand"><div class="brand-icon">&#9875;</div><span>Nautico 2026</span></a>
     <ul class="navbar-nav">
       <li><a href="../index.html">&#127968; Home</a></li>
-      <li><a href="../orale/macchine.html">&#9881;&#65039; Orale</a></li>
+      <li><a href="../orale/index.html">&#127908; Orale</a></li>
       <li><a href="../scritti/italiano.html">&#9997;&#65039; Italiano</a></li>
       <li><a href="../navigazione/index.html">&#9875; Navigazione</a></li>
-      <li><a href="#pcto" class="locked">&#127970; PCTO</a></li>
+      <li><a href="../pcto/index.html">&#127970; PCTO</a></li>
       <li><a href="index.html" class="active">&#127963; Ed. Civica</a></li>
     </ul>
     <div class="navbar-actions"><button class="btn-icon" id="theme-toggle" title="Cambia tema">&#127769;</button></div>
   </div>
 </nav>
 
+<!-- SDG 16 STICKY BANNER -->
+<div class="sdg16-banner" style="margin-top:64px;">
+  <div class="sdg16-inner">
+    <div class="sdg16-badge">
+      <div class="sdg16-badge-num">16</div>
+      <div class="sdg16-badge-lbl">SDG</div>
+    </div>
+    <div class="sdg16-text">
+      <div class="sdg16-text-title">Agenda 2030 &mdash; Obiettivo</div>
+      <div class="sdg16-text-main">Pace, Giustizia e Istituzioni Solide</div>
+      <div class="sdg16-text-sub">Promuovere societ&agrave; pacifiche e inclusive, garantire l&rsquo;accesso alla giustizia, costruire istituzioni efficaci, responsabili e trasparenti</div>
+    </div>
+    <div class="sdg16-targets">
+      <span class="sdg16-target"><strong>16.3</strong> Stato di diritto</span>
+      <span class="sdg16-target"><strong>16.6</strong> Istituzioni trasparenti</span>
+      <span class="sdg16-target"><strong>16.7</strong> Democrazia inclusiva</span>
+      <span class="sdg16-target"><strong>16.10</strong> Libert&agrave; di informazione</span>
+    </div>
+  </div>
+</div>
+
 <!-- HERO -->
-<section class="edc-hero">
+<section class="edc-hero" style="padding-top:60px;">
+  <div class="edc-hero-bg"></div>
+  <div class="edc-hero-grid"></div>
   <div class="container">
-    <h1>Agenda <span>2030</span></h1>
-    <p>17 Obiettivi di Sviluppo Sostenibile firmati da 193 paesi ONU nel 2015. Un piano d'azione globale per persone, pianeta e prosperit&agrave;, da raggiungere entro il 2030.</p>
-    <div class="edc-hero-imgs">
-      <img src="img/sdg-grid.png" alt="Griglia Obiettivi Sviluppo Sostenibile ONU" style="max-width:600px;border-radius:var(--radius-lg);border:1px solid var(--border);">
-      <img src="img/eu-agenda.png" alt="UE e Agenda 2030" style="max-width:300px;border-radius:var(--radius-lg);border:1px solid var(--border);">
+    <div class="edc-eyebrow">&#127963; Educazione Civica &mdash; Anno scolastico 2025/2026</div>
+    <h1>Le Fondamenta della <span class="red">Democrazia</span></h1>
+    <div class="edc-hero-quote">
+      <blockquote>&ldquo;La guerra &egrave; pace. La libert&agrave; &egrave; schiavit&ugrave;. L&rsquo;ignoranza &egrave; forza.&rdquo;</blockquote>
+      <cite>George Orwell, 1984 (1949) &mdash; Slogan del Partito</cite>
     </div>
-    <p style="font-size:0.8rem;color:var(--text-muted)">&#128161; Clicca su ogni obiettivo per scoprire i dettagli. I 17 SDG sono interconnessi: la pace (Goal 16) &egrave; la condizione per tutti gli altri.</p>
-  </div>
-</section>
-
-<!-- GRIGLIA 17 SDG -->
-<section class="sdg-section">
-  <div class="container">
-    <div class="edc-section-header" style="margin-bottom:1.5rem">
-      <span class="edc-section-num" style="font-family:var(--font-display);font-size:3rem;font-weight:700;color:var(--accent);opacity:0.3;line-height:1">17</span>
-      <h2 style="font-family:var(--font-main);font-size:1.6rem;font-weight:700">Obiettivi per lo Sviluppo Sostenibile</h2>
-    </div>
-    <div class="sdg-grid">
-
-      <div class="sdg-card sdg-1" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">1</div>
-        <div class="sdg-card-icon">&#128148;</div>
-        <div class="sdg-card-title">Sconfiggere la povert&agrave;</div>
-        <div class="sdg-card-detail">Ancora 700 milioni di persone vivono con meno di 1,90$ al giorno. Target: eliminare la povert&agrave; estrema ovunque.</div>
-      </div>
-
-      <div class="sdg-card sdg-2" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">2</div>
-        <div class="sdg-card-icon">&#127806;</div>
-        <div class="sdg-card-title">Fame zero</div>
-        <div class="sdg-card-detail">828 milioni di persone soffrono la fame. Target: sicurezza alimentare, agricoltura sostenibile, fine malnutrizione.</div>
-      </div>
-
-      <div class="sdg-card sdg-3" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">3</div>
-        <div class="sdg-card-icon">&#10084;&#65039;</div>
-        <div class="sdg-card-title">Salute e benessere</div>
-        <div class="sdg-card-detail">Copertura sanitaria universale. Ridurre mortalit&agrave; materna e infantile, epidemia di AIDS, tubercolosi, malaria.</div>
-      </div>
-
-      <div class="sdg-card sdg-4" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">4</div>
-        <div class="sdg-card-icon">&#128218;</div>
-        <div class="sdg-card-title">Istruzione di qualit&agrave;</div>
-        <div class="sdg-card-detail">260 milioni di bambini non vanno a scuola. Target: istruzione primaria e secondaria gratuita e di qualit&agrave; per tutti.</div>
-      </div>
-
-      <div class="sdg-card sdg-5" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">5</div>
-        <div class="sdg-card-icon">&#9792;&#65039;</div>
-        <div class="sdg-card-title">Parit&agrave; di genere</div>
-        <div class="sdg-card-detail">Le donne guadagnano in media il 23% in meno degli uomini. Eliminare discriminazioni, violenza, matrimoni forzati.</div>
-      </div>
-
-      <div class="sdg-card sdg-6" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">6</div>
-        <div class="sdg-card-icon">&#128167;</div>
-        <div class="sdg-card-title">Acqua pulita e servizi igienici</div>
-        <div class="sdg-card-detail">2,2 miliardi di persone senza acqua potabile. Target: accesso universale ad acqua e servizi igienico-sanitari.</div>
-      </div>
-
-      <div class="sdg-card sdg-7" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">7</div>
-        <div class="sdg-card-icon">&#9889;</div>
-        <div class="sdg-card-title">Energia pulita e accessibile</div>
-        <div class="sdg-card-detail">759 milioni senza elettricit&agrave;. Target: energia moderna, sostenibile e affidabile per tutti.</div>
-      </div>
-
-      <div class="sdg-card sdg-8" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">8</div>
-        <div class="sdg-card-icon">&#128188;</div>
-        <div class="sdg-card-title">Lavoro dignitoso e crescita economica</div>
-        <div class="sdg-card-detail">Disoccupazione giovanile al 13%. Target: crescita economica inclusiva, lavoro dignitoso per tutti.</div>
-      </div>
-
-      <div class="sdg-card sdg-9" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">9</div>
-        <div class="sdg-card-icon">&#127981;</div>
-        <div class="sdg-card-title">Imprese, innovazione e infrastrutture</div>
-        <div class="sdg-card-detail">Infrastrutture resilienti, industrializzazione sostenibile, innovazione e ricerca scientifica.</div>
-      </div>
-
-      <div class="sdg-card sdg-10" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">10</div>
-        <div class="sdg-card-icon">&#9878;&#65039;</div>
-        <div class="sdg-card-title">Ridurre le disuguaglianze</div>
-        <div class="sdg-card-detail">Il 10% pi&ugrave; ricco possiede il 76% della ricchezza globale. Target: ridurre disuguaglianze dentro e tra le nazioni.</div>
-      </div>
-
-      <div class="sdg-card sdg-11" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">11</div>
-        <div class="sdg-card-icon">&#127961;&#65039;</div>
-        <div class="sdg-card-title">Citt&agrave; e comunit&agrave; sostenibili</div>
-        <div class="sdg-card-detail">Il 56% della popolazione mondiale vive in citt&agrave;. Target: citt&agrave; inclusive, sicure, resilienti e sostenibili.</div>
-      </div>
-
-      <div class="sdg-card sdg-12" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">12</div>
-        <div class="sdg-card-icon">&#9851;&#65039;</div>
-        <div class="sdg-card-title">Consumo e produzione responsabili</div>
-        <div class="sdg-card-detail">Consumiamo 1,7 pianeti all'anno. Target: modelli di consumo e produzione sostenibili, ridurre spreco alimentare.</div>
-      </div>
-
-      <div class="sdg-card sdg-13" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">13</div>
-        <div class="sdg-card-icon">&#127757;</div>
-        <div class="sdg-card-title">Lotta contro il cambiamento climatico</div>
-        <div class="sdg-card-detail">+1,1&deg;C rispetto all'era preindustriale. Target: azione urgente su mitigazione, adattamento, resilienza.</div>
-      </div>
-
-      <div class="sdg-card sdg-14" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">14</div>
-        <div class="sdg-card-icon">&#128031;</div>
-        <div class="sdg-card-title">Vita sott'acqua</div>
-        <div class="sdg-card-detail">Il 90% degli stock ittici &egrave; sovrasfruttato o esaurito. Target: conservare e usare in modo sostenibile oceani e mari. <strong style="opacity:0.9">Collegamento: navigazione, inquinamento marino da carburante, aree marine protette.</strong></div>
-      </div>
-
-      <div class="sdg-card sdg-15" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">15</div>
-        <div class="sdg-card-icon">&#127795;</div>
-        <div class="sdg-card-title">Vita sulla terra</div>
-        <div class="sdg-card-detail">1 milione di specie a rischio estinzione. Target: proteggere ecosistemi terrestri, foreste, biodiversit&agrave;.</div>
-      </div>
-
-      <div class="sdg-card sdg-16" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">16</div>
-        <div class="sdg-card-icon">&#128330;&#65039;</div>
-        <div class="sdg-card-title">Pace, giustizia e istituzioni solide</div>
-        <div class="sdg-card-detail"><strong>Il goal pi&ugrave; importante per questo progetto.</strong> 2 miliardi di persone vivono in zone di conflitto. Senza pace, tutti gli altri obiettivi sono irraggiungibili. Target: ridurre violenza, proteggere bambini, stato di diritto.</div>
-      </div>
-
-      <div class="sdg-card sdg-17" onclick="this.classList.toggle('expanded')">
-        <div class="sdg-card-num">17</div>
-        <div class="sdg-card-icon">&#129309;</div>
-        <div class="sdg-card-title">Partnership per gli obiettivi</div>
-        <div class="sdg-card-detail">Nessun paese pu&ograve; farcela da solo. Target: cooperazione internazionale, finanza per lo sviluppo, tecnologia.</div>
-      </div>
-
+    <p style="max-width:680px; color:var(--text-secondary); font-size:0.95rem; line-height:1.7; margin-bottom:1.5rem;">
+      L&rsquo;<strong style="color:#26BDE2">Obiettivo 16 dell&rsquo;Agenda 2030</strong> chiede pace, giustizia e istituzioni solide.
+      Ma cosa succederebbe se mancassero? <strong style="color:var(--text-primary)">1984</strong> di George Orwell risponde:
+      scritto nel 1948 come avvertimento contro i totalitarismi del Novecento,
+      il romanzo descrive un mondo in cui ogni target del SDG 16 &egrave; stato sistematicamente distrutto.
+    </p>
+    <div class="edc-hero-pills">
+      <span class="edc-pill red">&#128214; George Orwell</span>
+      <span class="edc-pill gold">&#9878; Costituzione Italiana</span>
+      <span class="edc-pill ocean">&#9878; Democrazia &amp; Diritti</span>
+      <span class="edc-pill">&#128279; Totalitarismo</span>
+      <span class="edc-pill">&#128101; Separazione dei poteri</span>
     </div>
   </div>
 </section>
 
-<!-- FOCUS GOAL 16 -->
-<section class="goal16-section">
+<!-- SDG 16 APPROFONDIMENTO -->
+<section class="sdg16-section">
   <div class="container">
-    <div class="goal16-hero">
-      <div class="goal16-icon-big">&#128330;&#65039;</div>
+    <div class="sec-label ocean">&#127758; Agenda 2030</div>
+    <div class="sec-title">SDG 16 &mdash; Pace, Giustizia e Istituzioni Solide</div>
+    <p class="sec-sub">L&rsquo;obiettivo 16 dell&rsquo;Agenda 2030 ONU chiede a tutti i Paesi di costruire democrazie solide. I suoi target descrivono esattamente ci&ograve; che il regime di <em>1984</em> ha distrutto.</p>
+
+    <div class="sdg16-targets-grid">
+      <div class="sdg16-tcard">
+        <div class="sdg16-tcard-code">Target 16.1</div>
+        <div class="sdg16-tcard-title">Ridurre violenza e morti correlate</div>
+        <div class="sdg16-tcard-desc">Ridurre significativamente tutte le forme di violenza e i tassi di mortalit&agrave; ad essa correlati in tutto il mondo.</div>
+        <div class="sdg16-tcard-link">&#128214; 1984: la violenza &egrave; strumento di governo. La Polizia del Pensiero uccide sistematicamente.</div>
+      </div>
+      <div class="sdg16-tcard">
+        <div class="sdg16-tcard-code">Target 16.3</div>
+        <div class="sdg16-tcard-title">Stato di diritto e giustizia per tutti</div>
+        <div class="sdg16-tcard-desc">Promuovere lo stato di diritto a livello nazionale e internazionale e garantire uguale accesso alla giustizia per tutti.</div>
+        <div class="sdg16-tcard-link">&#128214; 1984: i crimini del pensiero non hanno processo. La colpa &egrave; decisa dal Partito.</div>
+      </div>
+      <div class="sdg16-tcard">
+        <div class="sdg16-tcard-code">Target 16.6</div>
+        <div class="sdg16-tcard-title">Istituzioni efficaci e trasparenti</div>
+        <div class="sdg16-tcard-desc">Sviluppare istituzioni efficaci, responsabili e trasparenti a tutti i livelli.</div>
+        <div class="sdg16-tcard-link">&#128214; 1984: il Ministero della Verit&agrave; riscrive la storia. Nessuna trasparenza &egrave; possibile.</div>
+      </div>
+      <div class="sdg16-tcard">
+        <div class="sdg16-tcard-code">Target 16.7</div>
+        <div class="sdg16-tcard-title">Decisioni inclusive e partecipative</div>
+        <div class="sdg16-tcard-desc">Garantire un processo decisionale reattivo, inclusivo, partecipativo e rappresentativo a tutti i livelli.</div>
+        <div class="sdg16-tcard-link">&#128214; 1984: nessuna elezione, nessun parlamento, nessuna voce per i Prolet.</div>
+      </div>
+      <div class="sdg16-tcard">
+        <div class="sdg16-tcard-code">Target 16.9</div>
+        <div class="sdg16-tcard-title">Identit&agrave; legale per tutti</div>
+        <div class="sdg16-tcard-desc">Fornire identit&agrave; legale per tutti, inclusa la registrazione delle nascite.</div>
+        <div class="sdg16-tcard-link">&#128214; 1984: Winston viene cancellato come persona. L&rsquo;individuo non esiste senza il Partito.</div>
+      </div>
+      <div class="sdg16-tcard">
+        <div class="sdg16-tcard-code">Target 16.10</div>
+        <div class="sdg16-tcard-title">Libert&agrave; di informazione</div>
+        <div class="sdg16-tcard-desc">Garantire l&rsquo;accesso pubblico all&rsquo;informazione e proteggere le libert&agrave; fondamentali, in conformit&agrave; con la legislazione nazionale.</div>
+        <div class="sdg16-tcard-link">&#128214; 1984: la Neolingua elimina le parole per rendere inesprimibile la libert&agrave;.</div>
+      </div>
+    </div>
+
+    <div class="sdg16-bridge">
+      <div class="sdg16-bridge-arrow">&#128279;</div>
+      <div class="sdg16-bridge-text">
+        <strong>Il filo conduttore:</strong> ogni target del SDG 16 descrive una conquista democratica che 1984 mostra come distrutta.
+        Orwell ci ricorda che queste istituzioni non sono scontate &mdash; possono essere smantellate.
+        L&rsquo;Agenda 2030 &egrave; l&rsquo;impegno globale a <strong>costruirle e difenderle</strong>.
+        La Costituzione italiana &egrave; la nostra risposta concreta, nata dallo stesso anno in cui Orwell scriveva il suo romanzo: il <strong>1948</strong>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1984 DI ORWELL -->
+<section class="orwell-section">
+  <div class="container">
+    <div class="sec-label red">&#128214; Il romanzo</div>
+    <div class="sec-title">1984 — George Orwell</div>
+    <p class="sec-sub" style="margin-bottom:2.5rem;">Un distopico capolavoro scritto nel 1948, ambientato in un futuro totalitario dove il linguaggio, la storia e la verit&agrave; sono controllati dallo Stato.</p>
+
+    <div class="orwell-intro">
+      <div class="orwell-book">
+        <span class="orwell-book-emoji">&#128214;</span>
+        <div class="orwell-book-title">1984</div>
+        <div class="orwell-book-sub">Nineteen Eighty-Four</div>
+        <div class="orwell-book-author">George Orwell</div>
+        <div class="orwell-book-year">Pubblicato nel 1949</div>
+      </div>
       <div>
-        <div class="badge badge-ocean mb-sm">Goal 16 &mdash; Approfondimento</div>
-        <h2 style="font-size:1.6rem;font-weight:700;margin-bottom:0.5rem">Pace, Giustizia e Istituzioni Solide</h2>
-        <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.7">
-          &Egrave; il <strong>pilastro</strong> dell'intera Agenda 2030. Senza pace non c'&egrave; scuola (Goal 4), 
-          non c'&egrave; salute (Goal 3), non c'&egrave; sviluppo economico (Goal 8). Come dice l'ONU: 
-          <em>"Non c'&egrave; sviluppo sostenibile senza pace, n&eacute; pace senza sviluppo sostenibile."</em>
+        <p class="orwell-desc" style="margin-bottom:1rem;">
+          Winston Smith vive nell&rsquo;<strong>Oceania</strong>, uno Stato totalitario governato dal <strong>Partito</strong> e dal suo leader
+          simbolico <strong>Grande Fratello</strong> (Big Brother). Il Partito controlla tutto:
+          la storia, il linguaggio, il pensiero. La <em>Neolingua</em> riduce progressivamente il vocabolario
+          per rendere impossibile il pensiero critico.
+        </p>
+        <p class="orwell-desc" style="margin-bottom:1rem;">
+          Il <strong>Ministero della Verit&agrave;</strong> riscrive continuamente la storia per adattarla alla versione ufficiale.
+          Il <strong>Ministero dell&rsquo;Amore</strong> tortura chi dissente. Il <strong>Telescraan</strong> sorveglia i cittadini
+          24 ore su 24. I <strong>Crimini del pensiero</strong> sono puniti con la morte.
+        </p>
+        <p class="orwell-desc">
+          Orwell scriveva come avvertimento: aveva visto il fascismo in Spagna, lo stalinismo in URSS.
+          Temeva che il totalitarismo potesse diffondersi in tutto il mondo.
+          Il romanzo &egrave; una difesa appassionata della <strong>libert&agrave; di pensiero</strong>,
+          fondamento di ogni democrazia.
         </p>
       </div>
     </div>
 
-    <div class="goal16-targets mt-md">
-      <div class="goal16-target">
-        <h5>16.1 Ridurre la violenza</h5>
-        <p>Ogni 12 minuti una persona muore in un conflitto. +40% vittime civili rispetto all'anno precedente.</p>
+    <div class="orwell-concepts">
+      <div class="orwell-card" style="--oc:#EF4444;">
+        <div class="orwell-card-icon">&#128065;</div>
+        <div class="orwell-card-title">Grande Fratello (Big Brother)</div>
+        <div class="orwell-card-desc">Il leader simbolico del Partito che sorveglia ogni cittadino. <em>&ldquo;Big Brother is watching you.&rdquo;</em> Nessuno sa se esiste davvero, ma la sua presenza &egrave; ovunque.</div>
+        <div class="orwell-card-link">&#8594; Rischio oggi: sorveglianza di massa, CCTV, profilazione digitale</div>
       </div>
-      <div class="goal16-target">
-        <h5>16.2 Proteggere i bambini</h5>
-        <p>1,6 miliardi di bambini (2 su 3) subiscono violenza in casa. 1 ragazza su 4 vittima di abusi.</p>
+      <div class="orwell-card" style="--oc:#F59E0B;">
+        <div class="orwell-card-icon">&#128172;</div>
+        <div class="orwell-card-title">Neolingua (Newspeak)</div>
+        <div class="orwell-card-desc">Lingua artificiale creata per rendere impossibile il pensiero critico. Meno parole = meno pensieri. Obiettivo: eliminare i concetti di libert&agrave; e ribellione dal vocabolario.</div>
+        <div class="orwell-card-link">&#8594; Rischio oggi: manipolazione del linguaggio politico, eufemismi</div>
       </div>
-      <div class="goal16-target">
-        <h5>16.3 Stato di diritto</h5>
-        <p>Accesso alla giustizia per tutti. In molte regioni del mondo i tribunali non funzionano o sono corrotti.</p>
+      <div class="orwell-card" style="--oc:#8B5CF6;">
+        <div class="orwell-card-icon">&#128196;</div>
+        <div class="orwell-card-title">Ministero della Verit&agrave;</div>
+        <div class="orwell-card-desc">Winston lavora qui riscrivendo articoli di giornale del passato. La storia viene continuamente alterata. La verit&agrave; &egrave; ci&ograve; che il Partito decide che sia.</div>
+        <div class="orwell-card-link">&#8594; Rischio oggi: fake news, disinformazione, revisione storica</div>
       </div>
-      <div class="goal16-target">
-        <h5>16.5 Ridurre la corruzione</h5>
-        <p>Tangenti e corruzione drenano ogni anno l'equivalente del 5% del PIL mondiale.</p>
+      <div class="orwell-card" style="--oc:#06B6D4;">
+        <div class="orwell-card-icon">&#129504;</div>
+        <div class="orwell-card-title">Bispensiero (Doublethink)</div>
+        <div class="orwell-card-desc">Credere simultaneamente in due cose contraddittorie. <em>&ldquo;La guerra &egrave; pace.&rdquo;</em> Il Partito insegna ai cittadini ad accettare le contraddizioni senza farne caso.</div>
+        <div class="orwell-card-link">&#8594; Rischio oggi: propaganda, slogan emotivi privi di logica</div>
       </div>
-      <div class="goal16-target">
-        <h5>16.6 Istituzioni efficaci</h5>
-        <p>Governi trasparenti, servizi pubblici funzionanti. Anagrafe, catasto, documenti: diritti di base negati a 1 mld di persone.</p>
+      <div class="orwell-card" style="--oc:#EF4444;">
+        <div class="orwell-card-icon">&#128274;</div>
+        <div class="orwell-card-title">Crimini del pensiero</div>
+        <div class="orwell-card-desc">Pensare contro il Partito &egrave; un crimine punibile con la morte. Il <em>Telecraan</em> monitora espressioni, movimenti, sonni. Non esiste privacy neanche nella mente.</div>
+        <div class="orwell-card-link">&#8594; Rischio oggi: censura, persecuzione degli oppositori politici</div>
       </div>
-      <div class="goal16-target">
-        <h5>16.10 Libert&agrave; d'informazione</h5>
-        <p>Ogni 14 ore un giornalista viene ucciso. 502 giornalisti assassinati nel 2024.</p>
+      <div class="orwell-card" style="--oc:#22C55E;">
+        <div class="orwell-card-icon">&#128220;</div>
+        <div class="orwell-card-title">Stanza 101</div>
+        <div class="orwell-card-desc">La stanza della tortura, dove ogni prigioniero affronta la propria paura pi&ugrave; profonda. Simbolo della violenza sistematica dello Stato contro l&rsquo;individuo.</div>
+        <div class="orwell-card-link">&#8594; Rischio oggi: violazione dei diritti umani, detenzione arbitraria</div>
       </div>
-    </div>
-
-    <div class="alert alert-info mt-md">
-      <span class="alert-icon">&#128202;</span>
-      <span><strong>Rapporto ONU 2025:</strong> il Goal 16 &egrave; tra i pi&ugrave; in ritardo. Se non migliora, l'intera Agenda 2030 rischia di fallire. I conflitti armati sono la causa principale.</span>
     </div>
   </div>
 </section>
 
-<!-- SGUARDO AL MEDIO ORIENTE -->
-<section class="me-section">
+<!-- I PILASTRI DELLA DEMOCRAZIA -->
+<section class="demo-section">
   <div class="container">
-    <div style="display:flex;align-items:center;gap:14px;margin-bottom:1.5rem">
-      <span style="font-size:3rem;font-weight:700;color:var(--accent);opacity:0.3;line-height:1">&#127757;</span>
-      <div>
-        <h2 style="font-size:1.6rem;font-weight:700">Sguardo al Medio Oriente</h2>
-        <p style="color:var(--text-secondary);font-size:0.85rem">Cosa significa l'Agenda 2030 nella regione pi&ugrave; instabile del mondo?</p>
+    <div class="sec-label ocean">&#9878; Fondamenta</div>
+    <div class="sec-title">I Pilastri della Democrazia</div>
+    <p class="sec-sub">I principi che rendono una democrazia solida &mdash; e che il regime di 1984 ha eliminato uno per uno.</p>
+    <div class="demo-pillars">
+
+      <div class="demo-pillar" style="--dp-color:#00A8D4;">
+        <div class="demo-pillar-num">01</div>
+        <div class="demo-pillar-icon">&#9878;</div>
+        <div class="demo-pillar-title">Separazione dei poteri</div>
+        <div class="demo-pillar-desc">Potere legislativo (Parlamento), esecutivo (Governo) e giudiziario (Magistratura) devono essere indipendenti. Nessuno pu&ograve; concentrare tutto il potere in una sola entit&agrave;.</div>
+        <span class="demo-pillar-thinker">&#128196; Montesquieu, 1748</span>
       </div>
-    </div>
 
-    <p style="color:var(--text-secondary);font-size:0.9rem;line-height:1.8;margin-bottom:2rem">
-      Il Medio Oriente &egrave; il <strong>banco di prova</strong> dell'Agenda 2030. Qui si concentrano conflitti decennali, 
-      disuguaglianze estreme, crisi idriche e migrazioni forzate. Il Goal 16 &mdash; pace e giustizia &mdash; &egrave; la chiave: 
-      <strong>senza pace, tutti gli altri obiettivi sono impossibili.</strong> Vediamo alcune chiavi di lettura.
-    </p>
-
-    <!-- 1. Conflitti -->
-    <div class="me-card">
-      <h4>&#128165; Conflitti attivi e diritto umanitario</h4>
-      <p>Siria (dal 2011, 500.000+ morti, 12 milioni di sfollati), Yemen (dal 2014, "peggiore crisi umanitaria del mondo", 24 milioni di persone hanno bisogno di aiuti), Gaza e Israele-Palestina (escalation 2023-2025, decine di migliaia di vittime civili, infrastrutture distrutte). In tutti questi conflitti il <strong>diritto internazionale umanitario</strong> (Convenzioni di Ginevra) &egrave; messo alla prova. L'ONU denuncia: senza proteggere i civili, il Goal 16 non potr&agrave; mai essere raggiunto.</p>
-      <div class="me-stat">
-        <div class="me-stat-item"><div class="me-stat-num">2 mld+</div><div class="me-stat-lbl">persone in zone di conflitto</div></div>
-        <div class="me-stat-item"><div class="me-stat-num">+40%</div><div class="me-stat-lbl">aumento vittime civili</div></div>
-        <div class="me-stat-item"><div class="me-stat-num">ogni 12 min</div><div class="me-stat-lbl">una morte in conflitto</div></div>
+      <div class="demo-pillar" style="--dp-color:#F59E0B;">
+        <div class="demo-pillar-num">02</div>
+        <div class="demo-pillar-icon">&#128172;</div>
+        <div class="demo-pillar-title">Libert&agrave; di espressione e stampa</div>
+        <div class="demo-pillar-desc">I cittadini hanno il diritto di esprimersi, criticare il governo, informarsi liberamente. Una stampa libera &egrave; il &ldquo;quarto potere&rdquo;: controlla chi governa.</div>
+        <span class="demo-pillar-thinker">&#128196; Art. 21 Costituzione italiana</span>
       </div>
-    </div>
 
-    <!-- 2. Acqua -->
-    <div class="me-card">
-      <h4>&#128167; Acqua: la prossima guerra?</h4>
-      <p>Il Medio Oriente &egrave; la regione con il pi&ugrave; alto <strong>stress idrico</strong> del pianeta. I bacini del Tigri e dell'Eufrate sono contesi tra Turchia, Siria e Iraq. Le dighe turche (progetto GAP) riducono la portata d'acqua a valle, minacciando agricoltura e sopravvivenza. In Yemen l'acqua &egrave; scarsissima: Sana'a potrebbe essere la prima capitale al mondo a restare senz'acqua. Il Goal 6 (acqua pulita) qui &egrave; una questione di <strong>sopravvivenza e stabilit&agrave; geopolitica</strong>.</p>
-      <div class="alert alert-info" style="margin-top:0.75rem">
-        <span class="alert-icon">&#128279;</span>
-        <span><strong>Collegamento Navigazione:</strong> Anche in mare l'acqua &egrave; una risorsa contesa &mdash; pensa alla pirateria nel Golfo di Aden, legata alla mancanza di risorse a terra. E al Canale di Suez, via d'acqua strategica.</span>
+      <div class="demo-pillar" style="--dp-color:#22C55E;">
+        <div class="demo-pillar-num">03</div>
+        <div class="demo-pillar-icon">&#9878;</div>
+        <div class="demo-pillar-title">Stato di diritto (Rule of Law)</div>
+        <div class="demo-pillar-desc">Tutti sono uguali davanti alla legge, incluso chi governa. Nessuno pu&ograve; essere punito senza un processo regolare. La legge vale per tutti, senza eccezioni.</div>
+        <span class="demo-pillar-thinker">&#128196; Art. 3 &amp; 24 Costituzione italiana</span>
       </div>
-    </div>
 
-    <!-- 3. Disuguaglianze -->
-    <div class="me-card">
-      <h4>&#9878;&#65039; Disuguaglianze: il paradosso del Golfo</h4>
-      <p>Nella stessa regione convivono due realt&agrave; opposte. <strong>Emirati Arabi Uniti e Qatar</strong>: tra i PIL pro capite pi&ugrave; alti del mondo, investono in energie rinnovabili (Masdar City, la prima citt&agrave; a zero emissioni), organizzano Expo e Mondiali. <strong>Yemen e Siria</strong>: tra i paesi pi&ugrave; poveri, distrutti dalla guerra, con generazioni che crescono senza scuola n&eacute; cure. Questo divario rappresenta la <strong>sfida del Goal 10</strong>: ridurre le disuguaglianze <em>dentro</em> e <em>tra</em> le nazioni.</p>
-    </div>
-
-    <!-- 4. Timeline storica -->
-    <div class="me-card">
-      <h4>&#128197; Medio Oriente: cronologia essenziale</h4>
-      <div class="timeline-mini">
-        <div class="tl-dot"><span class="tl-year">1948</span><span class="tl-text">Nascita dello Stato di Israele. Prima guerra arabo-israeliana. Inizio della questione palestinese.</span></div>
-        <div class="tl-dot"><span class="tl-year">1967</span><span class="tl-text">Guerra dei Sei Giorni. Israele occupa Cisgiordania, Gaza, Sinai e Golan.</span></div>
-        <div class="tl-dot"><span class="tl-year">1993</span><span class="tl-text">Accordi di Oslo. Speranza di pace: Arafat e Rabin si stringono la mano. Ma il processo fallir&agrave;.</span></div>
-        <div class="tl-dot"><span class="tl-year">2011</span><span class="tl-text">Primavere arabe. Proteste in Tunisia, Egitto, Libia, Siria, Yemen. Il Medio Oriente cambia, ma la Siria precipita in una guerra civile che dura ancora oggi.</span></div>
-        <div class="tl-dot"><span class="tl-year">2015</span><span class="tl-text">L'ONU adotta l'Agenda 2030. Il Goal 16 promette pace. Nello stesso anno, la guerra in Yemen si intensifica.</span></div>
-        <div class="tl-dot"><span class="tl-year">2020</span><span class="tl-text">Accordi di Abramo: Emirati e Bahrein normalizzano i rapporti con Israele. Nuova geometria mediorientale.</span></div>
-        <div class="tl-dot"><span class="tl-year">2023-25</span><span class="tl-text">Escalation Gaza-Israele. Tensioni Iran-Israele. Il Goal 16 sembra pi&ugrave; lontano che mai.</span></div>
+      <div class="demo-pillar" style="--dp-color:#EF4444;">
+        <div class="demo-pillar-num">04</div>
+        <div class="demo-pillar-icon">&#128101;</div>
+        <div class="demo-pillar-title">Suffragio universale &amp; elezioni libere</div>
+        <div class="demo-pillar-desc">Ogni cittadino ha diritto di voto. Le elezioni devono essere libere, regolari e trasparenti. Il governo &egrave; legittimato solo dal consenso dei governati.</div>
+        <span class="demo-pillar-thinker">&#128196; Abraham Lincoln, 1863</span>
       </div>
-    </div>
 
-    <!-- 5. Canale di Suez -->
-    <div class="me-card">
-      <h4>&#128674; Il Canale di Suez e la geopolitica del mare</h4>
-      <p>Il Canale di Suez &egrave; una delle <strong>vie d'acqua pi&ugrave; strategiche del mondo</strong>: collega il Mediterraneo al Mar Rosso, accorciando la rotta Europa-Asia di 7.000 km. Il 12% del commercio mondiale passa da qui. Nel 2021 la nave <em>Ever Given</em> lo blocc&ograve; per 6 giorni, causando danni per <strong>9,6 miliardi di dollari al giorno</strong>. Questo episodio dimostra quanto sia vulnerabile l'economia globale a crisi localizzate. <strong>Collegamento diretto con Navigazione e con il Goal 9</strong> (infrastrutture resilienti).</p>
-      <div class="suez-callout" style="margin-top:0.75rem">
-        <h5>&#9875; Perch&eacute; interessa un nautico?</h5>
-        <p style="font-size:0.85rem;color:var(--text-secondary)">Suez &egrave; il punto di passaggio obbligato per le navi tra Europa e Asia. Ogni ufficiale di coperta deve conoscerne le procedure di transito, i convoy, le regole di pilotaggio. &Egrave; un esempio perfetto di come <strong>navigazione, economia e geopolitica</strong> siano indissolubilmente legate.</p>
+      <div class="demo-pillar" style="--dp-color:#8B5CF6;">
+        <div class="demo-pillar-num">05</div>
+        <div class="demo-pillar-icon">&#128274;</div>
+        <div class="demo-pillar-title">Diritti fondamentali inalienabili</div>
+        <div class="demo-pillar-desc">Vita, libert&agrave;, propriet&agrave;, privacy: diritti che nessuno Stato pu&ograve; togliere. Sanciti dalla Dichiarazione Universale dei Diritti Umani (ONU, 1948) e nelle Costituzioni democratiche.</div>
+        <span class="demo-pillar-thinker">&#128196; UDHR ONU, 1948</span>
       </div>
-    </div>
 
-    <!-- 6. Collegamenti interdisciplinari -->
-    <div style="margin-top:2rem">
-      <h3 style="font-family:var(--font-main);font-size:1.2rem;font-weight:700;margin-bottom:1rem">&#128279; Collegamenti interdisciplinari</h3>
-      <div class="grid-2">
-        <div class="card">
-          <div class="card-header"><div class="card-icon" style="background:rgba(229,36,59,0.12);color:#E5243B">&#128218;</div><h4>Italiano</h4></div>
-          <p style="font-size:0.85rem;color:var(--text-secondary)"><strong>Ungaretti:</strong> "Soldati" ("Si sta come d'autunno sugli alberi le foglie"), "Veglia", "San Martino del Carso" &mdash; la guerra come esperienza umana universale. Il <strong>Neorealismo</strong> e la ricostruzione post-bellica. <strong>Calvino</strong> e l'impegno civile.</p>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-icon" style="background:rgba(0,168,212,0.12);color:var(--primary)">&#127468;&#127463;</div><h4>Inglese</h4></div>
-          <p style="font-size:0.85rem;color:var(--text-secondary)">UN vocabulary: <em>"to call for a ceasefire"</em>, <em>"to condemn human rights violations"</em>, <em>"peacekeeping mission"</em>, <em>"humanitarian corridor"</em>. <em>"The Security Council unanimously adopted Resolution 2720"</em> &mdash; linguaggio formale delle risoluzioni ONU.</p>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-icon" style="background:rgba(74,159,56,0.12);color:#4C9F38">&#9875;</div><h4>Navigazione</h4></div>
-          <p style="font-size:0.85rem;color:var(--text-secondary)"><strong>Canale di Suez</strong> &mdash; crisi Ever Given 2021, 9,6 mld$/giorno di danni. Pirateria nel Golfo di Aden. Diritto marittimo internazionale (UNCLOS, SOLAS). La nave come soggetto giuridico in acque internazionali.</p>
-        </div>
-        <div class="card">
-          <div class="card-header"><div class="card-icon" style="background:rgba(245,166,35,0.12);color:var(--accent)">&#128220;</div><h4>Storia</h4></div>
-          <p style="font-size:0.85rem;color:var(--text-secondary)">Conflitto israelo-palestinese (1948&rightarrow;oggi). Accordi di Oslo 1993. Primavere arabe 2011. Accordi di Abramo 2020. Il Medio Oriente come laboratorio della <strong>politica internazionale contemporanea</strong>.</p>
-        </div>
+      <div class="demo-pillar" style="--dp-color:#F59E0B;">
+        <div class="demo-pillar-num">06</div>
+        <div class="demo-pillar-icon">&#128214;</div>
+        <div class="demo-pillar-title">Pluralit&agrave; &amp; opposizione politica</div>
+        <div class="demo-pillar-desc">L&rsquo;esistenza di pi&ugrave; partiti e di una forte opposizione &egrave; vitale. In 1984, il Partito Unico ha eliminato ogni alternativa. La pluralit&agrave; &egrave; l&rsquo;anticorpo contro il totalitarismo.</div>
+        <span class="demo-pillar-thinker">&#128196; Art. 49 Costituzione italiana</span>
       </div>
-    </div>
 
-    <!-- Riflessione finale -->
-    <div class="card card-glow mt-lg" style="text-align:center;padding:2rem">
-      <p style="font-family:var(--font-main);font-size:1.1rem;font-style:italic;color:var(--text-primary);max-width:700px;margin:0 auto;line-height:1.8">
-        "L'Agenda 2030 non e' un sogno utopico: e' una <strong>bussola</strong>. Il Medio Oriente ci mostra quanto sia difficile seguire quella rotta. Ma proprio perche' e' difficile, e' necessario. Come in navigazione: <strong>la stella polare serve quando il mare e' in tempesta, non quando e' calmo.</strong>"
-      </p>
     </div>
-
-    <!-- Struttura orale -->
-    <div class="alert alert-info mt-lg">
-      <span class="alert-icon">&#127897;</span>
-      <span><strong>Struttura per l'orale (10 min):</strong> (1) Cos'e' l'Agenda 2030 e i 17 SDG &mdash; 1,5 min &middot; (2) Focus Goal 16: pace, dati ONU 2025 &mdash; 2 min &middot; (3) Medio Oriente: conflitti, acqua, disuguaglianze &mdash; 2,5 min &middot; (4) Suez e collegamento Nautico &mdash; 1,5 min &middot; (5) Collegamenti interdisciplinari &mdash; 1,5 min &middot; (6) Conclusione: la bussola &mdash; 1 min</span>
-    </div>
-
   </div>
 </section>
 
-<!-- Footer -->
-<footer style="border-top:1px solid var(--border);padding:2rem 0;text-align:center;margin-top:3rem">
-  <p style="font-size:0.8rem;color:var(--text-muted)">Nautico 2026 &middot; Federico &middot; Educazione Civica: Agenda 2030 e Medio Oriente</p>
+<!-- COSTITUZIONE ITALIANA -->
+<section class="cost-section">
+  <div class="container">
+    <div class="sec-label gold">&#9878; Testo fondamentale</div>
+    <div class="sec-title">La Costituzione Italiana (1948)</div>
+    <p class="sec-sub" style="margin-bottom:2rem;">Nata dalle ceneri del fascismo, entrata in vigore il 1&deg; gennaio 1948 &mdash; lo stesso anno in cui Orwell scriveva 1984. Una risposta diretta al totalitarismo.</p>
+    <div class="cost-grid">
+
+      <div class="cost-card" style="--cc-color:#00A8D4;">
+        <div class="cost-card-art">Art. 1</div>
+        <div class="cost-card-title">Sovranit&agrave; popolare</div>
+        <div class="cost-card-text">&ldquo;L&rsquo;Italia &egrave; una Repubblica democratica, fondata sul lavoro. La sovranit&agrave; appartiene al popolo.&rdquo;</div>
+        <div class="cost-card-link1984">&#128214; In 1984: la sovranit&agrave; appartiene al Partito. Il popolo non conta.</div>
+      </div>
+
+      <div class="cost-card" style="--cc-color:#22C55E;">
+        <div class="cost-card-art">Art. 2</div>
+        <div class="cost-card-title">Diritti inviolabili dell&rsquo;uomo</div>
+        <div class="cost-card-text">&ldquo;La Repubblica riconosce e garantisce i diritti inviolabili dell&rsquo;uomo.&rdquo;</div>
+        <div class="cost-card-link1984">&#128214; In 1984: nessun diritto individuale esiste. L&rsquo;individuo &egrave; proprietà dello Stato.</div>
+      </div>
+
+      <div class="cost-card" style="--cc-color:#F59E0B;">
+        <div class="cost-card-art">Art. 3</div>
+        <div class="cost-card-title">Uguaglianza dei cittadini</div>
+        <div class="cost-card-text">&ldquo;Tutti i cittadini hanno pari dignit&agrave; sociale e sono uguali davanti alla legge.&rdquo;</div>
+        <div class="cost-card-link1984">&#128214; In 1984: i membri del Partito Interno sono una casta privilegiata.</div>
+      </div>
+
+      <div class="cost-card" style="--cc-color:#EF4444;">
+        <div class="cost-card-art">Art. 21</div>
+        <div class="cost-card-title">Libert&agrave; di espressione</div>
+        <div class="cost-card-text">&ldquo;Tutti hanno diritto di manifestare liberamente il proprio pensiero con la parola, lo scritto e ogni altro mezzo.&rdquo;</div>
+        <div class="cost-card-link1984">&#128214; In 1984: la Neolingua elimina le parole. Pensare &egrave; un crimine.</div>
+      </div>
+
+      <div class="cost-card" style="--cc-color:#8B5CF6;">
+        <div class="cost-card-art">Art. 15</div>
+        <div class="cost-card-title">Libert&agrave; e segretezza comunicazioni</div>
+        <div class="cost-card-text">&ldquo;La libert&agrave; e la segretezza della corrispondenza e di ogni altra forma di comunicazione sono inviolabili.&rdquo;</div>
+        <div class="cost-card-link1984">&#128214; In 1984: il Telescraan monitora ogni conversazione, 24/7.</div>
+      </div>
+
+      <div class="cost-card" style="--cc-color:#06B6D4;">
+        <div class="cost-card-art">Art. 24 &amp; 27</div>
+        <div class="cost-card-title">Giusto processo e presunzione d&rsquo;innocenza</div>
+        <div class="cost-card-text">&ldquo;L&rsquo;imputato non &egrave; considerato colpevole sino alla condanna definitiva.&rdquo;</div>
+        <div class="cost-card-link1984">&#128214; In 1984: la Polizia del Pensiero arresta senza prove. La colpa &egrave; presumibile.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONFRONTO: 1984 vs DEMOCRAZIA -->
+<section class="vs-section">
+  <div class="container">
+    <div class="sec-label red">&#9878; Analisi comparativa</div>
+    <div class="sec-title">1984 vs Democrazia &mdash; Confronto diretto</div>
+    <p class="sec-sub">Come il regime di Orwell inverte sistematicamente ogni principio democratico.</p>
+    <div style="overflow-x:auto; margin-top:2rem;">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>Principio</th>
+            <th>&#128214; 1984 (Regime di Oceania)</th>
+            <th>&#9878; Democrazia costituzionale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Potere</td>
+            <td>Concentrato nel Partito / Grande Fratello, senza controlli</td>
+            <td>Diviso tra tre poteri indipendenti (Montesquieu)</td>
+          </tr>
+          <tr>
+            <td>Verit&agrave;</td>
+            <td>Riscritta dal Ministero della Verit&agrave; secondo le esigenze del Partito</td>
+            <td>Libera, plurale, verificabile. Stampa libera come quarto potere</td>
+          </tr>
+          <tr>
+            <td>Linguaggio</td>
+            <td>Neolingua: vocabolario ridotto per impedire il pensiero critico</td>
+            <td>Libert&agrave; di espressione (Art. 21). Il linguaggio &egrave; uno strumento di libert&agrave;</td>
+          </tr>
+          <tr>
+            <td>Privacy</td>
+            <td>Telescraan in ogni casa. Sorveglianza totale. Nessuna sfera privata</td>
+            <td>Inviolabilit&agrave; del domicilio (Art. 14) e delle comunicazioni (Art. 15)</td>
+          </tr>
+          <tr>
+            <td>Storia</td>
+            <td>Continuamente riscritta per adattarsi alle versioni ufficiali</td>
+            <td>Memoria storica tutelata. Negazionismo spesso punito per legge</td>
+          </tr>
+          <tr>
+            <td>Giustizia</td>
+            <td>Crimini del pensiero. Arresto arbitrario. Tortura sistematica (Stanza 101)</td>
+            <td>Habeas corpus, giusto processo, presunzione d&rsquo;innocenza (Art. 27)</td>
+          </tr>
+          <tr>
+            <td>Individuo</td>
+            <td>Proprietà dello Stato. Identit&agrave; annullata (Winston diventa 2+2=5)</td>
+            <td>Diritti inalienabili. Dignit&agrave; umana inviolabile (Art. 2)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- LA DEMOCRAZIA OGGI -->
+<section class="oggi-section">
+  <div class="container">
+    <div class="sec-label red">&#9888; Sfide contemporanee</div>
+    <div class="sec-title">1984 nel XXI secolo</div>
+    <p class="sec-sub">Orwell sarebbe sorpreso di quanto il suo romanzo sembri descrivere il mondo digitale odierno. Le minacce alla democrazia hanno nuovi nomi.</p>
+    <div class="oggi-grid">
+
+      <div class="oggi-card">
+        <div class="oggi-card-icon">&#128247;</div>
+        <div class="oggi-card-title">Sorveglianza di massa digitale</div>
+        <div class="oggi-card-desc">NSA, GCHQ, telecamere con riconoscimento facciale, tracciamento GPS. Snowden (2013) ha rivelato programmi di sorveglianza globale.</div>
+        <div class="oggi-card-1984">&#128214; Orwell: &ldquo;Il Telescraan non si poteva mai spegnere&rdquo;</div>
+      </div>
+
+      <div class="oggi-card">
+        <div class="oggi-card-icon">&#128187;</div>
+        <div class="oggi-card-title">Fake news e disinformazione</div>
+        <div class="oggi-card-desc">I social media amplificano notizie false. Algoritmi creano bolle informative. La &ldquo;post-verit&agrave;&rdquo; erode il concetto di fatto oggettivo.</div>
+        <div class="oggi-card-1984">&#128214; Orwell: &ldquo;Chi controlla il passato controlla il futuro&rdquo;</div>
+      </div>
+
+      <div class="oggi-card">
+        <div class="oggi-card-icon">&#129302;</div>
+        <div class="oggi-card-title">Intelligenza Artificiale e controllo</div>
+        <div class="oggi-card-desc">Il credito sociale in Cina, il riconoscimento facciale negli spazi pubblici, la profilazione comportamentale: strumenti di controllo senza precedenti.</div>
+        <div class="oggi-card-1984">&#128214; Orwell: &ldquo;Non esistono peccati, esistono solo crimini contro il Partito&rdquo;</div>
+      </div>
+
+      <div class="oggi-card">
+        <div class="oggi-card-icon">&#128172;</div>
+        <div class="oggi-card-title">Manipolazione del linguaggio politico</div>
+        <div class="oggi-card-desc">Eufemismi, &ldquo;danni collaterali&rdquo; al posto di vittime civili, &ldquo;flessibilit&agrave; del mercato del lavoro&rdquo; per i licenziamenti. Il linguaggio depotenzia la realt&agrave;.</div>
+        <div class="oggi-card-1984">&#128214; Orwell: &ldquo;La Neolingua era l&rsquo;unica lingua al mondo il cui vocabolario si restringeva&rdquo;</div>
+      </div>
+
+      <div class="oggi-card">
+        <div class="oggi-card-icon">&#128293;</div>
+        <div class="oggi-card-title">Derive autoritarie democratiche</div>
+        <div class="oggi-card-desc">Ungheria, Polonia, Turchia: democrazie che hanno eroso gradualmente lo stato di diritto mantenendo elezioni formali. Il totalitarismo non arriva sempre con un colpo di Stato.</div>
+        <div class="oggi-card-1984">&#128214; Orwell: &ldquo;Il Partito era riuscito a fare ci&ograve; che nessun regime aveva mai fatto&rdquo;</div>
+      </div>
+
+      <div class="oggi-card">
+        <div class="oggi-card-icon">&#128274;</div>
+        <div class="oggi-card-title">Risposta: Europa e GDPR</div>
+        <div class="oggi-card-desc">L&rsquo;Unione Europea ha risposto con il GDPR (2018): diritto alla privacy, consenso informato, diritto all&rsquo;oblio. Un tentativo di tutelare i diritti digitali.</div>
+        <div class="oggi-card-1984">&#128214; Risposta a Orwell: regolamentare prima che sia troppo tardi</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COME PRESENTARLO ALL'ORALE -->
+<section class="orale-section">
+  <div class="container">
+    <div class="sec-label ocean">&#127908; Esame orale</div>
+    <div class="sec-title">Come Presentarlo all&rsquo;Orale</div>
+    <p class="sec-sub" style="margin-bottom:2rem;">Strategie per collegare democrazia e 1984 alle altre materie e fare un&rsquo;ottima impressione alla commissione.</p>
+    <div class="orale-grid">
+      <div class="orale-card">
+        <h3>&#128161; Struttura della presentazione</h3>
+        <div class="orale-item">
+          <div class="orale-num">1</div>
+          <div class="orale-text"><strong>Parti dall&rsquo;SDG 16:</strong> &ldquo;Il mio argomento di Educazione Civica parte dall&rsquo;Obiettivo 16 dell&rsquo;Agenda 2030 — Pace, Giustizia e Istituzioni Solide — e lo esplora attraverso un contraltare letterario: 1984 di Orwell.&rdquo;</div>
+        </div>
+        <div class="orale-item">
+          <div class="orale-num">2</div>
+          <div class="orale-text"><strong>Contestualizza Orwell:</strong> 1948, post-fascismo, Stalin, Guerra Fredda. Il romanzo è una risposta storica precisa, non fantasia pura.</div>
+        </div>
+        <div class="orale-item">
+          <div class="orale-num">3</div>
+          <div class="orale-text"><strong>Spiega i meccanismi del regime:</strong> Grande Fratello, Neolingua, Ministero della Verità, Bispensiero. Ogni concetto ha un parallelo nella realtà storica e contemporanea.</div>
+        </div>
+        <div class="orale-item">
+          <div class="orale-num">4</div>
+          <div class="orale-text"><strong>Collegalo alla Costituzione:</strong> nata nel 1948, stessa epoca. Ogni articolo è una risposta esplicita a un abuso totalitario vissuto dai Costituenti.</div>
+        </div>
+        <div class="orale-item">
+          <div class="orale-num">5</div>
+          <div class="orale-text"><strong>Attualizza:</strong> sorveglianza digitale, fake news, GDPR. Dimostra che Orwell è ancora rilevante — e che la democrazia richiede vigilanza continua.</div>
+        </div>
+      </div>
+
+      <div class="link-card">
+        <h3 style="margin-bottom:1.25rem;">&#128279; Collegamenti Interdisciplinari</h3>
+
+        <div class="link-item">
+          <div class="link-materia">&#128220; ITALIANO</div>
+          <div class="link-text">
+            Orwell &egrave; coevo di molti autori del programma. Il tema del &ldquo;doppio&rdquo; (il filo conduttore di Italiano):
+            Winston Smith &egrave; diviso tra la sua mente libera e il corpo che il Partito vuole controllare.
+            Collegamento con Pirandello: l&rsquo;identit&agrave; costruita vs. imposta.
+          </div>
+        </div>
+
+        <div class="link-item">
+          <div class="link-materia">&#127468;&#127463; INGLESE</div>
+          <div class="link-text">
+            1984 &egrave; un testo letterario in inglese. George Orwell (Eric Arthur Blair, 1903-1950) &egrave; uno degli scrittori pi&ugrave; importanti del XX secolo britannico. La terminologia
+            del romanzo &mdash; Big Brother, doublethink, thoughtcrime, memory hole &mdash; &egrave; entrata nell&rsquo;uso comune inglese.
+          </div>
+        </div>
+
+        <div class="link-item">
+          <div class="link-materia">&#128218; STORIA (implicita nell&rsquo;orale)</div>
+          <div class="link-text">
+            Orwell scrisse 1984 guardando al fascismo italiano, al nazismo tedesco e allo stalinismo.
+            Il totalitarismo del Novecento &egrave; il contesto storico diretto.
+            La Resistenza italiana e la nascita della Costituzione sono la risposta reale a quello stesso pericolo.
+          </div>
+        </div>
+
+        <div class="link-item">
+          <div class="link-materia">&#9875; NAVIGAZIONE (collegamento insolito)</div>
+          <div class="link-text">
+            Oceania &egrave; una potenza navale in 1984. Il mare come spazio di libert&agrave; vs. controllo.
+            Il diritto del mare (UNCLOS) come esempio di diritto internazionale che limita il potere degli Stati.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p>Educazione Civica &mdash; Le Fondamenta della Democrazia &amp; 1984 &middot; Maturit&agrave; Nautico 2026</p>
+  </div>
 </footer>
 
 <script src="../assets/js/app.js"></script>
