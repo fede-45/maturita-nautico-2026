@@ -337,6 +337,93 @@ function initNavbar() {
   });
 }
 
+/* ── Mobile menu: hamburger su navbar ── */
+function initMobileNav() {
+  const navInner = document.querySelector('.navbar-inner');
+  const navList = document.querySelector('.navbar-nav');
+  if (!navInner || !navList) return;
+  // Crea hamburger se non esiste già
+  if (!document.querySelector('.navbar-toggle')) {
+    const btn = document.createElement('button');
+    btn.className = 'navbar-toggle';
+    btn.setAttribute('aria-label', 'Apri menu');
+    btn.innerHTML = '☰';
+    navInner.appendChild(btn);
+    btn.addEventListener('click', () => {
+      const isOpen = navList.classList.toggle('mobile-open');
+      btn.innerHTML = isOpen ? '✕' : '☰';
+      btn.setAttribute('aria-label', isOpen ? 'Chiudi menu' : 'Apri menu');
+      MobileBackdrop.toggle(isOpen, () => {
+        navList.classList.remove('mobile-open');
+        btn.innerHTML = '☰';
+      });
+    });
+  }
+  // Chiudi nav cliccando su un link
+  navList.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      navList.classList.remove('mobile-open');
+      const btn = document.querySelector('.navbar-toggle');
+      if (btn) btn.innerHTML = '☰';
+      MobileBackdrop.hide();
+    });
+  });
+}
+
+/* ── Mobile sidebar: FAB "Argomenti" che apre la sidebar come drawer ── */
+function initMobileSidebar() {
+  const sidebar = document.querySelector('.sidebar, .t-sidebar, .f-sidebar');
+  if (!sidebar) return;
+  // FAB
+  if (!document.querySelector('.sidebar-fab')) {
+    const fab = document.createElement('button');
+    fab.className = 'sidebar-fab';
+    fab.setAttribute('aria-label', 'Apri argomenti');
+    fab.innerHTML = '📑 Argomenti';
+    document.body.appendChild(fab);
+    fab.addEventListener('click', () => {
+      const isOpen = sidebar.classList.toggle('mobile-open');
+      MobileBackdrop.toggle(isOpen, () => sidebar.classList.remove('mobile-open'));
+    });
+  }
+  // Chiudi sidebar cliccando su un item
+  sidebar.querySelectorAll('a, .sidebar-item').forEach(item => {
+    item.addEventListener('click', () => {
+      sidebar.classList.remove('mobile-open');
+      MobileBackdrop.hide();
+    });
+  });
+}
+
+/* ── Backdrop condiviso per drawer mobile ── */
+const MobileBackdrop = {
+  el: null,
+  ensure() {
+    if (!this.el) {
+      this.el = document.createElement('div');
+      this.el.className = 'mobile-backdrop';
+      document.body.appendChild(this.el);
+      this.el.addEventListener('click', () => this.hide());
+    }
+    return this.el;
+  },
+  toggle(show, onHide) {
+    this.ensure();
+    if (show) {
+      this.el.classList.add('active');
+      this.onHide = onHide;
+      document.body.classList.add('no-scroll');
+    } else {
+      this.hide();
+    }
+  },
+  hide() {
+    if (this.el) this.el.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    if (this.onHide) { try { this.onHide(); } catch(e){} this.onHide = null; }
+  }
+};
+
 /* ── Copy formula ── */
 document.addEventListener('click', e => {
   const btn = e.target.closest('[data-copy]');
@@ -361,6 +448,8 @@ document.addEventListener('DOMContentLoaded', () => {
   Pomodoro.init();
   initCountdown();
   initNavbar();
+  initMobileNav();
+  initMobileSidebar();
   // theme toggle button
   document.getElementById('theme-toggle')?.addEventListener('click', () => ThemeManager.toggle());
 });
